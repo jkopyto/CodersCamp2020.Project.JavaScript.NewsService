@@ -1,0 +1,36 @@
+language: node_js
+node_js:
+  - 15
+cache:
+  npm: true
+  directories:
+    - dist
+    - node_modules
+
+stages:
+  - Build
+  - Test and FormatCheck
+  - name: Publish
+    if: branch=master
+
+jobs:
+  include:
+    - stage: Build
+      script: bash ./scripts/build.sh
+    - stage: Test and FormatCheck
+      script: npm run test:cov && cat coverage/lcov.info | coveralls
+    - script: npm run lint && npm run format-check
+    - stage: Publish
+      deploy:
+        provider: pages
+        skip_cleanup: true
+        local_dir: dist
+        github_token: $GITHUB_TOKEN
+        keep_history: true
+        on:
+          branch: master
+
+after_failure:
+  - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
+  - chmod +x send.sh
+  - ./send.sh failure $WEBHOOK_URL

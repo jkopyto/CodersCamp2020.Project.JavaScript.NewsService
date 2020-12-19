@@ -1,0 +1,35 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "rules": {
+    "semi": ["error", "never"],
+    "no-multi-spaces": "error",
+    "space-in-parens": ["error", "never"],
+    "no-extra-semi": "error",
+    "no-use-before-define": "error",
+    "prefer-const": "error",
+    "prefer-arrow-callback": "warn",
+    "no-console": "error",
+    "no-new-object": "error",
+    "object-shorthand": [
+      "error",
+      "always",
+      { "avoidExplicitReturnArrows": true }
+    ],
+    "quote-props": ["error", "as-needed"],
+    "no-array-constructor": "error",
+    "quotes": ["error", "double"],
+    "no-param-reassign": "error",
+    "prefer-spread": "error",
+    "arrow-spacing": "error",
+    "no-multi-assign": "error",
+    "camelcase": "warn"
+  }
+}

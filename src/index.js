@@ -1,8 +1,25 @@
-import 'regenerator-runtime/runtime' //async/await with Parcel
-import {App} from "./app/App";
+/* eslint-disable no-undef */
+import "regenerator-runtime/runtime" //async/await with Parcel
+import { App } from "./app/App"
+import provider from "./services/Provider"
+import { SentryReporting, ConsoleReporting } from "./services/ErrorReporting"
 
-const ONE_SECOND_MILLIS = 1000;
-const SW_API_BASE_URL = process.env.SW_API_BASE_URL || "https://swapi.dev/api";
-const QUIZ_MAX_TIME = process.env.QUIZ_MAX_TIME_SECONDS ? process.env.QUIZ_MAX_TIME_SECONDS * ONE_SECOND_MILLIS : 120 * ONE_SECOND_MILLIS;
+const ONE_SECOND_MILLIS = 1000
+const SW_API_BASE_URL = process.env.SW_API_BASE_URL || "https://swapi.dev/api"
+const QUIZ_MAX_TIME = process.env.QUIZ_MAX_TIME_SECONDS
+  ? process.env.QUIZ_MAX_TIME_SECONDS * ONE_SECOND_MILLIS
+  : 120 * ONE_SECOND_MILLIS
 
-window.onload = () => App({options: {swApiBaseUrl: SW_API_BASE_URL, quizMaxTime: QUIZ_MAX_TIME}})
+if (process.env.SENTRY_DSN) {
+  provider.provide(
+    "errorReporting",
+    new SentryReporting(process.env.SENTRY_DSN, process.env.GIT_COMMIT)
+  )
+} else {
+  provider.provide("errorReporting", new ConsoleReporting())
+}
+
+window.onload = () =>
+  App({
+    options: { swApiBaseUrl: SW_API_BASE_URL, quizMaxTime: QUIZ_MAX_TIME },
+  })
