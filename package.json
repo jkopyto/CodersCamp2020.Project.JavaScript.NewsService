@@ -7,11 +7,14 @@
     "clean": "rimraf .cache && rimraf coverage && rimraf dist && rimraf node_modules",
     "prebuild": "rimraf dist",
     "build": "parcel build index.html --public-url ./",
-    "format": "prettier --write \"src/**/*.js\" \"src/**/*.ts\" \"test/**/*.js\" \"test/**/*.ts\"",
     "start:dev": "parcel -p 8765 watch index.html",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:cov": "jest --coverage"
+    "test:cov": "jest --coverage",
+    "lint": "eslint \"src/**/*.{js,json,css,jsx,ts,tsx,html}\"",
+    "lint:fix": "eslint \"src/**/*.{js,json,css,jsx,ts,tsx,html}\" --fix",
+    "prettify": "prettier --loglevel warn --write \"src/**/*\"",
+    "format-check": "prettier --check \"src/**/*\""
   },
   "repository": {
     "type": "git",
