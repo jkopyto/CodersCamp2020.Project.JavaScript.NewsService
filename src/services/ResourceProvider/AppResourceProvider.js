@@ -1,5 +1,5 @@
 import ResourceProviderService from "./ResourceProvider"
-import lightsaberHandle from "static/assets/ui/LightsaberHandle.png"
+import lightsaberHandle from "src/media/img/LightsaberHandle.png"
 
 const resources = {
   lightsaberHandle,
