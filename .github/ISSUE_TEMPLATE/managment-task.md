@@ -2,7 +2,7 @@
 name: Management Task
 about: Managment task for Product Owner/Product Developer
 title: "[Management]"
-labels: ''
+labels: management
 assignees: ''
 
 ---

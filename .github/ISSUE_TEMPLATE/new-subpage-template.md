@@ -2,7 +2,7 @@
 name: New Subpage Template
 about: Suggest a subpage template for the project
 title: "[Feature] [Subpage] SubpageName"
-labels: enhancement
+labels: New Subpage, enhancement
 assignees: ''
 
 ---
