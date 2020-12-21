@@ -8,14 +8,6 @@ export default class HttpClient {
     throw new Error("Post not implemented")
   }
 
-  async uploadChatImage(url, body) {
-    throw new Error("uploadChatImage not implemented")
-  }
-
-  addHeaders(headers) {
-    throw new Error("addHeaders not implemented")
-  }
-
   get headers() {
     throw new Error("get headers not implemented")
   }
