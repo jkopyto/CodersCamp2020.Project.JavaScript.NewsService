@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.com/jkopyto/JSQuizTesting.svg?token=Nn68j54XqraFb3FFDZ9p&branch=master)](https://travis-ci.com/jkopyto/JSQuizTesting)
+[![Coverage Status](https://coveralls.io/repos/github/jkopyto/CodersCamp2020.Project.JavaScript.NewsService/badge.svg?branch=main)](https://coveralls.io/github/jkopyto/CodersCamp2020.Project.JavaScript.NewsService?branch=main)
+
 **UWAGA! Zaczynając pracę nad projektem — nie róbcie forka.
 Jedna osoba z zespołu (np. Mentor) powinna użyć przycisku `Use this template` i dodać innych członków zespołu jako Collaborators do tego repozytorium.**
 
