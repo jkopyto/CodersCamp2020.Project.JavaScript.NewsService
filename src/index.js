@@ -3,6 +3,7 @@ import "regenerator-runtime/runtime" //async/await with Parcel
 import { App } from "./app/App"
 import provider from "./services/Provider"
 import { SentryReporting, ConsoleReporting } from "./services/ErrorReporting"
+import { AppResourceProvider } from "./services/ResourceProvider/AppResourceProvider"
 
 const ONE_SECOND_MILLIS = 1000
 const SW_API_BASE_URL = process.env.SW_API_BASE_URL || "https://swapi.dev/api"
@@ -18,6 +19,7 @@ if (process.env.SENTRY_DSN) {
 } else {
   provider.provide("errorReporting", new ConsoleReporting())
 }
+provider.provide("resourceProvider", new AppResourceProvider())
 
 window.onload = () =>
   App({
