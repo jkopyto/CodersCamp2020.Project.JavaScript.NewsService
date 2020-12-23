@@ -40,6 +40,7 @@ Proponowany projekt — Quiz Star Wars (opis poniżej).
 - funkcje callback
 - metody HTTP
 - pisanie testów jednostkowych 
+- elo
 
 Do implementacji nie używajcie React (tego nauczycie się w dalszej części kursu), czy takich frameworków jak Angular.
 Najlepiej odstawcie też na bok biblioteki stylów takie jak Bootstrap — na upraszczanie życia przyjdzie jeszcze czas.
