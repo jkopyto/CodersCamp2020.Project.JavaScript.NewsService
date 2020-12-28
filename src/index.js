@@ -23,6 +23,7 @@ if (process.env.SENTRY_DSN) {
 
 provider.provide("resourceProvider", new AppResourceProvider())
 provider.provide("httpClient", new FetchClient({ maxRetries: 2 }))
+provider.provide("SportApi", new SportApiService())
 
 window.onload = () =>
   App({
