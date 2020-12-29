@@ -1,6 +1,6 @@
 import responseToJson from "src/utils/responseToJson"
 
-export class FetchError extends Error {
+export default class FetchError extends Error {
   constructor(err, info) {
     super(
       `Fetch error response: ${JSON.stringify(

@@ -37,7 +37,7 @@ export default class FetchClient extends HttpClient {
 
   async request(url, conf, retry) {
     const request = this.requestWithRetryAndLog(url, conf, retry).then((r) => {
-      if (!(r.response && r.response.ok)) {
+      if (!(r && r.ok)) {
         throw new FetchError(
           r,
           `Bad status code, body: ${JSON.stringify(r.data)}`
