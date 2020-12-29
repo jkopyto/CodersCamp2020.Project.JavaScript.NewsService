@@ -7,7 +7,4 @@ export const App = ({ options }) => {
       errorInfo: `It is a brand new error ${options}`,
     })
   }
-
-  testErrorReport()
-  provider.get("wtf")
 }
