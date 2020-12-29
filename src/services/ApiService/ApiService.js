@@ -1,4 +1,4 @@
-import FetchClient from "./FetchClient"
+import FetchClient from "../Http"
 
 export class ApiService extends FetchClient {
   constructor(credentials) {
