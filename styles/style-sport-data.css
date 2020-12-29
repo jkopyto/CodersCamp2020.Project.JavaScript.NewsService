@@ -1,0 +1,56 @@
+.europe_countries {
+  overflow: auto;
+}
+
+.europe_country {
+  display: flex;
+}
+
+.europe_country__id {
+  margin-right: 1rem;
+  min-width: 35px;
+}
+
+#italy_matches {
+  max-width: 450px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  max-width: 450px;
+  margin-bottom: 1rem;
+}
+
+#italy_matches .europe_country {
+  margin-bottom: 1rem;
+}
+
+#italy_matches .europe_country__name {
+  display: grid;
+}
+
+#italy_matches .europe_country__name:first-child {
+  margin-right: auto;
+}
+
+#italy_matches .europe_country__name img {
+  grid-row: 1;
+  max-width: 50px;
+}
+
+#italy_matches .europe_country__name span {
+  display: flex;
+  align-items: center;
+  grid-row: 1;
+  width: 110px;
+  margin: 0 6px;
+}
+
+#italy_matches .europe_country__name .score {
+  font-weight: bold;
+  padding: 6px;
+  width: 20px;
+}
+
