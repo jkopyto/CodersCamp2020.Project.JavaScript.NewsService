@@ -4,6 +4,7 @@ import { App } from "./app/App"
 import provider from "./services/Provider"
 import { SentryReporting, ConsoleReporting } from "./services/ErrorReporting"
 import AppResourceProvider from "./services/ResourceProvider/AppResourceProvider"
+import SportApiService from "./services/SportApiService"
 import FetchClient from "./services/Http"
 
 const ONE_SECOND_MILLIS = 1000
