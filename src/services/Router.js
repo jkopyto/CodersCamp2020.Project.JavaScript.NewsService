@@ -1,4 +1,8 @@
-import sportSubpage from "../subpages/sportSubpage/sportdata.html"
+import sportSubpage from "../subpages/sportSubpage/sport.html"
+import foodSubpage from "../subpages/foodSubpage/food.html"
+import weatherSubpage from "../subpages/weatherSubpage/weather.html"
+import newsSubpage from "../subpages/newsSubpage/news.html"
+import cryptocurrencySubpage from "../subpages/cryptocurrencySubpage/cryptocurrency.html"
 
 export class Router {
   constructor() {
@@ -16,13 +20,25 @@ export class Router {
     let content
 
     switch (uri) {
-      case "sportdata":
+      case "sport":
         content = sportSubpage
         break
+      case "food":
+        content = foodSubpage
+        break
+      case "weather":
+        content = weatherSubpage
+        break
+      case "news":
+        content = newsSubpage
+        break
+      case "cryptocurrency":
+        content = cryptocurrencySubpage
+        break
       default:
-        content = await fetch(`/static/partials/${uri}.html`).then((res) =>
-          res.text()
-        )
+        content = await fetch(
+          `/subpages/${uri}Subpage/${uri}.html`
+        ).then((res) => res.text())
     }
 
     // // const contentUri = `/static/partials/${uri}.html`
