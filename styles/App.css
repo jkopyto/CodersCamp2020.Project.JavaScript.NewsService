@@ -1,3 +1,14 @@
 body {
-    font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
+}
+
+.weather-alert {
+  background-color: red;
+  padding: 1px;
+  color: white;
+  display: inline-block;
+}
+
+.weather-feels {
+  font-weight: bold;
 }
