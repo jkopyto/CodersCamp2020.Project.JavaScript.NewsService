@@ -4,6 +4,7 @@ import { App } from "./app/App"
 import provider from "./services/Provider"
 import { SentryReporting, ConsoleReporting } from "./services/ErrorReporting"
 import AppResourceProvider from "./services/ResourceProvider/AppResourceProvider"
+import FoodApiService from "./services/FoodApiService"
 import FetchClient from "./services/Http"
 import Router from "./services/Router"
 
@@ -25,6 +26,7 @@ if (process.env.SENTRY_DSN) {
 provider.provide("resourceProvider", new AppResourceProvider())
 provider.provide("httpClient", new FetchClient({ maxRetries: 2 }))
 provider.provide("router", new Router())
+provider.provide("FoodApi", new FoodApiService())
 
 window.onload = () =>
   App({
