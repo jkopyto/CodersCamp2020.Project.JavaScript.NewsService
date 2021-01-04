@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap");
 :root {
   --delay: 0s;
@@ -1027,6 +1028,8 @@ body {
   margin-bottom: 6px;
 }
 
+=======
+>>>>>>> 4efdd51 (Refactor function in separate file)
 .europe_countries {
   overflow: auto;
 }
@@ -1040,6 +1043,21 @@ body {
   min-width: 35px;
 }
 
+<<<<<<< HEAD
+=======
+#italy_matches {
+  max-width: 450px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  max-width: 450px;
+  margin-bottom: 1rem;
+}
+
+>>>>>>> 4efdd51 (Refactor function in separate file)
 #italy_matches .europe_country {
   margin-bottom: 1rem;
 }
@@ -1069,6 +1087,7 @@ body {
   font-weight: bold;
   padding: 6px;
   width: 20px;
+<<<<<<< HEAD
 }
 
 @media screen and (max-width: 1500px) {
@@ -1211,3 +1230,6 @@ body {
   -webkit-animation: top 1s var(--delay) both;
   animation: top 1s var(--delay) both;
 }
+=======
+}
+>>>>>>> 4efdd51 (Refactor function in separate file)

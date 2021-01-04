@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import "regenerator-runtime/runtime" //async/await with Parcel
 import { App } from "./app/App"
+import { SportApiFunction } from "./subpages/sportSubpage/SportData"
 import provider from "./services/Provider"
 import { SentryReporting, ConsoleReporting } from "./services/ErrorReporting"
 import AppResourceProvider from "./services/ResourceProvider/AppResourceProvider"
@@ -32,6 +33,4 @@ provider.provide("SportApi", new SportApiService())
 >>>>>>> d739a83 (Initial commit)
 
 window.onload = () =>
-  App({
-    options: { swApiBaseUrl: SW_API_BASE_URL, quizMaxTime: QUIZ_MAX_TIME },
-  })
+  SportApiFunction()

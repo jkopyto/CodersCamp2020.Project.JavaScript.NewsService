@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 export const App = () => {}
 =======
 import provider from "../services/Provider"
@@ -20,3 +21,5 @@ export const App = async ({ options }) => {
   }
 }
 >>>>>>> d739a83 (Initial commit)
+=======
+>>>>>>> 4efdd51 (Refactor function in separate file)
