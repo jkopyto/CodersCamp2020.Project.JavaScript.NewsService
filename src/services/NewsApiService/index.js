@@ -1,3 +1,3 @@
-import NewsApiService from "./NewsApiService"
+import CryptoCurrencyService from "./CryptoCurrency.service"
 
-provider.provide("NewsApi", new NewsApiService())
+provider.provide("CurrencyAPI", new CryptoCurrencyService())
