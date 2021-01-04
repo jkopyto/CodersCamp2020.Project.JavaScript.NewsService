@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-export const App = () => {}
-=======
 import provider from "../services/Provider"
 
 export const App = async ({ options }) => {
@@ -19,4 +16,3 @@ export const App = async ({ options }) => {
       inside.insertAdjacentHTML('beforeend','<div class="europe_country__name"><span class="score">' + data[match_id].stats.away_score + '</span><span>' + data[match_id].away_team.name + '</span><img src="' + data[match_id].away_team.logo + '" alt="Italian"></div>');
   }
 }
->>>>>>> d739a83 (Initial commit)

@@ -4,6 +4,7 @@ import { App } from "./app/App"
 import provider from "./services/Provider"
 import { SentryReporting, ConsoleReporting } from "./services/ErrorReporting"
 import AppResourceProvider from "./services/ResourceProvider/AppResourceProvider"
+import SportApiService from "./services/SportApiService"
 import FetchClient from "./services/Http"
 import Router from "./services/Router"
 
@@ -24,7 +25,11 @@ if (process.env.SENTRY_DSN) {
 
 provider.provide("resourceProvider", new AppResourceProvider())
 provider.provide("httpClient", new FetchClient({ maxRetries: 2 }))
+<<<<<<< HEAD
 provider.provide("router", new Router())
+=======
+provider.provide("SportApi", new SportApiService())
+>>>>>>> d739a83 (Initial commit)
 
 window.onload = () =>
   App({
