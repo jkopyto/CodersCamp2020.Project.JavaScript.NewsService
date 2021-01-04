@@ -3,7 +3,6 @@ import foodSubpage from "../subpages/foodSubpage/food.html"
 import weatherSubpage from "../subpages/weatherSubpage/weather.html"
 import newsSubpage from "../subpages/newsSubpage/news.html"
 import cryptocurrencySubpage from "../subpages/cryptocurrencySubpage/cryptocurrency.html"
-
 export class Router {
   constructor() {
     window.addEventListener("hashchange", (event) => this.onRouteChange(event))
