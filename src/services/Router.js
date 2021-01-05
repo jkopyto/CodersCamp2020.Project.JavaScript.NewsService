@@ -36,7 +36,8 @@ export class Router {
         break
       default:
         content = await fetch(
-          `/subpages/${uri}Subpage/${uri}.html`
+          `./index.html`
+          //`/subpages/${uri}Subpage/${uri}.html`
         ).then((res) => res.text())
     }
 
