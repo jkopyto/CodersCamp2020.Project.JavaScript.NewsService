@@ -1,4 +1,4 @@
-import responseToJson from "src/utils/responseToJson"
+import responseToJson from "../../utils/responseToJson"
 
 export default class FetchError extends Error {
   constructor(err, info) {
