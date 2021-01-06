@@ -37,9 +37,9 @@ export default class FoodApiService extends ApiService {
     return res
   }
 
-  async getIngredientDetails() {
+  async getIngredientDetailsById(id) {
     const res = await this.get(
-      `${this.creds.API_BASE_LINK}/food/ingredients/9266/information?amount=1&apiKey=${this.creds.API_KEY}`
+      `${this.creds.API_BASE_LINK}/food/ingredients/${id}/information?amount=1&apiKey=${this.creds.API_KEY}`
     ).then((res) => res.json())
 
     return res
@@ -48,6 +48,22 @@ export default class FoodApiService extends ApiService {
   async getRecipeByCalories(calories) {
     const res = await this.get(
       `${this.creds.API_BASE_LINK}/recipes/findByNutrients?minCalories=50&maxCalories=${calories}&number=5&apiKey=${this.creds.API_KEY}`
+    ).then((res) => res.json())
+
+    return res
+  }
+
+  async getRecipeInformationById(id) {
+    const res = await this.get(
+      `${this.creds.API_BASE_LINK}/recipes/${id}/information?includeNutrition=false&apiKey=${this.creds.API_KEY}`
+    ).then((res) => res.json())
+
+    return res
+  }
+
+  async getWineDescription(wine) {
+    const res = await this.get(
+      `${this.creds.API_BASE_LINK}/food/wine/description?wine=${wine}&apiKey=${this.creds.API_KEY}`
     ).then((res) => res.json())
 
     return res
