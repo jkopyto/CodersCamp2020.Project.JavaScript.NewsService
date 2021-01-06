@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import sportSubpage from "../subpages/sportSubpage/sport.html"
 import foodSubpage from "../subpages/foodSubpage/food.html"
 import weatherSubpage from "../subpages/weatherSubpage/weather.html"
@@ -9,7 +10,7 @@ export class Router {
     this.slot = document.querySelector("#slot")
   }
 
-  onRouteChange(event) {
+  onRouteChange() {
     const hashLocation = window.location.hash.substring(1)
     console.log(hashLocation)
     this.loadContent(hashLocation)
@@ -35,17 +36,8 @@ export class Router {
         content = cryptocurrencySubpage
         break
       default:
-        content = await fetch(
-          `./index.html`
-          //`/subpages/${uri}Subpage/${uri}.html`
-        ).then((res) => res.text())
+        content = await fetch("./index.html").then((res) => res.text())
     }
-
-    // // const contentUri = `/static/partials/${uri}.html`
-    // fetch(contentUri)
-    //   .then((res) => res.text())
-    //   .then((content) => this.updateSlot(content))
-
     this.updateSlot(content)
   }
 
