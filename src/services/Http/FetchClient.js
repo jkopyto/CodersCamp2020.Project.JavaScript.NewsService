@@ -11,7 +11,8 @@ export default class FetchClient extends HttpClient {
   constructor({ headers = {}, maxRetries = 3, mode = "cors" } = {}) {
     super()
 
-    this._headers = { ...DEFAULT_HEADERS, ...headers }
+    this._headers =
+      Object.keys(headers).length > 0 ? { ...headers } : { ...DEFAULT_HEADERS }
     this.maxRetries = maxRetries
     this.mode = mode
   }
