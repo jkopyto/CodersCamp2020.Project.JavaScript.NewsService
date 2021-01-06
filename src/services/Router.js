@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import sportSubpage from "../subpages/sportSubpage/sport.html"
 import foodSubpage from "../subpages/foodSubpage/food.html"
 import weatherSubpage from "../subpages/weatherSubpage/weather.html"
