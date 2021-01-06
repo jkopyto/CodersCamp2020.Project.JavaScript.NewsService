@@ -15,7 +15,7 @@ export default class FoodApiService extends ApiService {
 
   async findProductByQuery(query) {
     const res = await this.get(
-      `${this.creds.API_BASE_LINK}/food/products/search?query=${query}&number=1&apiKey=${this.creds.API_KEY}`
+      `${this.creds.API_BASE_LINK}/food/products/search?query=${query}&number=10&apiKey=${this.creds.API_KEY}`
     ).then((res) => res.json())
 
     return res
