@@ -17,14 +17,12 @@ export default class WeatherApiService extends ApiService {
     const data = await res.json()
     return data
   }
-  // async comparisonOfWeatherInTheNearestCities(city1, city2, city3) {
-  //   const res = await this.get(`${this.creds.API_BASE_LINK}weather?q=${city}&appid=${this.creds.API_KEY}&units=metric`)
-  //   const data = await res.json()
-  //   return data
-  // }
-  // async getAlert() {
-  //   const res = await this.get(`${this.creds.API_BASE_LINK}onecall?lat=33.441792&lon=-94.037689&exclude=hourly,daily&appid=${this.creds.API_KEY}&units=metric`)
-  //   const data = await res.json()
-  //   return data
-  // }
+
+  async getAlert(coordLat, coordLon) {
+    const res = await this.get(
+      `${this.creds.API_BASE_LINK}onecall?lat=${coordLat}&lon=${coordLon}&appid=${this.creds.API_KEY}&units=metric`
+    )
+    const data = await res.json()
+    return data
+  }
 }

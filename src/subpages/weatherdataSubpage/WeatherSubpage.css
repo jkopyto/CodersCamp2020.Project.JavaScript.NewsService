@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+}
+.container {
+  margin: 1%;
+}
+.search-div {
+  background-color: #eaeaea;
+  padding: 2%;
+}
+form button {
+  background-color: grey;
+  color: white;
+}
+form input,
+form button {
+  font-size: 1.2rem;
+}
+.weather-now-container {
+  display: flex;
+  flex-direction: column;
+  margin: 2%;
+}
+.weather-now-container img {
+  height: 70px;
+  width: 70px;
+}
+.city {
+  font-size: 1.5rem;
+}
+.weather-alert {
+  width: fit-content;
+  background-color: red;
+  padding: 10px;
+  color: white;
+  display: inline-block;
+  border-radius: 7px;
+}
+
+.weather-feels {
+  font-weight: bold;
+}
+.detailed-info {
+  font-weight: lighter;
+}

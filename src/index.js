@@ -7,12 +7,6 @@ import AppResourceProvider from "./services/ResourceProvider/AppResourceProvider
 import FetchClient from "./services/Http"
 import WeatherApiService from "./services/WeatherService"
 
-// const ONE_SECOND_MILLIS = 1000
-// const SW_API_BASE_URL = process.env.SW_API_BASE_URL || "https://swapi.dev/api"
-// const QUIZ_MAX_TIME = process.env.QUIZ_MAX_TIME_SECONDS
-//   ? process.env.QUIZ_MAX_TIME_SECONDS * ONE_SECOND_MILLIS
-//   : 120 * ONE_SECOND_MILLIS
-
 if (process.env.SENTRY_DSN) {
   provider.provide(
     "errorReporting",
@@ -26,7 +20,4 @@ provider.provide("resourceProvider", new AppResourceProvider())
 provider.provide("httpClient", new FetchClient({ maxRetries: 2 }))
 provider.provide("WeatherApiService", new WeatherApiService())
 
-window.onload = () =>
-  App({
-    // options: { swApiBaseUrl: SW_API_BASE_URL, quizMaxTime: QUIZ_MAX_TIME },
-  })
+window.onload = () => App()
