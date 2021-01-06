@@ -11,7 +11,6 @@ export class Router {
 
   onRouteChange() {
     const hashLocation = window.location.hash.substring(1)
-    console.log(hashLocation)
     this.loadContent(hashLocation)
   }
 
