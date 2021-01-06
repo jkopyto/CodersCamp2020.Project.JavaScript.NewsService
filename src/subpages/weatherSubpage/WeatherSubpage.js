@@ -1,8 +1,8 @@
 import provider from "../../services/Provider"
 
 export default class WeatherSubpage {
-  render() {
-    const weatherApi = provider.get("WeatherApiService")
+  async render() {
+    const weatherApi = provider.get("weatherApiService")
     const weatherContentDiv = document.querySelector("#weather-content")
 
     const updatePage = async (city = "Berlin") => {

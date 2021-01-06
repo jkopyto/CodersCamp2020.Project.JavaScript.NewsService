@@ -3,6 +3,8 @@ import foodSubpage from "../subpages/foodSubpage/food.html"
 import weatherSubpage from "../subpages/weatherSubpage/weather.html"
 import newsSubpage from "../subpages/newsSubpage/news.html"
 import cryptocurrencySubpage from "../subpages/cryptocurrencySubpage/cryptocurrency.html"
+import provider from "./Provider"
+
 export class Router {
   constructor() {
     window.addEventListener("hashchange", (event) => this.onRouteChange(event))
@@ -37,6 +39,21 @@ export class Router {
         content = await fetch("./index.html").then((res) => res.text())
     }
     this.updateSlot(content)
+    switch (uri) {
+      case "sport":
+        break
+      case "food":
+        break
+      case "weather":
+        provider.get("weatherSubpage").render()
+        break
+      case "news":
+        break
+      case "cryptocurrency":
+        break
+      default:
+        break
+    }
   }
 
   updateSlot(content) {
