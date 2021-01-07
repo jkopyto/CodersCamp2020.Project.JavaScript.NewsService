@@ -1,1 +1,1 @@
-import { default } from "./CryptoCurrency.service"
+export { default } from "./CryptoCurrency.service"
