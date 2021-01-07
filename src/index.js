@@ -6,7 +6,7 @@ import { SentryReporting, ConsoleReporting } from "./services/ErrorReporting"
 import AppResourceProvider from "./services/ResourceProvider/AppResourceProvider"
 import FetchClient from "./services/Http"
 import Router from "./services/Router"
-import CryptoCurrencyService from "./services/NewsApiService/CryptoCurrency.service"
+import CryptoCurrencyService from "./services/CryptoCurrencyService/CryptoCurrency.service"
 
 const ONE_SECOND_MILLIS = 1000
 const SW_API_BASE_URL = process.env.SW_API_BASE_URL || "https://swapi.dev/api"
