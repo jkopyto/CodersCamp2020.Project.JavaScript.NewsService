@@ -3,7 +3,7 @@ import foodSubpage from "../subpages/foodSubpage/food.html"
 import weatherSubpage from "../subpages/weatherSubpage/weather.html"
 import newsSubpage from "../subpages/newsSubpage/news.html"
 import cryptocurrencySubpage from "../subpages/cryptocurrencySubpage/cryptocurrency.html"
-import provider from "./Provider"
+import WeatherSubpage from "../subpages/weatherSubpage/WeatherSubpage"
 
 export class Router {
   constructor() {
@@ -18,6 +18,7 @@ export class Router {
 
   async loadContent(uri) {
     let content
+    let script
 
     switch (uri) {
       case "sport":
@@ -28,6 +29,7 @@ export class Router {
         break
       case "weather":
         content = weatherSubpage
+        script = () => new WeatherSubpage().render()
         break
       case "news":
         content = newsSubpage
@@ -38,26 +40,12 @@ export class Router {
       default:
         content = await fetch("./index.html").then((res) => res.text())
     }
-    this.updateSlot(content)
-    switch (uri) {
-      case "sport":
-        break
-      case "food":
-        break
-      case "weather":
-        provider.get("weatherSubpage").render()
-        break
-      case "news":
-        break
-      case "cryptocurrency":
-        break
-      default:
-        break
-    }
+    this.updateSlot(content, script)
   }
 
-  updateSlot(content) {
+  updateSlot(content, script) {
     this.slot.innerHTML = content
+    script && script()
   }
 }
 

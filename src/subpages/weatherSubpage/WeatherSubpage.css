@@ -1,14 +1,12 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Montserrat", sans-serif;
+:root {
+  --grey: #eaeaea;
 }
 .container {
-  margin: 1%;
+  margin: 5px;
 }
 .search-div {
-  background-color: #eaeaea;
-  padding: 2%;
+  background-color: var(--grey);
+  padding: 20px;
 }
 form button {
   background-color: grey;
@@ -21,7 +19,7 @@ form button {
 .weather-now-container {
   display: flex;
   flex-direction: column;
-  margin: 2%;
+  margin: 20px;
 }
 .weather-now-container img {
   height: 70px;

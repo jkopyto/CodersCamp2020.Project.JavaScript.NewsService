@@ -7,7 +7,6 @@ import AppResourceProvider from "./services/ResourceProvider/AppResourceProvider
 import FetchClient from "./services/Http"
 import Router from "./services/Router"
 import WeatherApiService from "./services/WeatherService"
-import WeatherSubpage from "./subpages/weatherSubpage/WeatherSubpage"
 
 if (process.env.SENTRY_DSN) {
   provider.provide(
@@ -22,6 +21,5 @@ provider.provide("resourceProvider", new AppResourceProvider())
 provider.provide("httpClient", new FetchClient({ maxRetries: 2 }))
 provider.provide("router", new Router())
 provider.provide("weatherApiService", new WeatherApiService())
-provider.provide("weatherSubpage", new WeatherSubpage())
 
 window.onload = () => App()
