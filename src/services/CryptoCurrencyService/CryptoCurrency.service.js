@@ -4,7 +4,7 @@ export default class CryptoCurrencyService extends ApiService {
   constructor() {
     super(
       {
-        API_LINK: `${process.env.CRYPTO_CURRENCY_LINK}`
+        API_LINK: `${process.env.CRYPTO_CURRENCY_LINK}`,
       },
       { headers: { Accept: "application/json" } }
     )
@@ -12,16 +12,15 @@ export default class CryptoCurrencyService extends ApiService {
 
   getAllCoins = async () => {
     return this.get(this.creds.API_LINK)
-      .then(resp => resp.json())
-      .catch(e => e.message)
-
+      .then((resp) => resp.json())
+      .catch((e) => e.message)
   }
 
   getSingleCoin = async (coinId) => {
     const link = this.creds.API_LINK + "/" + coinId
     return await this.get(link)
-      .then(resp => resp.json())
-      .catch(e => e.message)
+      .then((resp) => resp.json())
+      .catch((e) => e.message)
   }
 
   exchangeCoinToUSD = async (coinId, amountOfCoins) => {
@@ -35,11 +34,11 @@ export default class CryptoCurrencyService extends ApiService {
     }
 
     return await this.get(`${this.creds.API_LINK}/${coinId}/ohlcv/latest`)
-      .then(resp => resp.json())
-      .then(data => {
+      .then((resp) => resp.json())
+      .then((data) => {
         coinsMarketPrice = data[0].open
         return coinsMarketPrice * numberOfCoins
       })
-      .catch(e => e.message)
+      .catch((e) => e.message)
   }
 }

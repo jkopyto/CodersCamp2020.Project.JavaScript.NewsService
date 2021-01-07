@@ -1,1 +1,1 @@
-export const App = () => {}
+export const App = async () => {}
