@@ -15,12 +15,12 @@ describe("GetWinePairing tests", () => {
     fetchMock.mockResponseOnce(JSON.stringify(mockResponse))
   })
 
-  it("Connection test", async () => {
+  it("Returns an object", async () => {
     const res = await foodService.getWinePairing("pizza")
     expect(res).toMatchObject(mockResponse)
   })
 
-  it("Paired wines test", async () => {
+  it("Returns a wine name string", async () => {
     const res = await foodService.getWinePairing("pizza")
     expect(res.pairedWines[0]).toBe("sangiovese")
   })
@@ -32,12 +32,12 @@ describe("GetWineDescription tests", () => {
     fetchMock.mockResponseOnce(JSON.stringify(mockResponse1))
   })
 
-  it("Connection test", async () => {
+  it("Returns an object", async () => {
     const res = await foodService.getWineDescription("merlot")
     expect(res).toMatchObject(mockResponse1)
   })
 
-  it("Description wine test", async () => {
+  it("Returns a wine description string", async () => {
     const res = await foodService.getWineDescription("merlot")
     expect(res.wineDescription).toBe(
       "Merlot is a dry red wine which is smooth and medium bodied."
@@ -51,7 +51,7 @@ describe("FindProductByQuery tests", () => {
     fetchMock.mockResponseOnce(JSON.stringify(mockResponse2))
   })
 
-  it("Connection test", async () => {
+  it("Returns an object", async () => {
     const res = await foodService.findProductByQuery("chicken")
     expect(res).toMatchObject(mockResponse2)
   })
@@ -63,12 +63,12 @@ describe("GetIngredientsDetails tests", () => {
     fetchMock.mockResponseOnce(JSON.stringify(mockResponse3))
   })
 
-  it("Connection test", async () => {
+  it("Returns an object", async () => {
     const res = await foodService.getIngredientDetailsById(9266)
     expect(res).toMatchObject(mockResponse3)
   })
 
-  it("Name test", async () => {
+  it("Returns a product name string", async () => {
     const res = await foodService.getIngredientDetailsById(9266)
     expect(res.name).toBe("pineapples")
   })
@@ -80,7 +80,7 @@ describe("GetRecipeByCalories tests", () => {
     fetchMock.mockResponseOnce(JSON.stringify(mockResponse4))
   })
 
-  it("Connection test", async () => {
+  it("Returns an object", async () => {
     const res = await foodService.getRecipeByCalories(123)
     expect(res).toMatchObject(mockResponse4)
   })
