@@ -6,6 +6,7 @@ import { SentryReporting, ConsoleReporting } from "./services/ErrorReporting"
 import AppResourceProvider from "./services/ResourceProvider/AppResourceProvider"
 import FetchClient from "./services/Http"
 import Router from "./services/Router"
+import CryptoCurrencyService from "./services/CryptoCurrencyService/CryptoCurrency.service"
 import WeatherApiService from "./services/WeatherService"
 
 if (process.env.SENTRY_DSN) {
@@ -21,5 +22,6 @@ provider.provide("resourceProvider", new AppResourceProvider())
 provider.provide("httpClient", new FetchClient({ maxRetries: 2 }))
 provider.provide("router", new Router())
 provider.provide("weatherApiService", new WeatherApiService())
+provider.provide("CurrencyAPI", new CryptoCurrencyService())
 
 window.onload = () => App()
