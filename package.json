@@ -11,7 +11,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
-    "lint": "eslint \"src/**/*.{js,json,css,jsx,ts,tsx,html}\"",
+    "lint": "eslint \"src/**/*.{js,json,jsx,ts,tsx,html}\"",
     "lint:fix": "eslint \"src/**/*.{js,json,css,jsx,ts,tsx,html}\" --fix",
     "prettify": "prettier --loglevel warn --write \"src/**/*\"",
     "format-check": "prettier --check \"src/**/*\""
