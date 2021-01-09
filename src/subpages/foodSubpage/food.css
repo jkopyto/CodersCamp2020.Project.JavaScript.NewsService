@@ -19,13 +19,18 @@
   display: flex;
   justify-content: space-around;
   width: 100%;
+<<<<<<< HEAD
   height: auto;
+=======
+  height: 400px;
+>>>>>>> 1d071ff (Create structure of food subpage)
 }
 
 .imageDiv {
   width: 30%;
   text-align: center;
 }
+<<<<<<< HEAD
 
 .imageDiv img {
   width: 100%;
@@ -68,3 +73,5 @@
 .wineDiv p {
   width: 40%;
 }
+=======
+>>>>>>> 1d071ff (Create structure of food subpage)
