@@ -34,16 +34,27 @@ body {
   padding: 12px;
 }
 
-.slide-image {
-  max-width: 100%;
-}
-
-.image-title {
-  color: silver;
+.page-slider .glide__slide {
   position: relative;
-  text-align: center;
 }
 
-.image-title a {
+.page-slider .slide-image {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.page-slider .image-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: xx-large;
+  color: rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px white, -1px -1px black;
+  padding: 50px;
+}
+
+.page-slider .image-title a {
   text-decoration: none;
 }
