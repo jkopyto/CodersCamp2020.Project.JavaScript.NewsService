@@ -46,15 +46,15 @@ body {
 
 .page-slider .image-title {
   position: absolute;
-  top: 50%;
+  top: 85%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: xx-large;
-  color: rgba(0, 0, 0, 0.3);
-  text-shadow: 1px 1px white, -1px -1px black;
-  padding: 50px;
+  font-weight: bold;
+  text-shadow: 4px 4px black;
 }
 
 .page-slider .image-title a {
   text-decoration: none;
+  color: rgb(214, 210, 210);
 }
