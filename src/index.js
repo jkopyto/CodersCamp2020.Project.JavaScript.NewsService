@@ -1,4 +1,5 @@
-import "regenerator-runtime/runtime"
+/* eslint-disable no-undef */
+import "regenerator-runtime/runtime" //async/await with Parcel
 import { App } from "./app/App"
 import provider from "./services/Provider"
 import { SentryReporting, ConsoleReporting } from "./services/ErrorReporting"
