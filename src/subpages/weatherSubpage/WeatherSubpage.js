@@ -11,8 +11,12 @@ export default class WeatherSubpage {
     return `http://openweathermap.org/img/w/${iconCode}.png`
   }
 
-  async updatePage(city = "Berlin") {
-    const weatherRes = await this._weatherApi.getCurrentWeather(city)
+  async updatePage() {
+    const coords = await this._weatherApi.geoFindMe()
+    const weatherRes = await this._weatherApi.getCurrentWeather(
+      coords[0],
+      coords[1]
+    )
     const alert = await this._weatherApi.getAlert(
       weatherRes.coord.lat,
       weatherRes.coord.lon
