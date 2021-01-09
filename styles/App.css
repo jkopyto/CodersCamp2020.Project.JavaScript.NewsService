@@ -34,14 +34,16 @@ body {
   padding: 12px;
 }
 
-.slide_image {
+.slide-image {
   max-width: 100%;
-  object-fit: cover;
 }
 
-.image_title {
+.image-title {
   color: silver;
   position: relative;
   text-align: center;
-  text-decoration: none !important;
+}
+
+.image-title a {
+  text-decoration: none;
 }

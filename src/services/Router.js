@@ -3,7 +3,12 @@ import foodSubpage from "../subpages/foodSubpage/food.html"
 import weatherSubpage from "../subpages/weatherSubpage/weather.html"
 import newsSubpage from "../subpages/newsSubpage/news.html"
 import cryptocurrencySubpage from "../subpages/cryptocurrencySubpage/cryptocurrency.html"
+<<<<<<< HEAD
 import WeatherSubpage from "../subpages/weatherSubpage/WeatherSubpage"
+=======
+import homepage from "../subpages/homepage/homepage.html"
+import { Homepage } from "../subpages/homepage/Homepage"
+>>>>>>> abfe1e2 (homepage with carousel run by default on start, pagescripts init added to router, draft styling)
 
 export class Router {
   constructor() {
@@ -18,8 +23,12 @@ export class Router {
 
   async loadContent(uri) {
     let content
+<<<<<<< HEAD
     let script
 
+=======
+    let pageScripts
+>>>>>>> abfe1e2 (homepage with carousel run by default on start, pagescripts init added to router, draft styling)
     switch (uri) {
       case "sport":
         content = sportSubpage
@@ -33,19 +42,33 @@ export class Router {
         break
       case "news":
         content = newsSubpage
+        // pageScripts = new NewsPage()
         break
       case "cryptocurrency":
         content = cryptocurrencySubpage
+        // pageScripts = new CryptocurrencyPage()
         break
       default:
-        content = await fetch("./index.html").then((res) => res.text())
+        content = homepage
+        pageScripts = new Homepage()
     }
+<<<<<<< HEAD
     this.updateSlot(content, script)
   }
 
   updateSlot(content, script) {
     this.slot.innerHTML = content
     script && script()
+=======
+    this.updateSlot(content, pageScripts)
+  }
+
+  updateSlot(content, pageScripts) {
+    this.slot.innerHTML = content
+    if (pageScripts) {
+      pageScripts.init()
+    }
+>>>>>>> abfe1e2 (homepage with carousel run by default on start, pagescripts init added to router, draft styling)
   }
 }
 

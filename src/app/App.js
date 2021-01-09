@@ -1,6 +1,6 @@
-import { CarouselComponent } from "./components/Carousel"
+import provider from "../services/Provider"
 
 export const App = () => {
-  const pageSlider = new CarouselComponent(".glide")
-  pageSlider.init()
+  const router = provider.get("router")
+  router.loadContent("homepage")
 }
