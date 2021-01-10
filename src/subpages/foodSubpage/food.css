@@ -19,11 +19,7 @@
   display: flex;
   justify-content: space-around;
   width: 100%;
-<<<<<<< HEAD
   height: auto;
-=======
-  height: 400px;
->>>>>>> 1d071ff (Create structure of food subpage)
 }
 
 .imageDiv {
