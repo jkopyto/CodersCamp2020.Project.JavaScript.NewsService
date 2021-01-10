@@ -34,7 +34,7 @@ export class Router {
       case "food":
         this.SubpageClass = null
         content = foodSubpage
-        script = () => new FoodSubpage().getFoodImages()
+        script = () => new FoodSubpage().getRecipes()
         break
       case "weather":
         content = weatherSubpage
