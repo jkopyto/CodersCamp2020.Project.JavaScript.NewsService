@@ -24,12 +24,15 @@ export default class FoodSubpage extends Subpage {
     return h3
   }
 
+<<<<<<< HEAD
   createLiElement(content) {
     const li = document.createElement("li")
     li.innerHTML = content
     return li
   }
 
+=======
+>>>>>>> a275824 (Creating searching recipe function)
   createDeleteButton() {
     const deleteButton = document.createElement("button")
     deleteButton.innerHTML = "Delete"
@@ -37,6 +40,7 @@ export default class FoodSubpage extends Subpage {
     return deleteButton
   }
 
+<<<<<<< HEAD
   createCaloriesDiv(image, tabInstructions) {
     const caloriesDiv = document.createElement("div")
     caloriesDiv.classList = "caloriesDiv"
@@ -76,17 +80,36 @@ export default class FoodSubpage extends Subpage {
   removeCaloriesDiv(number) {
     if (document.querySelector(".caloriesDiv")) {
       for (let i = 0; i < number; i++) {
+=======
+  createCaloriesDiv(image, summary) {
+    const caloriesDiv = document.createElement("div")
+    caloriesDiv.classList = "caloriesDiv"
+    const p = document.createElement("p")
+    p.innerHTML = summary
+    caloriesDiv.appendChild(image)
+    caloriesDiv.appendChild(p)
+    caloriesDiv.appendChild(this.createDeleteButton())
+    return caloriesDiv
+  }
+
+  removeCaloriesDiv() {
+    if (document.querySelector(".caloriesDiv")) {
+      for (let i = 0; i < 3; i++) {
+>>>>>>> a275824 (Creating searching recipe function)
         const caloriesDiv = document.querySelector(".caloriesDiv")
         caloriesDiv.remove()
       }
     }
   }
 
+<<<<<<< HEAD
   valueOfRecipes(e) {
     const span = document.querySelector(".value")
     span.innerHTML = e.target.value
   }
 
+=======
+>>>>>>> a275824 (Creating searching recipe function)
   async createHeaderImages() {
     const images = document.querySelector(".images")
     const products = await this.foodService.getRecipeByCalories(200)
@@ -97,6 +120,7 @@ export default class FoodSubpage extends Subpage {
     }
   }
 
+<<<<<<< HEAD
   async render() {
     this.createHeaderImages()
     const button = document.querySelector(".search")
@@ -136,6 +160,26 @@ export default class FoodSubpage extends Subpage {
           this.createCaloriesDiv(
             this.createDivImage(foodInf[i].image, foodInf[i].title),
             foodInf[i].analyzedInstructions[0].steps
+=======
+  async getRecipes() {
+    this.createHeaderImages()
+    const button = document.querySelector(".search")
+    button.addEventListener("click", async () => {
+      const food = await this.foodService.findRecipeByQuery(
+        document.getElementById("searchInput").value
+      )
+      const foodInf = new Array(3)
+      const searchDiv = document.querySelector(".searchDiv")
+      this.removeCaloriesDiv()
+      for (let i = 0; i < 3; i++) {
+        foodInf[i] = await this.foodService.getRecipeInformationById(
+          food.results[i].id
+        )
+        searchDiv.appendChild(
+          this.createCaloriesDiv(
+            this.createDivImage(foodInf[i].image, foodInf[i].title),
+            foodInf[i].instructions
+>>>>>>> a275824 (Creating searching recipe function)
           )
         )
       }
