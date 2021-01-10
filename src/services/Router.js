@@ -4,6 +4,8 @@ import weatherSubpage from "../subpages/weatherSubpage/weather.html"
 import newsSubpage from "../subpages/newsSubpage/news.html"
 import cryptocurrencySubpage from "../subpages/cryptocurrencySubpage/cryptocurrency.html"
 import WeatherSubpage from "../subpages/weatherSubpage/WeatherSubpage"
+import { Homepage } from "../subpages/homepage/Homepage"
+import homepage from "../subpages/homepage/homepage.html"
 
 export class Router {
   constructor() {
@@ -38,7 +40,9 @@ export class Router {
         content = cryptocurrencySubpage
         break
       default:
-        content = await fetch("./index.html").then((res) => res.text())
+        content = homepage
+        script = () => new Homepage().init()
+        break
     }
     this.updateSlot(content, script)
   }

@@ -3,3 +3,95 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.page-header {
+  background-color: #cccccc;
+}
+
+.page-header nav {
+  display: flex;
+
+  justify-content: center;
+  padding: 15px 0;
+}
+
+.page-header nav a {
+  display: block;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.centered {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+}
+
+.page-slider .container {
+  margin: auto;
+}
+
+.page-slider .glide__slide {
+  position: relative;
+  text-align: center;
+}
+
+.page-slider .slide-image {
+  width: 90%;
+  padding: 5%;
+  height: auto;
+  vertical-align: middle;
+}
+.page-slider .glide__slide--active .slide-image {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  margin: auto;
+}
+
+.page-slider .glide__slide .image-title {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: large;
+  font-weight: normal;
+  text-shadow: 2px 2px black;
+}
+
+.page-slider .glide__slide .image-title a {
+  text-decoration: none;
+  color: rgb(210, 210, 210);
+}
+
+.page-slider .glide__slide--active .image-title {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.page-slider .glide__arrow {
+  color: rgb(0, 0, 0);
+  border: 2px solid rgb(0, 0, 0);
+  background-color: rgb(0, 0, 0, 0.2);
+  font-size: normal;
+  transition: background-color 150ms, font-size 150ms;
+}
+.page-slider .glide__arrow:hover {
+  font-size: 1.2em;
+  border-color: white;
+  background-color: rgba(255, 255, 255);
+}
+.page-slider .glide__arrow--left {
+  left: -5%;
+}
+.page-slider .glide__arrow--right {
+  right: -5%;
+}
