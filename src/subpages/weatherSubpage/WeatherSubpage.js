@@ -42,7 +42,7 @@ export default class WeatherSubpage {
         <div class="detailed-info">
           <div>Cloudiness: ${weatherRes.clouds.all}%</div>
           <div>${weatherRes.main.pressure}hPa</div>
-          <div>${weatherRes.main.humidity}%</div>
+          <div>Humidity: ${weatherRes.main.humidity}%</div>
           <div>Visibility: ${weatherRes.visibility / 1000} km</div>
         </div>
         <div class="weather-forecast"></div>
