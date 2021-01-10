@@ -6,5 +6,12 @@ export class Homepage {
   }
   init() {
     this.carouselComponent.init()
+    let images = [...document.querySelectorAll(".slide-image")]
+    images.forEach((image) => {
+      image.addEventListener("click", (event) => {
+        const routeHash = event.target.dataset["pageHash"]
+        window.location = "#" + routeHash
+      })
+    })
   }
 }
