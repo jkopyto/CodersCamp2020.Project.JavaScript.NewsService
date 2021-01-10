@@ -34,27 +34,50 @@ body {
   padding: 12px;
 }
 
+.page-slider .container {
+  margin: auto;
+}
+
 .page-slider .glide__slide {
   position: relative;
+  text-align: center;
 }
 
 .page-slider .slide-image {
-  max-width: 100%;
+  width: 90%;
+  padding: 5%;
   height: auto;
   vertical-align: middle;
 }
+.page-slider .glide__slide--active .slide-image {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  margin: auto;
+}
 
-.page-slider .image-title {
+.page-slider .glide__slide .image-title {
   position: absolute;
   top: 85%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: xx-large;
-  font-weight: bold;
-  text-shadow: 4px 4px black;
+  text-align: center;
+  font-size: large;
+  font-weight: normal;
+  text-shadow: 2px 2px black;
 }
 
-.page-slider .image-title a {
+.page-slider .glide__slide .image-title a {
   text-decoration: none;
-  color: rgb(214, 210, 210);
+  color: rgb(210, 210, 210);
+}
+
+.page-slider .glide__slide--active .image-title {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.page-slider .glide__arrow {
+  color: red;
+  border: 2px solid red;
 }

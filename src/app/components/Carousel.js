@@ -1,12 +1,13 @@
 const config = {
   type: "carousel",
   startAt: 0,
-  perView: 2,
+  perView: 3,
   breakpoints: {
     600: {
       perView: 1,
     },
   },
+  focusAt: "center",
 }
 
 import Glide from "@glidejs/glide"
