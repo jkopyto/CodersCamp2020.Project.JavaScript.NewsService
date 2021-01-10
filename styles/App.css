@@ -4,6 +4,7 @@ body {
   padding: 0;
 }
 
+<<<<<<< HEAD
 .page-header {
   background-color: #cccccc;
 }
@@ -94,4 +95,36 @@ body {
 }
 .page-slider .glide__arrow--right {
   right: -5%;
+=======
+.nav-bar {
+  background-color: rgb(138, 138, 138);
+  overflow: hidden;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Style the links inside the navigation bar */
+.nav-bar a {
+  float: left;
+  color: #f2f2f2;
+  width: 16.666666666666666%;
+  min-width: 100px;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 14px 14px;
+  text-decoration: none;
+  font-size: 100%;
+}
+
+/* Change the color of links on hover */
+.nav-bar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.nav-bar a.active {
+  background-color: #4caf50;
+  color: red;
+>>>>>>> 918ac6a (working, responisve topbar ready, active subpage not distinguished)
 }
