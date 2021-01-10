@@ -1,3 +1,5 @@
+import Glide from "@glidejs/glide"
+
 const config = {
   type: "carousel",
   startAt: 0,
@@ -9,8 +11,6 @@ const config = {
   },
   focusAt: "center",
 }
-
-import Glide from "@glidejs/glide"
 
 export class CarouselComponent {
   constructor(selector) {
