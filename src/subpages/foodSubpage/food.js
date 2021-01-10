@@ -10,6 +10,11 @@ export default class FoodSubpage {
     imageDiv.className = "imageDiv"
     const img = document.createElement("img")
     img.src = imgUrl
+<<<<<<< HEAD
+=======
+    img.style.width = "100%"
+    img.style.maxHeight = "300px"
+>>>>>>> a275824 (Creating searching recipe function)
     imageDiv.appendChild(img)
     imageDiv.appendChild(this.addImageDescription(title))
     return imageDiv
