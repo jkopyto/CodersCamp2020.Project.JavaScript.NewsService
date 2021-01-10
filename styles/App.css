@@ -78,6 +78,20 @@ body {
 }
 
 .page-slider .glide__arrow {
-  color: red;
-  border: 2px solid red;
+  color: rgb(0, 0, 0);
+  border: 2px solid rgb(0, 0, 0);
+  background-color: rgb(0, 0, 0, 0.2);
+  font-size: normal;
+  transition: background-color 150ms, font-size 150ms;
+}
+.page-slider .glide__arrow:hover {
+  font-size: 1.2em;
+  border-color: white;
+  background-color: rgba(255, 255, 255);
+}
+.page-slider .glide__arrow--left {
+  left: -5%;
+}
+.page-slider .glide__arrow--right {
+  right: -5%;
 }
