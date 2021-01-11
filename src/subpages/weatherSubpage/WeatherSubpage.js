@@ -11,12 +11,19 @@ export default class WeatherSubpage {
     return `http://openweathermap.org/img/w/${iconCode}.png`
   }
 
-  async updatePage() {
-    const coords = await this._weatherApi.geoFindMe()
-    const weatherRes = await this._weatherApi.getCurrentWeather(
-      coords[0],
-      coords[1]
-    )
+  async updatePage(city) {
+    let weatherRes
+
+    if (!city) {
+      const coords = await this._weatherApi.geoFindMe()
+      weatherRes = await this._weatherApi.getCurrentWeatherByCoords(
+        coords[0],
+        coords[1]
+      )
+    } else {
+      weatherRes = await this._weatherApi.getCurrentWeatherByCity(city)
+    }
+
     const alert = await this._weatherApi.getAlert(
       weatherRes.coord.lat,
       weatherRes.coord.lon
@@ -56,16 +63,7 @@ export default class WeatherSubpage {
   }
 
   async render() {
-    const newStyle = document.createElement("link")
-
-    newStyle.rel = "stylesheet"
-
-    newStyle.href = "src/subpages/weatherSubpage/WeatherSubpage.css"
-
-    document.getElementsByTagName("head")[0].appendChild(newStyle)
-
     this.updatePage()
-
     const button = document.getElementById("submit-city")
     const inputCity = document.getElementById("cityName")
 
