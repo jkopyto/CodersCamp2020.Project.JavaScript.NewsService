@@ -1,5 +1,4 @@
 import ApiService from "../ApiService"
-import process from "process"
 
 export default class NewsApiService extends ApiService {
   constructor() {
