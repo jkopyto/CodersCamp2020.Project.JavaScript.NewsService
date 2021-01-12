@@ -10,8 +10,6 @@ export default class FoodSubpage {
     imageDiv.className = "imageDiv"
     const img = document.createElement("img")
     img.src = imgUrl
-    img.style.width = "100%"
-    img.style.maxHeight = "300px"
     imageDiv.appendChild(img)
     imageDiv.appendChild(this.addImageDescription(title))
     return imageDiv
