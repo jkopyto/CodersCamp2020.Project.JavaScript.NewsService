@@ -69,9 +69,9 @@ export default class FoodApiService extends ApiService {
     return res
   }
 
-  async findRecipeByQuery(query) {
+  async findRecipeByQuery(query, number) {
     const res = await this.get(
-      `${this.creds.API_BASE_LINK}/recipes/complexSearch?query=${query}&number=3&apiKey=${this.creds.API_KEY}`
+      `${this.creds.API_BASE_LINK}/recipes/complexSearch?query=${query}&number=${number}&apiKey=${this.creds.API_KEY}`
     ).then((res) => res.json())
 
     return res
