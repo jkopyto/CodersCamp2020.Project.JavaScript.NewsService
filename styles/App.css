@@ -4,23 +4,6 @@ body {
   padding: 0;
 }
 
-.page-header {
-  background-color: #cccccc;
-}
-
-.page-header nav {
-  display: flex;
-
-  justify-content: center;
-  padding: 15px 0;
-}
-
-.page-header nav a {
-  display: block;
-  padding: 10px 20px;
-  text-align: center;
-}
-
 .container {
   max-width: 80%;
   margin: 0 auto;
@@ -48,6 +31,7 @@ body {
   padding: 5%;
   height: auto;
   vertical-align: middle;
+  transition: 150ms;
 }
 .page-slider .glide__slide--active .slide-image {
   position: relative;
@@ -94,4 +78,35 @@ body {
 }
 .page-slider .glide__arrow--right {
   right: -5%;
+}
+
+/* Style the top bar */
+
+.nav-bar {
+  background-color: rgb(138, 138, 138);
+  overflow: hidden;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.nav-bar a {
+  float: left;
+  color: #f2f2f2;
+  width: 16.666666666666666%;
+  min-width: 100px;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 14px 14px;
+  text-decoration: none;
+  font-size: 100%;
+}
+
+.nav-bar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.nav-bar a.active {
+  background-color: #4caf50;
+  color: red;
 }
