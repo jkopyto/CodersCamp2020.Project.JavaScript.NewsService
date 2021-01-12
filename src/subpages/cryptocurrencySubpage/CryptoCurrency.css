@@ -1,0 +1,12 @@
+:root {
+    --primary-color: #323223;
+    --secondary-color: #6BC2E5;
+}
+.crypto-currency-wrapper{
+overflow: hidden;
+}
+
+.page-title{
+    padding: 15px 25px;
+    text-align: center;
+}
