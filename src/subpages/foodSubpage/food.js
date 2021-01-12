@@ -10,11 +10,6 @@ export default class FoodSubpage {
     imageDiv.className = "imageDiv"
     const img = document.createElement("img")
     img.src = imgUrl
-<<<<<<< HEAD
-=======
-    img.style.width = "100%"
-    img.style.maxHeight = "300px"
->>>>>>> a275824 (Creating searching recipe function)
     imageDiv.appendChild(img)
     imageDiv.appendChild(this.addImageDescription(title))
     return imageDiv
@@ -59,7 +54,6 @@ export default class FoodSubpage {
     if (wine.productMatches[0]) {
       const p = document.createElement("p")
       p.innerHTML = wine.pairingText
-      console.log(wine)
       wineDiv.appendChild(p)
       wineDiv.appendChild(
         this.createDivImage(
