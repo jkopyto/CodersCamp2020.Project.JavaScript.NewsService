@@ -1,14 +1,15 @@
 import provider from "../../services/Provider"
 import "./CryptoCurrency.css"
 
-
 export default class CryptoCurrencySubpage {
 
   _allCoins = []
   _coinsToRender = []
-  pageSize = 500
+  _actuallyDisplayedCoinsId = []
+  pageSize = 5
   coinsList = document.querySelector("#coins-list")
-
+  modalWindow = document.querySelector(".modal")
+  body = document.querySelector("body")
 
   constructor() {
     this._currencyAPI = provider.get("CurrencyAPI")
@@ -53,22 +54,49 @@ export default class CryptoCurrencySubpage {
 
   }
 
+
+  openModal = async () => {
+
+
+    await this._actuallyDisplayedCoinsId.forEach(coin => coin.addEventListener("click", (e) => {
+        e.stopPropagation()
+
+        const coinId = coin.getAttribute("data-coinId")
+
+        this._currencyAPI.getSingleCoin(coinId).then(r => console.log(r))
+
+        this.modalWindow.classList.add("modal--open")
+
+        this.body.addEventListener("click", () => {
+          this.modalWindow.classList.remove("modal--open")
+        })
+      })
+    )
+
+  }
+
   renderPage = () => {
     this.coinsList.innerHTML = null
     this._coinsToRender.forEach(
       coin => {
-        this.coinsList.innerHTML += `<p data-id="${coin.id}">
+        this.coinsList.innerHTML += `<p data-coinId="${coin.id}">
                                      ${coin.name}
                                 </p>`
       }
     )
+    this.updateActuallyCoinsId()
+  }
+
+  updateActuallyCoinsId = () => {
+    this._actuallyDisplayedCoinsId = [...document.querySelectorAll("[data-coinId]")]
+    this.openModal()
   }
 
 
   init = async () => {
     await this._currencyAPI.getAllCoins()
       .then(r => this._allCoins = [...r])
-      .then(r => this._coinsToRender = r.slice(0, 5))
+      .then(r => this._coinsToRender = r.slice(0, this.pageSize))
     await this.renderPage()
     await this.coinsToRender()
   }

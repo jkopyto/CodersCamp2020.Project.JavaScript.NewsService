@@ -2,11 +2,26 @@
     --primary-color: #323223;
     --secondary-color: #6BC2E5;
 }
-.crypto-currency-wrapper{
-overflow: hidden;
+
+.crypto-currency-wrapper {
+    overflow: hidden;
+    position: relative;
 }
 
-.page-title{
+.page-title {
     padding: 15px 25px;
     text-align: center;
+}
+
+
+.modal {
+    position: sticky;
+    top: 200px;
+    left: 0;
+    transition: all 0.3s ease;
+    transform: translateX(-100%);
+}
+
+.modal--open {
+    transform: translateX(200%);
 }
