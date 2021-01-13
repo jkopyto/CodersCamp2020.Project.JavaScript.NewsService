@@ -11,7 +11,37 @@ export default class WeatherSubpage {
     return `http://openweathermap.org/img/w/${iconCode}.png`
   }
 
+  getDateAndDayOfWeek(numberOfDaysToAdd = 0) {
+    let date = new Date()
+    date.setDate(date.getDate() + numberOfDaysToAdd)
+    const dd = String(date.getDate()).padStart(2, "0")
+    const mm = String(date.getMonth() + 1).padStart(2, "0")
+    const weekday = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ]
+    const dayOfWeek = weekday[date.getDay()]
+    const yyyy = date.getFullYear()
+    date = mm + "/" + dd + "/" + yyyy
+
+    return [date, dayOfWeek]
+  }
+
   async updatePage(city) {
+    const [dateDay0, dayOfWeekDay0] = this.getDateAndDayOfWeek()
+    const [dateDay1, dayOfWeekDay1] = this.getDateAndDayOfWeek(1)
+    const [dateDay2, dayOfWeekDay2] = this.getDateAndDayOfWeek(2)
+    const [dateDay3, dayOfWeekDay3] = this.getDateAndDayOfWeek(3)
+    const [dateDay4, dayOfWeekDay4] = this.getDateAndDayOfWeek(4)
+    const [dateDay5, dayOfWeekDay5] = this.getDateAndDayOfWeek(5)
+    const [dateDay6, dayOfWeekDay6] = this.getDateAndDayOfWeek(6)
+    const [dateDay7, dayOfWeekDay7] = this.getDateAndDayOfWeek(7)
+    const [dateDay8, dayOfWeekDay8] = this.getDateAndDayOfWeek(8)
     let weatherRes
     let coords
 
@@ -58,6 +88,7 @@ export default class WeatherSubpage {
 
     this._weatherContentDiv.innerHTML = `
       <div class="weather-now-container">
+      <div class="current-date">${dayOfWeekDay0}, ${dateDay0}</div>
       <div class="city">${weatherRes.name}, ${weatherRes.sys.country}</div>
         <div class="main-weather-info">
           <img src="${iconUrlCurrent}" alt="Weather icon"> <div>${
@@ -81,11 +112,13 @@ export default class WeatherSubpage {
           <div class="title">8-day forecast</div>
           <div>
             <div class="forecast-day">
+              <div class="forecast-day-date">
+                ${dayOfWeekDay1}, ${dateDay1}
+              </div>
               <div>
                 <img src="${iconUrlForecastDay0}" alt="Weather icon">
-                ${forecastWeatherRes.daily[0].temp.max} / ${
-      forecastWeatherRes.daily[0].temp.min
-    }&#176C
+                ${forecastWeatherRes.daily[0].temp.max} / 
+                ${forecastWeatherRes.daily[0].temp.min}&#176C
               </div>
               <div>
                 ${forecastWeatherRes.daily[0].weather[0].description}  
@@ -93,77 +126,97 @@ export default class WeatherSubpage {
             </div>
             
             <div class="forecast-day">
+              <div class="forecast-day-date">
+                ${dayOfWeekDay2}, ${dateDay2}
+              </div>
               <div>
                 <img src="${iconUrlForecastDay1}" alt="Weather icon">
-                ${forecastWeatherRes.daily[1].temp.max} / ${
-      forecastWeatherRes.daily[1].temp.min
-    }&#176C
+                ${forecastWeatherRes.daily[1].temp.max} / 
+                ${forecastWeatherRes.daily[1].temp.min}&#176C
               </div>
               <div>
                 ${forecastWeatherRes.daily[1].weather[0].description}
               </div>
             </div>
+            
             <div class="forecast-day">
+              <div class="forecast-day-date">
+                ${dayOfWeekDay3}, ${dateDay3}
+              </div>
               <div>
                 <img src="${iconUrlForecastDay2}" alt="Weather icon">
-                ${forecastWeatherRes.daily[2].temp.max} / ${
-      forecastWeatherRes.daily[2].temp.min
-    }&#176C
+                ${forecastWeatherRes.daily[2].temp.max} / 
+                ${forecastWeatherRes.daily[2].temp.min}&#176C
               </div>
               <div>
                 ${forecastWeatherRes.daily[2].weather[0].description}
               </div>
             </div>
+            
             <div class="forecast-day">
+              <div class="forecast-day-date">
+                ${dayOfWeekDay4}, ${dateDay4}
+              </div>
               <div>
                 <img src="${iconUrlForecastDay3}" alt="Weather icon">
-                ${forecastWeatherRes.daily[3].temp.max} / ${
-      forecastWeatherRes.daily[3].temp.min
-    }&#176C
+                ${forecastWeatherRes.daily[3].temp.max} / 
+                ${forecastWeatherRes.daily[3].temp.min}&#176C
               </div>
               <div>
                 ${forecastWeatherRes.daily[3].weather[0].description}
               </div>
             </div>
+            
             <div class="forecast-day">
+              <div class="forecast-day-date">
+                ${dayOfWeekDay5}, ${dateDay5}
+              </div>
               <div>
                  <img src="${iconUrlForecastDay4}" alt="Weather icon">
-                  ${forecastWeatherRes.daily[4].temp.max} / ${
-      forecastWeatherRes.daily[4].temp.min
-    }&#176C
+                  ${forecastWeatherRes.daily[4].temp.max} / 
+                  ${forecastWeatherRes.daily[4].temp.min}&#176C
               </div>
               <div>
                 ${forecastWeatherRes.daily[4].weather[0].description}
               </div>
             </div>
+            
             <div class="forecast-day">
+              <div class="forecast-day-date">
+                ${dayOfWeekDay6}, ${dateDay6}
+              </div>
               <div>
                 <img src="${iconUrlForecastDay5}" alt="Weather icon">
-                ${forecastWeatherRes.daily[5].temp.max} / ${
-      forecastWeatherRes.daily[5].temp.min
-    }&#176C
+                ${forecastWeatherRes.daily[5].temp.max} / 
+                ${forecastWeatherRes.daily[5].temp.min}&#176C
               </div>
               <div>
                 ${forecastWeatherRes.daily[5].weather[0].description}
               </div>
             </div>
+            
             <div class="forecast-day">
+              <div class="forecast-day-date">
+                ${dayOfWeekDay7}, ${dateDay7}
+              </div>
               <div>
                 <img src="${iconUrlForecastDay6}" alt="Weather icon">
-                ${forecastWeatherRes.daily[6].temp.max} / ${
-      forecastWeatherRes.daily[6].temp.min
-    }&#176C
+                ${forecastWeatherRes.daily[6].temp.max} / 
+                ${forecastWeatherRes.daily[6].temp.min}&#176C
               </div>
               <div>
                 ${forecastWeatherRes.daily[6].weather[0].description}
               </div>
             </div>
+            
             <div class="forecast-day">
+              <div class="forecast-day-date">
+                ${dayOfWeekDay8}, ${dateDay8}
+              </div>
               <div>
                 <img src="${iconUrlForecastDay7}" alt="Weather icon">
-                ${forecastWeatherRes.daily[7].temp.max} / ${
-      forecastWeatherRes.daily[7].temp.min
-    }&#176C
+                ${forecastWeatherRes.daily[7].temp.max} / 
+                ${forecastWeatherRes.daily[7].temp.min}&#176C
               </div>
               <div>
                   ${forecastWeatherRes.daily[7].weather[0].description}

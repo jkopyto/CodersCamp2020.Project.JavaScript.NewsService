@@ -18,6 +18,9 @@ form button {
   flex-direction: column;
   margin: 20px;
 }
+.current-date {
+  color: orange;
+}
 .weather-now-container img {
   height: 70px;
   width: 70px;
@@ -56,6 +59,9 @@ form button {
   font-weight: bold;
   font-size: 1.2rem;
 }
+.forecast-day div:nth-of-type(2) {
+  text-align: center;
+}
 .weather-forecast img {
   height: 40px;
   width: 40px;
@@ -68,7 +74,13 @@ form button {
   display: flex;
   align-items: center;
 }
+
+.forecast-day .forecast-day-date {
+  width: 40%;
+}
+
 .forecast-day div:last-child {
-  /*color: var(--grey);*/
   font-weight: lighter;
+  width: 25%;
+  justify-content: flex-end;
 }
