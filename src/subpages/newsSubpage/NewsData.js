@@ -1,8 +1,11 @@
 import provider from "../../services/Provider"
+import Subpage from "../Subpage"
+import css from "./NewsSubpage.css"
 import "./NewsSubpage.css"
 
-export default class NewsSubpage {
+export default class NewsSubpage extends Subpage {
   constructor() {
+    super(css)
     this._newsApi = provider.get("NewsApiService")
   }
 

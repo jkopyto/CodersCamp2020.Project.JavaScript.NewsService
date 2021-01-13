@@ -9,6 +9,8 @@ import { Homepage } from "../subpages/homepage/Homepage"
 import homepage from "../subpages/homepage/homepage.html"
 
 export class Router {
+  SubpageClass = null
+
   constructor() {
     window.addEventListener("hashchange", (event) => this.onRouteChange(event))
     this.slot = document.querySelector("#slot")
@@ -19,9 +21,9 @@ export class Router {
     this.loadContent(hashLocation)
   }
 
-  async loadContent(uri) {
+  loadContent = async (uri) => {
     let content
-    let script
+    this.SubpageClass && this.SubpageClass.removeStylesheet()
 
     switch (uri) {
       case "sport":
@@ -32,26 +34,34 @@ export class Router {
         break
       case "weather":
         content = weatherSubpage
-        script = () => new WeatherSubpage().render()
+        this.SubpageClass = new WeatherSubpage()
         break
       case "news":
         content = newsSubpage
-        script = () => new NewsSubpage().render()
+        this.SubpageClass = new NewsSubpage()
         break
       case "cryptocurrency":
+        this.SubpageClass = null
         content = cryptocurrencySubpage
         break
       default:
         content = homepage
-        script = () => new Homepage().init()
+        this.SubpageClass = new Homepage()
         break
     }
-    this.updateSlot(content, script)
+    this.updateSlot(content)
   }
 
-  updateSlot(content, script) {
+  initScript = () => {
+    if (this.SubpageClass) {
+      this.SubpageClass.initStylesheet()
+    }
+  }
+
+  updateSlot = (content) => {
+    this.SubpageClass && this.SubpageClass.initStylesheet()
     this.slot.innerHTML = content
-    script && script()
+    this.SubpageClass && this.SubpageClass.render()
   }
 }
 
