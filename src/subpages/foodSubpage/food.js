@@ -1,7 +1,10 @@
 import FoodApiService from "../../services/FoodApiService/FoodApiService"
+import Subpage from "../Subpage"
+import css from "./food.css"
 
-export default class FoodSubpage {
+export default class FoodSubpage extends Subpage {
   constructor() {
+    super(css)
     this.foodService = new FoodApiService()
   }
 
@@ -94,7 +97,7 @@ export default class FoodSubpage {
     }
   }
 
-  async getRecipes() {
+  async render() {
     this.createHeaderImages()
     const button = document.querySelector(".search")
     const recipesValue = document.querySelector("#slider")

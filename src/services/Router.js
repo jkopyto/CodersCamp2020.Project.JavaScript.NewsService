@@ -8,6 +8,8 @@ import WeatherSubpage from "../subpages/weatherSubpage/WeatherSubpage"
 import Homepage from "../subpages/homepage/Homepage"
 import homepage from "../subpages/homepage/homepage.html"
 import FoodSubpage from "../subpages/foodSubpage/food"
+import { Homepage } from "../subpages/homepage/Homepage"
+import homepage from "../subpages/homepage/homepage.html"
 
 export class Router {
   SubpageClass = null
@@ -22,7 +24,11 @@ export class Router {
     this.loadContent(hashLocation)
   }
 
+<<<<<<< HEAD
   loadContent = (uri) => {
+=======
+  loadContent = async (uri) => {
+>>>>>>> bb76e1d (Css isue)
     let content
     this.SubpageClass && this.SubpageClass.removeStylesheet()
 
@@ -57,7 +63,11 @@ export class Router {
   }
 
   initScript = () => {
+<<<<<<< HEAD
     if (this.SubpageClass) {
+=======
+    if(this.SubpageClass) {
+>>>>>>> bb76e1d (Css isue)
       this.SubpageClass.initStylesheet()
     }
   }
@@ -65,7 +75,11 @@ export class Router {
   updateSlot = (content) => {
     this.SubpageClass && this.SubpageClass.initStylesheet()
     this.slot.innerHTML = content
+<<<<<<< HEAD
     this.SubpageClass && this.SubpageClass.render()
+=======
+    this.SubpageClass.render()
+>>>>>>> bb76e1d (Css isue)
   }
 }
 

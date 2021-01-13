@@ -5,12 +5,13 @@
 }
 
 .container {
-  margin: 0%;
-  width: 100vw;
+  margin: 0 auto;
   background-color: white;
 }
 
 .title {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
   width: 100%;
   text-align: center;
 }
@@ -67,4 +68,8 @@
 
 .wineDiv p {
   width: 40%;
+}
+
+div.wineDiv img {
+  height: 500px;
 }
