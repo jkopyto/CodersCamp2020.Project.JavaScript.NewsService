@@ -16,6 +16,13 @@
     "prettify": "prettier --loglevel warn --write \"src/**/*\"",
     "format-check": "prettier --check \"src/**/*\""
   },
+  "parcel-plugin-css-to-string": {
+    "assetType": [
+      "css"
+    ],
+    "minify": true,
+    "enableCSS": true
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jkopyto/CodersCamp2020.Project.JavaScript.NewsService.git"
@@ -54,6 +61,8 @@
     "jest-fetch-mock": "^3.0.3",
     "lint-staged": "^10.5.2",
     "msw": "^0.21.3",
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-css-to-string": "^2.5.2",
     "parcel-plugin-static-files-copy": "^2.5.0",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2"
