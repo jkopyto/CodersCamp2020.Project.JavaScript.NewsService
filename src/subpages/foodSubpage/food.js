@@ -1,9 +1,7 @@
-ge from "../Subpage"
-import css from "./food.css"
+import FoodApiService from "../../services/FoodApiService/FoodApiService"
 
-export default class FoodSubpage extends Subpage {
+export default class FoodSubpage {
   constructor() {
-    super(css)
     this.foodService = new FoodApiService()
   }
 
