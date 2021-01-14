@@ -6,10 +6,11 @@ export default class CryptoCurrencySubpage {
   _allCoins = []
   _coinsToRender = []
   _actuallyDisplayedCoinsId = []
-  pageSize = 5
+  pageSize = 50
   coinsList = document.querySelector("#coins-list")
   modalWindow = document.querySelector(".modal")
   body = document.querySelector("body")
+  modalForm = document.querySelector("form.modal__form")
 
   constructor() {
     this._currencyAPI = provider.get("CurrencyAPI")
@@ -21,7 +22,7 @@ export default class CryptoCurrencySubpage {
     const prevPageBtn = document.querySelector("#prev-page")
     const inputSearch = document.querySelector("#search-coin")
 
-    let actualPage = 1
+    let actualPage = 0
 
     nextPageBtn.addEventListener("click", () => {
       actualPage++
@@ -43,7 +44,7 @@ export default class CryptoCurrencySubpage {
     inputSearch.addEventListener("keyup", (e) => {
       if (e.target.value.length === 0) {
         this._coinsToRender = this._allCoins.slice(0, this.pageSize)
-        actualPage = 1
+        actualPage = 0
         this.renderPage()
       } else {
         this._coinsToRender = this._allCoins.filter(coin => coin.name.toLowerCase().includes(e.target.value.toLowerCase())
@@ -57,22 +58,16 @@ export default class CryptoCurrencySubpage {
 
   openModal = async () => {
 
-
     await this._actuallyDisplayedCoinsId.forEach(coin => coin.addEventListener("click", (e) => {
         e.stopPropagation()
 
         const coinId = coin.getAttribute("data-coinId")
 
-        this._currencyAPI.getSingleCoin(coinId).then(r => console.log(r))
-
+        this._currencyAPI.getSingleCoin(coinId).then(r => this.renderModal(r))
         this.modalWindow.classList.add("modal--open")
 
-        this.body.addEventListener("click", () => {
-          this.modalWindow.classList.remove("modal--open")
-        })
       })
     )
-
   }
 
   renderPage = () => {
@@ -85,6 +80,16 @@ export default class CryptoCurrencySubpage {
       }
     )
     this.updateActuallyCoinsId()
+  }
+
+  renderModal = (clickedCoin) => {
+    const coinTitle = document.querySelector("h3.modal__title")
+    const coinSymbol = document.querySelector("span.modal__symbol")
+    const coinDescription = document.querySelector("p.modal__description")
+
+    coinTitle.textContent = clickedCoin.name
+    coinSymbol.textContent = clickedCoin.symbol
+    coinDescription.textContent = clickedCoin.description
   }
 
   updateActuallyCoinsId = () => {
