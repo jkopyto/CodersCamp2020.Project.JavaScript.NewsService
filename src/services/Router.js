@@ -27,9 +27,11 @@ export class Router {
 
     switch (uri) {
       case "sport":
+        this.SubpageClass = null
         content = sportSubpage
         break
       case "food":
+        this.SubpageClass = null
         content = foodSubpage
         break
       case "weather":

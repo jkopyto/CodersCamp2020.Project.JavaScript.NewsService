@@ -16,7 +16,7 @@ export default class NewsSubpage extends Subpage {
   generateMessage(title, author, content) {
     return `
       <div>
-       <h5>${title}</h5>
+        <h5>${title}</h5>
         <h6>${author}</h6>
         <p>${content}</p>
       </div>
@@ -39,10 +39,6 @@ export default class NewsSubpage extends Subpage {
   }
 
   async render() {
-    const newStyle = document.createElement("link")
-    newStyle.rel = "stylesheet"
-    newStyle.href = "src/subpages/newsSubpage/NewsSubpage.css"
-    document.getElementsByTagName("head")[0].appendChild(newStyle)
     this.updatePage()
   }
 }
