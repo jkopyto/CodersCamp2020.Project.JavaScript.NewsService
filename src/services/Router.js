@@ -12,6 +12,8 @@ import { Homepage } from "../subpages/homepage/Homepage"
 import homepage from "../subpages/homepage/homepage.html"
 
 export class Router {
+  SubpageClass = null
+
   constructor() {
     window.addEventListener("hashchange", (event) => this.onRouteChange(event))
     this.slot = document.querySelector("#slot")
@@ -22,17 +24,9 @@ export class Router {
     this.loadContent(hashLocation)
   }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   loadContent = (uri) => {
-=======
-  loadContent = async (uri) => {
->>>>>>> bb76e1d (Css isue)
-=======
-  async loadContent(uri) {
->>>>>>> 7575745 (Js changes)
     let content
-    let script
+    this.SubpageClass && this.SubpageClass.removeStylesheet()
 
     switch (uri) {
       case "sport":
@@ -42,11 +36,11 @@ export class Router {
       case "food":
         this.SubpageClass = null
         content = foodSubpage
-        script = () => new FoodSubpage().render()
+        this.SubpageClass = new FoodSubpage()
         break
       case "weather":
         content = weatherSubpage
-        script = () => new WeatherSubpage().render()
+        this.SubpageClass = new WeatherSubpage()
         break
       case "news":
         content = newsSubpage
@@ -58,37 +52,22 @@ export class Router {
         break
       default:
         content = homepage
-        script = () => new Homepage().init()
+        this.SubpageClass = new Homepage()
         break
     }
-<<<<<<< HEAD
     this.updateSlot(content)
   }
 
   initScript = () => {
-<<<<<<< HEAD
     if (this.SubpageClass) {
-=======
-    if(this.SubpageClass) {
->>>>>>> bb76e1d (Css isue)
       this.SubpageClass.initStylesheet()
     }
-=======
-    this.updateSlot(content, script)
->>>>>>> 7575745 (Js changes)
   }
 
-  updateSlot(content, script) {
+  updateSlot = (content) => {
+    this.SubpageClass && this.SubpageClass.initStylesheet()
     this.slot.innerHTML = content
-<<<<<<< HEAD
-<<<<<<< HEAD
     this.SubpageClass && this.SubpageClass.render()
-=======
-    this.SubpageClass.render()
->>>>>>> bb76e1d (Css isue)
-=======
-    script && script()
->>>>>>> 7575745 (Js changes)
   }
 }
 

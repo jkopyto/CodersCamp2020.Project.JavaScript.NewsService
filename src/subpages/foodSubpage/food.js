@@ -1,8 +1,11 @@
-import FoodApiService from "../../services/FoodApiService/FoodApiService"
+import css from "./food.css"
+import Subpage from "../Subpage"
+import provider from "../../services/Provider"
 
-export default class FoodSubpage {
+export default class FoodSubpage extends Subpage {
   constructor() {
-    this.foodService = new FoodApiService()
+    super(css)
+    this.foodService = provider.get("FoodApi")
   }
 
   createDivImage(imgUrl, title) {
