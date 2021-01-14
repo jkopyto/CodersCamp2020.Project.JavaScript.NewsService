@@ -21,7 +21,11 @@ export default class WeatherSubpage {
         coords[1]
       )
     } else {
-      weatherRes = await this._weatherApi.getCurrentWeatherByCity(city)
+      try {
+        weatherRes = await this._weatherApi.getCurrentWeatherByCity(city)
+      } catch {
+        window.alert("Something went wrong, please try again")
+      }
     }
 
     const alert = await this._weatherApi.getAlert(
