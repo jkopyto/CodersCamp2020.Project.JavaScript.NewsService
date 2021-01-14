@@ -1,4 +1,6 @@
 import provider from "../../services/Provider"
+import Subpage from "../Subpage"
+import css from "./WeatherSubpage.css"
 import css from "./WeatherSubpage.css"
 import Subpage from "../Subpage"
 
@@ -6,7 +8,10 @@ export default class WeatherSubpage extends Subpage {
   constructor() {
     super(css)
     this._weatherApi = provider.get("weatherApiService")
-    this._weatherContentDiv = document.querySelector("#weather-content")
+  }
+
+  getWeatherContentDiv() {
+    return document.querySelector("#weather-content")
   }
 
   getIconUrl(iconCode) {
@@ -45,6 +50,7 @@ export default class WeatherSubpage extends Subpage {
     const [dateDay7, dayOfWeekDay7] = this.getDateAndDayOfWeek(7)
     const [dateDay8, dayOfWeekDay8] = this.getDateAndDayOfWeek(8)
     let weatherRes
+    this.getWeatherContentDiv()
     let coords
 
     if (!city) {
@@ -54,6 +60,11 @@ export default class WeatherSubpage extends Subpage {
         coords[1]
       )
     } else {
+      try {
+        weatherRes = await this._weatherApi.getCurrentWeatherByCity(city)
+      } catch {
+        window.alert("Something went wrong, please try again")
+      }
       weatherRes = await this._weatherApi.getCurrentWeatherByCity(city)
       coords = [weatherRes.coord.lon, weatherRes.coors.lat]
     }
@@ -88,7 +99,7 @@ export default class WeatherSubpage extends Subpage {
     const iconUrlForecastDay6 = this.getIconUrl(iconCodeForecastDay6)
     const iconUrlForecastDay7 = this.getIconUrl(iconCodeForecastDay7)
 
-    this._weatherContentDiv.innerHTML = `
+    this.getWeatherContentDiv().innerHTML = `
       <div class="weather-now-container">
       <div class="current-date">${dayOfWeekDay0}, ${dateDay0}</div>
       <div class="city">${weatherRes.name}, ${weatherRes.sys.country}</div>
