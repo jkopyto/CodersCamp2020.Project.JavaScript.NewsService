@@ -1,7 +1,7 @@
 import provider from "../../services/Provider"
 import css from "./WeatherSubpage.css"
 import Subpage from "../Subpage"
-import WeatherData from "./weatherData"
+import WeatherData from "./WeatherData"
 
 export default class WeatherSubpage extends Subpage {
   constructor() {
