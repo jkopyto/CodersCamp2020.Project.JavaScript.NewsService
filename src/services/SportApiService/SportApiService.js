@@ -1,7 +1,10 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /* eslint-disable no-undef */
 >>>>>>> d739a83 (Initial commit)
+=======
+>>>>>>> ff3f2c0 (Styles + variable fix)
 import ApiService from "../ApiService"
 
 export default class SportApiService extends ApiService {
@@ -24,6 +27,7 @@ export default class SportApiService extends ApiService {
   async getAllTeams(event) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     let res = await this.get(
       `${this.creds.API_BASE_LINK}${event}${this.creds.API_KEY}&season_id=619`
     )
@@ -32,6 +36,9 @@ export default class SportApiService extends ApiService {
 >>>>>>> d739a83 (Initial commit)
 =======
     const res = await this.get(
+=======
+    let res = await this.get(
+>>>>>>> ff3f2c0 (Styles + variable fix)
       `${this.creds.API_BASE_LINK}${event}${this.creds.API_KEY}&season_id=619`
     )
 >>>>>>> 2bb4310 (Sport Data subpage with styles)
@@ -41,6 +48,7 @@ export default class SportApiService extends ApiService {
 
   async getTeamByName(teamName) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     let res = await this.get(`${this.creds.API_LINK}/teams?name=${teamName}`)
     let data = await res.json()
     return data
@@ -48,6 +56,9 @@ export default class SportApiService extends ApiService {
 }
 =======
     const res = await this.get(`${this.creds.API_LINK}/teams?name=${teamName}`)
+=======
+    let res = await this.get(`${this.creds.API_LINK}/teams?name=${teamName}`)
+>>>>>>> ff3f2c0 (Styles + variable fix)
     let data = await res.json()
     return data
   }
