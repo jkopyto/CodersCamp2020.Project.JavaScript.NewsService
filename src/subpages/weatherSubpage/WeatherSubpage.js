@@ -10,7 +10,7 @@ export default class WeatherSubpage extends Subpage {
   }
 
   getWeatherContentDiv() {
-    this._weatherContentDiv = document.querySelector("#weather-content")
+    return document.querySelector("#weather-content")
   }
 
   getIconUrl(iconCode) {
