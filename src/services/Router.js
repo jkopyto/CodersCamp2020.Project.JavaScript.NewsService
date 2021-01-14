@@ -5,7 +5,7 @@ import newsSubpage from "../subpages/newsSubpage/news.html"
 import NewsSubpage from "../subpages/newsSubpage/NewsData"
 import cryptocurrencySubpage from "../subpages/cryptocurrencySubpage/cryptocurrency.html"
 import WeatherSubpage from "../subpages/weatherSubpage/WeatherSubpage"
-import { Homepage } from "../subpages/homepage/Homepage"
+import Homepage from "../subpages/homepage/Homepage"
 import homepage from "../subpages/homepage/homepage.html"
 
 export class Router {
@@ -27,9 +27,11 @@ export class Router {
 
     switch (uri) {
       case "sport":
+        this.SubpageClass = null
         content = sportSubpage
         break
       case "food":
+        this.SubpageClass = null
         content = foodSubpage
         break
       case "weather":

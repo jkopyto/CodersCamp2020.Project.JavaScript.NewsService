@@ -11,7 +11,9 @@ class Subpage {
   }
 
   removeStylesheet = () => {
-    this.stylesheet && this.stylesheet.remove()
+    if (this.stylesheet && typeof this.stylesheet.remove === "function") {
+      this.stylesheet.remove()
+    }
   }
 }
 

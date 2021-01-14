@@ -1,10 +1,12 @@
 import { CarouselComponent } from "../../app/components/Carousel"
+import Subpage from "../Subpage"
 
-export class Homepage {
+export default class Homepage extends Subpage {
   constructor() {
+    super("")
     this.carouselComponent = new CarouselComponent(".glide")
   }
-  init() {
+  render() {
     this.carouselComponent.init()
     const images = [...document.querySelectorAll(".slide-image")]
     images.forEach((image) => {
