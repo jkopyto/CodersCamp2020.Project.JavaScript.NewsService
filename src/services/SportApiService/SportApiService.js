@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import ApiService from "../ApiService"
 
 export default class SportApiService extends ApiService {
@@ -11,7 +10,7 @@ export default class SportApiService extends ApiService {
   }
 
   async getAllTeams(event) {
-    const res = await this.get(
+    let res = await this.get(
       `${this.creds.API_BASE_LINK}${event}${this.creds.API_KEY}&season_id=619`
     )
     let data = await res.json()
@@ -19,7 +18,7 @@ export default class SportApiService extends ApiService {
   }
 
   async getTeamByName(teamName) {
-    const res = await this.get(`${this.creds.API_LINK}/teams?name=${teamName}`)
+    let res = await this.get(`${this.creds.API_LINK}/teams?name=${teamName}`)
     let data = await res.json()
     return data
   }

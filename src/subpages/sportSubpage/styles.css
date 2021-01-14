@@ -129,8 +129,6 @@ body {
 
 .header {
   background: var(--yellow);
-  /* background: radial-gradient(circle, #141834 0%, #13162f 100%); */
-  /* box-shadow: 0 16px 12px #0e0e23; */
   width: calc(100% + 25px);
   padding: 0 30px;
   -webkit-animation: top 1s both;
@@ -177,7 +175,6 @@ body {
 
 .header-link.active,
 .header-link:hover {
-  /* background: #11132c; */
   border-bottom: 3px solid var(--navy-blue);
   opacity: 1;
 }
@@ -216,7 +213,6 @@ body {
   display: flex;
   align-items: center;
   color: #9b9ca7;
-  /* background: #1a1b3c; */
   border: none;
   padding: 2px 12px;
   border-radius: 4px;
@@ -327,7 +323,6 @@ body {
 
 .card {
   background: #ffffff;
-  /* background: radial-gradient(circle, #1a2049 0%, #13162f 100%); */
   padding: 40px 30px;
   border-radius: 12px;
   display: flex;
@@ -413,7 +408,6 @@ body {
 }
 .destination-card {
   background: var(--yellow);
-  /* background: linear-gradient(45deg, #1a1d3a 0%, #212752 100%); */
   padding: 20px;
   width: 100%;
   border-radius: 12px;
@@ -421,7 +415,6 @@ body {
 .destination-card + .destination-card {
   margin-left: 20px;
   background: var(--yellow);
-  /* background: linear-gradient(325deg, #1a1d3a 0%, #212752 100%); */
 }
 .destination-profile {
   display: flex;
@@ -1079,10 +1072,6 @@ body {
 }
 
 @media screen and (max-width: 1500px) {
-  /* .wrapper {
-    max-width: 1200px;
-  } */
-
   .activity {
     width: 49%;
     max-width: none;
@@ -1183,11 +1172,6 @@ body {
 
   .left-side {
     display: none;
-  }
-
-  .main-container {
-    /* overflow: hidden; */
-    /* padding-left: 25px; */
   }
 
   .activity-links,
