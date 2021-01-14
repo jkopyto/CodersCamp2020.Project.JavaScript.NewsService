@@ -1,10 +1,11 @@
 import provider from "../../services/Provider"
-import "./WeatherSubpage.css"
+import css from "./WeatherSubpage.css"
+import Subpage from "../Subpage"
 
-export default class WeatherSubpage {
+export default class WeatherSubpage extends Subpage {
   constructor() {
+    super(css)
     this._weatherApi = provider.get("weatherApiService")
-    this._weatherContentDiv = document.querySelector("#weather-content")
   }
 
   getIconUrl(iconCode) {
@@ -12,6 +13,7 @@ export default class WeatherSubpage {
   }
 
   async updatePage(city) {
+    const weatherContentDiv = document.querySelector("#weather-content")
     let weatherRes
 
     if (!city) {
@@ -33,7 +35,7 @@ export default class WeatherSubpage {
     const iconCode = weatherRes.weather[0].icon
     const iconUrl = this.getIconUrl(iconCode)
 
-    this._weatherContentDiv.innerHTML = `
+    weatherContentDiv.innerHTML = `
       <div class="weather-now-container">
       <div class="city">${weatherRes.name}, ${weatherRes.sys.country}</div>
         <div class="main-weather-info">
