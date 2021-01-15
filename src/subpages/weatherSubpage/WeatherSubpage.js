@@ -46,7 +46,6 @@ export default class WeatherSubpage extends Subpage {
       weatherRes.coord.lat,
       weatherRes.coord.lon
     )
-
     const alertDescription =
       typeof alert.alerts === "undefined" ? 0 : alert.alerts[0].description
     const iconUrlCurrent = weatherData.getIconUrl(weatherRes.weather[0].icon)
@@ -59,6 +58,9 @@ export default class WeatherSubpage extends Subpage {
       iconUrlCurrent,
       forecastedDaysData
     )
+
+    new WeatherData().renderChart(forecastWeatherRes)
+
     const weatherAlertP = document.getElementsByClassName("weather-alert")[0]
     alertDescription
       ? (weatherAlertP.style.display = "block")

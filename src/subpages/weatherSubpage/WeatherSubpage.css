@@ -18,9 +18,25 @@ form button {
   flex-direction: column;
   margin: 20px;
 }
+
+.current-weather-and-maps {
+  display: flex;
+  flex-direction: row;
+}
+
+.current-weather-description {
+  width: 30%;
+}
+.weather-maps {
+  width: 70%;
+  background-color: #0074d9;
+  height: 20px;
+}
+
 .current-date {
   color: orange;
 }
+
 .weather-now-container img {
   height: 70px;
   width: 70px;
