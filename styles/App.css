@@ -112,3 +112,25 @@ body {
   background-color: rgb(196, 196, 196);
   color: rgb(0, 0, 0);
 }
+
+/*Style the footer*/
+
+.page-footer {
+  background-color: rgb(138, 138, 138);
+  overflow: hidden;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.page-footer p {
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 14px;
+  text-decoration: none;
+  font-size: 100%;
+  transition: 200ms;
+}
+
+.page-footer p:hover {
+  color: black
+}
