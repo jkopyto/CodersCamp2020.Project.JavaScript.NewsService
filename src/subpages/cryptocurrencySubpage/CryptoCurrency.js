@@ -1,7 +1,8 @@
 import provider from "../../services/Provider"
-import "./CryptoCurrency.css"
+import css from "./CryptoCurrency.css"
+import Subpage from "../Subpage"
 
-export default class CryptoCurrencySubpage {
+export default class CryptoCurrencySubpage extends Subpage{
 
   _allCoins = []
   _coinsToRender = []
@@ -13,6 +14,7 @@ export default class CryptoCurrencySubpage {
   modalForm = document.querySelector("form.modal__form").addEventListener("submit", (e) => this.exchangeCoins(e))
 
   constructor() {
+    super(css)
     this._currencyAPI = provider.get("CurrencyAPI")
     this.init()
   }
