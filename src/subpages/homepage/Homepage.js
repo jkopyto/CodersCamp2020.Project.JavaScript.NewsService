@@ -19,4 +19,6 @@ export default class Homepage extends Subpage {
     })
     renderCalendarWidget(undefined, undefined, "#calendar")
   }
+  
 }
+
