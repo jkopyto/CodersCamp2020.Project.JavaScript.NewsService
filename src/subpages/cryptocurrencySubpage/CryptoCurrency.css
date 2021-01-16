@@ -18,6 +18,7 @@
     position: fixed;
     top: 200px;
     left: 0;
+    max-width: 80%;
     transition: all 0.3s ease;
     transform: translateX(-100%);
 }

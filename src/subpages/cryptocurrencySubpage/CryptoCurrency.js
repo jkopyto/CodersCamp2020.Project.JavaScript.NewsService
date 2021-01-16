@@ -6,11 +6,11 @@ export default class CryptoCurrencySubpage {
   _allCoins = []
   _coinsToRender = []
   _actuallyDisplayedCoinsId = []
+  _coinId
   pageSize = 50
   coinsList = document.querySelector("#coins-list")
   modalWindow = document.querySelector(".modal")
-  body = document.querySelector("body")
-  modalForm = document.querySelector("form.modal__form")
+  modalForm = document.querySelector("form.modal__form").addEventListener("submit", (e) => this.exchangeCoins(e))
 
   constructor() {
     this._currencyAPI = provider.get("CurrencyAPI")
@@ -52,22 +52,32 @@ export default class CryptoCurrencySubpage {
       }
       this.renderPage()
     })
-
   }
 
 
   openModal = async () => {
+    const closeModal = document.querySelector(".modal__close")
 
-    await this._actuallyDisplayedCoinsId.forEach(coin => coin.addEventListener("click", (e) => {
-        e.stopPropagation()
-
-        const coinId = coin.getAttribute("data-coinId")
-
-        this._currencyAPI.getSingleCoin(coinId).then(r => this.renderModal(r))
+    await this._actuallyDisplayedCoinsId.forEach(coin => coin.addEventListener("click", () => {
+        this._coinId = coin.getAttribute("data-coinId")
+        this._currencyAPI.getSingleCoin(this._coinId).then(r => this.renderModal(r))
         this.modalWindow.classList.add("modal--open")
-
       })
     )
+    closeModal.addEventListener("click", () => {
+      this.modalWindow.classList.remove("modal--open")
+    })
+  }
+
+  exchangeCoins = (e) => {
+    e.preventDefault()
+    const moneySpan = document.querySelector("span.modal__money")
+    const coinsInputValue = document.querySelector("form.modal__form").coins.value
+    this._currencyAPI.exchangeCoinToUSD(this._coinId, coinsInputValue).then(r => parseFloat(r).toFixed(2)).then(r => moneySpan.textContent = r)
+  }
+
+  exchangeCoinToUSD = async (coinId, amountOfCoins) => {
+    await this._currencyAPI.exchangeCoinToUSD(coinId, amountOfCoins).then(r => r)
   }
 
   renderPage = () => {
@@ -79,7 +89,7 @@ export default class CryptoCurrencySubpage {
                                 </p>`
       }
     )
-    this.updateActuallyCoinsId()
+    this.updateActuallyCoinId()
   }
 
   renderModal = (clickedCoin) => {
@@ -92,7 +102,7 @@ export default class CryptoCurrencySubpage {
     coinDescription.textContent = clickedCoin.description
   }
 
-  updateActuallyCoinsId = () => {
+  updateActuallyCoinId = () => {
     this._actuallyDisplayedCoinsId = [...document.querySelectorAll("[data-coinId]")]
     this.openModal()
   }
