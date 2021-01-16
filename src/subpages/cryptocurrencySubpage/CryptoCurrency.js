@@ -2,21 +2,17 @@ import provider from "../../services/Provider"
 import css from "./CryptoCurrency.css"
 import Subpage from "../Subpage"
 
-export default class CryptoCurrencySubpage extends Subpage{
+export default class CryptoCurrencySubpage extends Subpage {
 
   _allCoins = []
   _coinsToRender = []
   _actuallyDisplayedCoinsId = []
   _coinId
   pageSize = 200
-  coinsList = document.querySelector("#coins-list")
-  modalWindow = document.querySelector(".modal")
-  modalForm = document.querySelector("form.modal__form").addEventListener("submit", (e) => this.exchangeCoins(e))
 
   constructor() {
     super(css)
     this._currencyAPI = provider.get("CurrencyAPI")
-    this.init()
   }
 
   coinsToRender = () => {
@@ -89,7 +85,8 @@ export default class CryptoCurrencySubpage extends Subpage{
         this.coinsList.innerHTML += `<p
  data-coinId="${coin.id}" 
  class="coins-list__coin">
-${coin.name}</p>`}
+${coin.name}</p>`
+      }
     )
     this.updateActuallyCoinId()
   }
@@ -110,7 +107,14 @@ ${coin.name}</p>`}
   }
 
 
-  init = async () => {
+  catchHTMLElements = () => {
+    this.modalForm = document.querySelector("form.modal__form").addEventListener("submit", (e) => this.exchangeCoins(e))
+    this.coinsList = document.querySelector("#coins-list")
+    this.modalWindow = document.querySelector(".modal")
+  }
+
+  render = async () => {
+    await this.catchHTMLElements()
     await this._currencyAPI.getAllCoins()
       .then(r => this._allCoins = [...r])
       .then(r => this._coinsToRender = r.slice(0, this.pageSize))
