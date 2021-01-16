@@ -60,18 +60,20 @@ form button {
   font-weight: lighter;
 }
 .forecast-container {
+  margin-top: 30px;
   display: flex;
   flex-direction: row;
 }
 .hourly-forecast {
-  width: 60vw;
+  width: 60%;
   height: 20px;
 }
 .weather-forecast {
-  width: 40vw;
+  width: 40%;
   font-size: 0.8rem;
 }
-.weather-forecast .title {
+.weather-forecast .title,
+.hourly-forecast .title {
   font-weight: bold;
   font-size: 1.2rem;
 }

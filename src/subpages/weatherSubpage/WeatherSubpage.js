@@ -33,7 +33,7 @@ export default class WeatherSubpage extends Subpage {
         window.alert("Something went wrong, please try again")
       }
 
-      coords = [weatherRes.coord.lon, weatherRes.coord.lat]
+      coords = [weatherRes.coord.lat, weatherRes.coord.lon]
     }
 
     const forecastWeatherRes = await this._weatherApi.getForecastWeatherByCoords(

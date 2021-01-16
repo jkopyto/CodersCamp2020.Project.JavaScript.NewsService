@@ -4,6 +4,12 @@ export default class WeatherData {
     return `http://openweathermap.org/img/w/${iconCode}.png`
   }
 
+  getHours(hoursToAdd = 0) {
+    const time = new Date().getHours() + hoursToAdd
+    const res = time >= 24 ? time - 24 : time
+    return res < 10 ? "0" + String(res) : String(res)
+  }
+
   getDateAndDayOfWeek(numberOfDaysToAdd = 0) {
     let date = new Date()
     date.setDate(date.getDate() + numberOfDaysToAdd)
@@ -77,6 +83,8 @@ export default class WeatherData {
         
         <div class="forecast-container">
           <div class="hourly-forecast">
+            <div class="title">Hourly forecast</div>
+          
             <canvas id="hourly-chart"></canvas>
           </div>
           <div class="weather-forecast">
@@ -106,12 +114,11 @@ export default class WeatherData {
               </div>`
               })
               .join("")}
-         
           </div>
         </div>
         <div class="detailed-weather-info"></div>
       </div>      
-`
+    `
   }
 
   renderChart(forecastWeatherResults) {
@@ -119,9 +126,6 @@ export default class WeatherData {
     new Chart(chartDiv, {
       type: "line",
       data: {
-        labels: Array.from(Array(9).keys()).map((val) => {
-          return forecastWeatherResults.hourly[val].weather[0].description
-        }),
         datasets: [
           {
             data: Array.from(Array(9).keys()).map((val) => {
@@ -134,11 +138,29 @@ export default class WeatherData {
         ],
       },
       options: {
+        layout: {
+          padding: {
+            left: 0,
+            right: 100,
+            top: 20,
+            bottom: 0,
+          },
+        },
         scales: {
           yAxes: [
             {
               ticks: {
-                stepSize: 1.0,
+                stepSize: 5.0,
+                padding: 10,
+                suggestedMin: -2,
+                steps: 10,
+                suggestedMax: 5,
+                callback(value) {
+                  return value + "°C"
+                },
+              },
+              gridLines: {
+                display: false,
               },
             },
           ],
@@ -146,15 +168,26 @@ export default class WeatherData {
             {
               id: "xAxis1",
               type: "category",
-              gridLines: false,
+              ticks: {
+                padding: 10,
+              },
+              labels: Array.from(Array(9).keys()).map((val) => {
+                return forecastWeatherResults.hourly[val].weather[0].description
+              }),
             },
             {
               position: "top",
               id: "xAxis2",
               type: "category",
-              gridLines: {
-                drawOnChartArea: false, // only want the grid lines for one axis to show up
+              ticks: {
+                padding: 10,
               },
+              gridLines: {
+                drawOnChartArea: false,
+              },
+              labels: Array.from(Array(9).keys()).map((val) => {
+                return this.getHours(val)
+              }),
             },
           ],
         },
