@@ -13,7 +13,7 @@ export default class NewsSubpage extends Subpage {
     return document.querySelector(".news__container")
   }
 
-  generateMessage(outputResult, news) {
+  generateMessage(news) {
     let output = ""
     news.articles.forEach((e) => {
       output += this.generateDiv(e.title, e.author, e.content.substring(0, 200))
@@ -32,14 +32,16 @@ export default class NewsSubpage extends Subpage {
   }
 
   async updatePage() {
-    const worldNews = await this._newsApi.getWorldNews()
-    const polandNews = await this._newsApi.getPolandNews()
-    const healthNews = await this._newsApi.getHealthNews()
-
     let outputMessage = ""
-    outputMessage += this.generateMessage(outputMessage, worldNews)
-    outputMessage += this.generateMessage(outputMessage, polandNews)
-    outputMessage += this.generateMessage(outputMessage, healthNews)
+    await this._newsApi
+      .getWorldNews()
+      .then((res) => (outputMessage += this.generateMessage(res)))
+    await this._newsApi
+      .getPolandNews()
+      .then((res) => (outputMessage += this.generateMessage(res)))
+    await this._newsApi
+      .getHealthNews()
+      .then((res) => (outputMessage += this.generateMessage(res)))
 
     this.getNewsContentDiv().innerHTML = outputMessage
   }
