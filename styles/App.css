@@ -109,6 +109,6 @@ body {
 }
 
 .nav-bar a.active {
-  background-color: #4caf50;
-  color: red;
+  background-color: rgb(196, 196, 196);
+  color: rgb(0, 0, 0);
 }

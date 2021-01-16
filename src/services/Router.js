@@ -49,7 +49,6 @@ export class Router {
         break
       default:
         content = homepage
-        document.getElementById("homepage").classList.add("active")
         this.SubpageClass = new Homepage()
         break
     }
