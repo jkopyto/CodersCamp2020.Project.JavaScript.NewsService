@@ -1,28 +1,58 @@
 :root {
-    --primary-color: #323223;
+    --primary-color: #F6F1B6;
     --secondary-color: #6BC2E5;
 }
 
 .crypto-currency-wrapper {
     overflow: hidden;
     position: relative;
+    background-color: rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    min-height: 100vh;
 }
 
 .page-title {
     padding: 15px 25px;
     text-align: center;
+    font-size: 1.6rem;
 }
 
+.input-search{
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    width: 80%;
+    padding: 5px;
+    font-size: 1rem;
+    border:2px solid white;
+    box-shadow: 0 0 5px grey;
+    border-radius: 5px;
+    transform: scale(0.9);
+    transition:all 0.3s linear 0.1s;
+}
 
+.input-search:focus, .input-search:active{
+    outline-color: lightgrey;
+    transform: scale(1);
+}
+.coins-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+.coins-list__coin{
+    padding: 5px 10px;
+}
 .modal {
     position: fixed;
-    top: 200px;
+    top: 10%;
     left: 0;
     max-width: 80%;
     transition: all 0.3s ease;
     transform: translateX(-100%);
+    overflow-y: scroll;
 }
 
 .modal--open {
-    transform: translateX(200px);
+    background-color: #fff;
+    transform: translateX(0);
 }

@@ -7,7 +7,7 @@ export default class CryptoCurrencySubpage {
   _coinsToRender = []
   _actuallyDisplayedCoinsId = []
   _coinId
-  pageSize = 50
+  pageSize = 200
   coinsList = document.querySelector("#coins-list")
   modalWindow = document.querySelector(".modal")
   modalForm = document.querySelector("form.modal__form").addEventListener("submit", (e) => this.exchangeCoins(e))
@@ -84,10 +84,10 @@ export default class CryptoCurrencySubpage {
     this.coinsList.innerHTML = null
     this._coinsToRender.forEach(
       coin => {
-        this.coinsList.innerHTML += `<p data-coinId="${coin.id}">
-                                     ${coin.name}
-                                </p>`
-      }
+        this.coinsList.innerHTML += `<p
+ data-coinId="${coin.id}" 
+ class="coins-list__coin">
+${coin.name}</p>`}
     )
     this.updateActuallyCoinId()
   }
