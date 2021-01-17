@@ -9,6 +9,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -17,19 +29,6 @@ jobs:
       - run: export SENTRY_DSN="https://e6839d71823a4f06af00108cf7dcd6c9@o485829.ingest.sentry.io/5541712"
       - run: npm install
       - run: npm run build --if-present
-      - uses: actions/upload-artifact@v1
-        name: Cache build as artifact
-        if: github.ref == 'refs/heads/master'
-        with:
-          name: news-dist
-          path: ./dist
-      - uses: actions/upload-artifact@v1
-        name: Cache node_modules and package.json
-        with:
-          name: news-npm
-          path: |
-            ./node_modules
-            package.json
   test:
     needs: [build]
     runs-on: ubuntu-latest
