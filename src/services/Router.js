@@ -8,6 +8,7 @@ import WeatherSubpage from "../subpages/weatherSubpage/WeatherSubpage"
 import Homepage from "../subpages/homepage/Homepage"
 import homepage from "../subpages/homepage/homepage.html"
 import FoodSubpage from "../subpages/foodSubpage/food"
+import Topbar from "../app/components/Topbar"
 
 export class Router {
   SubpageClass = null
@@ -22,10 +23,10 @@ export class Router {
     this.loadContent(hashLocation)
   }
 
+
   loadContent = (uri) => {
     let content
     this.SubpageClass && this.SubpageClass.removeStylesheet()
-
     switch (uri) {
       case "sport":
         this.SubpageClass = null
@@ -54,6 +55,8 @@ export class Router {
         break
     }
     this.updateSlot(content)
+    const topbar = new Topbar()
+    topbar.setActiveClass(uri)
   }
 
   initScript = () => {
