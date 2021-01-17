@@ -51,6 +51,7 @@ form button {
   color: white;
   display: inline-block;
   border-radius: 7px;
+  text-align: justify;
 }
 
 .weather-feels {

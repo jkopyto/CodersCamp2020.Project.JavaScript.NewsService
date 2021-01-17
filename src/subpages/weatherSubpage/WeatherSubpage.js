@@ -49,7 +49,11 @@ export default class WeatherSubpage extends Subpage {
     const alertDescription =
       typeof alert.alerts === "undefined" ? 0 : alert.alerts[0].description
     const iconUrlCurrent = weatherData.getIconUrl(weatherRes.weather[0].icon)
-
+    const airPollution = await this._weatherApi.getAirPollution(
+      weatherRes.coord.lat,
+      weatherRes.coord.lon
+    )
+    console.log(airPollution.list[0].components)
     this.getWeatherContentDiv().innerHTML = new WeatherData().renderHTML(
       weatherRes,
       dateDay0,

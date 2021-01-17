@@ -6,8 +6,12 @@ export default class WeatherData {
 
   getHours(hoursToAdd = 0) {
     const time = new Date().getHours() + hoursToAdd
-    const res = time >= 24 ? time - 24 : time
-    return res < 10 ? "0" + String(res) : String(res)
+    let res = time >= 24 ? time - 24 : time
+    res =
+      res > 12
+        ? String(res.toFixed(1) - 12) + " PM"
+        : String(res.toFixed(1)) + " AM"
+    return res
   }
 
   getDateAndDayOfWeek(numberOfDaysToAdd = 0) {
@@ -39,8 +43,8 @@ export default class WeatherData {
         dayIconUrl: this.getIconUrl(
           forecastWeatherResults.daily[value].weather[0].icon
         ),
-        tempMax: forecastWeatherResults.daily[value].temp.max,
-        tempMin: forecastWeatherResults.daily[value].temp.min,
+        tempMax: forecastWeatherResults.daily[value].temp.max.toFixed(1),
+        tempMin: forecastWeatherResults.daily[value].temp.min.toFixed(1),
         description: forecastWeatherResults.daily[value].weather[0].description,
       }
     })
@@ -62,7 +66,7 @@ export default class WeatherData {
           <div class="city">${weatherRes.name}, ${weatherRes.sys.country}</div>
           <div class="main-weather-info">
             <img src="${iconUrlCurrent}" alt="Weather icon"> 
-            <div>${weatherRes.main.temp} &#176C </div>
+            <div>${weatherRes.main.temp.toFixed(1)} &#176C </div>
           </div>
           <p class="weather-alert">${alertDescription}</p>
           <div class="weather-feels">
@@ -129,7 +133,7 @@ export default class WeatherData {
         datasets: [
           {
             data: Array.from(Array(9).keys()).map((val) => {
-              return forecastWeatherResults.hourly[val].temp
+              return forecastWeatherResults.hourly[val].temp.toFixed(1)
             }),
             backgroundColor: ["rgba(255, 99, 132, 0)"],
             borderColor: ["rgba(255, 99, 132, 1)"],
@@ -171,13 +175,28 @@ export default class WeatherData {
               ticks: {
                 padding: 10,
               },
+
               labels: Array.from(Array(9).keys()).map((val) => {
                 return forecastWeatherResults.hourly[val].weather[0].description
               }),
             },
             {
-              position: "top",
               id: "xAxis2",
+              type: "category",
+              ticks: {
+                padding: 10,
+              },
+              gridLines: {
+                display: false,
+                drawBorder: false,
+              },
+              labels: Array.from(Array(9).keys()).map((val) => {
+                return forecastWeatherResults.hourly[val].wind_speed + " m/s"
+              }),
+            },
+            {
+              position: "top",
+              id: "xAxis3",
               type: "category",
               ticks: {
                 padding: 10,

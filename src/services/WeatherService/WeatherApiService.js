@@ -72,4 +72,10 @@ export default class WeatherApiService extends ApiService {
     )
     return await res.json()
   }
+  async getAirPollution(coordLat, coordLon) {
+    const res = await this.get(
+      `${this.creds.API_BASE_LINK}air_pollution?lat=${coordLat}&lon=${coordLon}&appid=${this.creds.API_KEY}`
+    )
+    return await res.json()
+  }
 }
