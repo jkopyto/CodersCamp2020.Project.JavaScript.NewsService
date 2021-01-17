@@ -13,10 +13,12 @@ export default class NewsSubpage extends Subpage {
     return document.querySelector(".news__container")
   }
 
-  generateMessage(news) {
-    let output = ""
+  generateMessage(news, output, i) {
+    output[i] = []
     news.articles.forEach((e) => {
-      output += this.generateDiv(e.title, e.author, e.content.substring(0, 200))
+      output[i].push(
+        this.generateDiv(e.title, e.author, e.content.substring(0, 200))
+      )
     })
     return output
   }
@@ -31,19 +33,41 @@ export default class NewsSubpage extends Subpage {
     `
   }
 
+  generateOutput(array, index = 0) {
+    let output = ""
+    let newIndex = index
+    if (newIndex == 5) newIndex = 0
+    array.forEach((innerArray) => {
+      output += innerArray[newIndex]
+    })
+
+    this.getNewsContentDiv().innerHTML = output
+    setTimeout(this.generateOutput, 5000, array, ++newIndex)
+  }
+
   async updatePage() {
-    let outputMessage = ""
+    let outputArray = []
+    let arrayIndex = 0
     await this._newsApi
       .getWorldNews()
-      .then((res) => (outputMessage += this.generateMessage(res)))
+      .then(
+        (res) =>
+          (outputArray = this.generateMessage(res, outputArray, arrayIndex++))
+      )
     await this._newsApi
       .getPolandNews()
-      .then((res) => (outputMessage += this.generateMessage(res)))
+      .then(
+        (res) =>
+          (outputArray = this.generateMessage(res, outputArray, arrayIndex++))
+      )
     await this._newsApi
       .getHealthNews()
-      .then((res) => (outputMessage += this.generateMessage(res)))
+      .then(
+        (res) =>
+          (outputArray = this.generateMessage(res, outputArray, arrayIndex++))
+      )
 
-    this.getNewsContentDiv().innerHTML = outputMessage
+    this.generateOutput(outputArray, 0)
   }
 
   async render() {
