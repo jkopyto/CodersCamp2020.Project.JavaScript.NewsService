@@ -7,6 +7,7 @@ import cryptocurrencySubpage from "../subpages/cryptocurrencySubpage/cryptocurre
 import WeatherSubpage from "../subpages/weatherSubpage/WeatherSubpage"
 import Homepage from "../subpages/homepage/Homepage"
 import homepage from "../subpages/homepage/homepage.html"
+import FoodSubpage from "../subpages/foodSubpage/food"
 import Topbar from "../app/components/Topbar"
 
 export class Router {
@@ -34,6 +35,7 @@ export class Router {
       case "food":
         this.SubpageClass = null
         content = foodSubpage
+        this.SubpageClass = new FoodSubpage()
         break
       case "weather":
         content = weatherSubpage

@@ -1,7 +1,7 @@
 import provider from "../../services/Provider"
-import Subpage from "../Subpage"
 import css from "./WeatherSubpage.css"
-import "./WeatherSubpage.css"
+import Subpage from "../Subpage"
+import WeatherData from "./WeatherData"
 
 export default class WeatherSubpage extends Subpage {
   constructor() {
@@ -13,16 +13,15 @@ export default class WeatherSubpage extends Subpage {
     return document.querySelector("#weather-content")
   }
 
-  getIconUrl(iconCode) {
-    return `http://openweathermap.org/img/w/${iconCode}.png`
-  }
-
   async updatePage(city) {
+    const weatherData = new WeatherData()
+    const [dateDay0, dayOfWeekDay0] = weatherData.getDateAndDayOfWeek()
     let weatherRes
     this.getWeatherContentDiv()
+    let coords
 
     if (!city) {
-      const coords = await this._weatherApi.geoFindMe()
+      coords = await this._weatherApi.geoFindMe()
       weatherRes = await this._weatherApi.getCurrentWeatherByCoords(
         coords[0],
         coords[1]
@@ -33,40 +32,33 @@ export default class WeatherSubpage extends Subpage {
       } catch {
         window.alert("Something went wrong, please try again")
       }
+
+      coords = [weatherRes.coord.lon, weatherRes.coord.lat]
     }
 
+    const forecastWeatherRes = await this._weatherApi.getForecastWeatherByCoords(
+      coords[0],
+      coords[1]
+    )
+
+    const forecastedDaysData = weatherData.getForecastedData(forecastWeatherRes)
     const alert = await this._weatherApi.getAlert(
       weatherRes.coord.lat,
       weatherRes.coord.lon
     )
+
     const alertDescription =
       typeof alert.alerts === "undefined" ? 0 : alert.alerts[0].description
-    const iconCode = weatherRes.weather[0].icon
-    const iconUrl = this.getIconUrl(iconCode)
+    const iconUrlCurrent = weatherData.getIconUrl(weatherRes.weather[0].icon)
 
-    this.getWeatherContentDiv().innerHTML = `
-      <div class="weather-now-container">
-      <div class="city">${weatherRes.name}, ${weatherRes.sys.country}</div>
-        <div class="main-weather-info">
-          <img src="${iconUrl}" alt="Weather icon"> <div>${
-      weatherRes.main.temp
-    } &#176C </div>
-        </div>
-        <p class="weather-alert">${alertDescription}</p>
-        <div class="weather-feels">
-          Fells like ${weatherRes.main.feels_like} &#176C, 
-          ${weatherRes.weather[0].description}
-        </div>
-        <div class="detailed-info">
-          <div>Cloudiness: ${weatherRes.clouds.all}%</div>
-          <div>${weatherRes.main.pressure}hPa</div>
-          <div>Humidity: ${weatherRes.main.humidity}%</div>
-          <div>Visibility: ${weatherRes.visibility / 1000} km</div>
-        </div>
-        <div class="weather-forecast"></div>
-        <div class="detailed-weather-info"></div>
-      </div>      
-`
+    this.getWeatherContentDiv().innerHTML = new WeatherData().renderHTML(
+      weatherRes,
+      dateDay0,
+      dayOfWeekDay0,
+      alertDescription,
+      iconUrlCurrent,
+      forecastedDaysData
+    )
     const weatherAlertP = document.getElementsByClassName("weather-alert")[0]
     alertDescription
       ? (weatherAlertP.style.display = "block")
@@ -74,7 +66,7 @@ export default class WeatherSubpage extends Subpage {
   }
 
   async render() {
-    this.updatePage()
+    await this.updatePage()
     const button = document.getElementById("submit-city")
     const inputCity = document.getElementById("cityName")
 

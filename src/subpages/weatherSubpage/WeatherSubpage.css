@@ -1,9 +1,6 @@
 :root {
   --grey: #eaeaea;
 }
-.container {
-  margin: 5px;
-}
 .search-div {
   background-color: var(--grey);
   padding: 20px;
@@ -20,6 +17,9 @@ form button {
   display: flex;
   flex-direction: column;
   margin: 20px;
+}
+.current-date {
+  color: orange;
 }
 .weather-now-container img {
   height: 70px;
@@ -42,4 +42,45 @@ form button {
 }
 .detailed-info {
   font-weight: lighter;
+}
+.forecast-container {
+  display: flex;
+  flex-direction: row;
+}
+.hourly-forecast {
+  width: 60vw;
+  height: 20px;
+}
+.weather-forecast {
+  width: 40vw;
+  font-size: 0.8rem;
+}
+.weather-forecast .title {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.forecast-day div:nth-of-type(2) {
+  text-align: center;
+}
+.weather-forecast img {
+  height: 40px;
+  width: 40px;
+}
+.forecast-day {
+  display: flex;
+  justify-content: space-between;
+}
+.forecast-day div {
+  display: flex;
+  align-items: center;
+}
+
+.forecast-day .forecast-day-date {
+  width: 40%;
+}
+
+.forecast-day div:last-child {
+  font-weight: lighter;
+  width: 25%;
+  justify-content: flex-end;
 }
