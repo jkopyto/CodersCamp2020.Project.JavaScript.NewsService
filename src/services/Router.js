@@ -23,7 +23,6 @@ export class Router {
     this.loadContent(hashLocation)
   }
 
-
   loadContent = (uri) => {
     let content
     this.SubpageClass && this.SubpageClass.removeStylesheet()
