@@ -4,16 +4,15 @@ on: push
 jobs:
   setup:
     runs-on: ubuntu-latest
-
-  build:
-    needs: setup
-    runs-on: ubuntu-latest
     steps:
       - name: checkout out current code using public action
         uses: actions/checkout@v2
       - name: Use Node.js
         uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
+
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
       - name: run build
         run: ./.github/build.sh
