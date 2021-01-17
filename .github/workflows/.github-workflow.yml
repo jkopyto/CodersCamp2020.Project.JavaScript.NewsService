@@ -23,10 +23,24 @@ jobs:
         with:
           name: news-dist
           path: ./dist
+      - uses: actions/upload-artifact@v1
+        name: Cache node_modules and package.json
+        with:
+          name: news-npm
+          path: |
+            ./node_modules
+            package.json
   test:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/download-artifact@v2
+        name: Download artifacts
+        with:
+          name: news-npm
+          path: |
+            ./node_modules
+            package.json
       - uses: actions/checkout@v2
       - name: Test
         uses: actions/setup-node@v1
@@ -37,6 +51,13 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/download-artifact@v2
+        name: Download artifacts
+        with:
+          name: news-npm
+          path: |
+            ./node_modules
+            package.json
       - uses: actions/checkout@v2
       - name: FormatCheck
         uses: actions/setup-node@v1
