@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import "regenerator-runtime/runtime" //async/await with Parcel
 import { App } from "./app/App"
+<<<<<<< HEAD
 import { SportApiFunction } from "./subpages/sportSubpage/SportData"
 import provider from "./services/Provider"
 import { SentryReporting, ConsoleReporting } from "./services/ErrorReporting"
@@ -34,3 +35,7 @@ provider.provide("SportApi", new SportApiService())
 
 window.onload = () =>
   SportApiFunction()
+=======
+
+App()
+>>>>>>> f180321 (Clean index)
