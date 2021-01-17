@@ -82,11 +82,6 @@ export default class FoodSubpage extends Subpage {
     }
   }
 
-  valueOfRecipes(e) {
-    const span = document.querySelector(".value")
-    span.innerHTML = e.target.value
-  }
-
   async createHeaderImages() {
     const images = document.querySelector(".images")
     const products = await this.foodService.getRecipeByCalories(200)
@@ -100,12 +95,9 @@ export default class FoodSubpage extends Subpage {
   async render() {
     this.createHeaderImages()
     const button = document.querySelector(".search")
-    const recipesValue = document.querySelector("#slider")
+    const recipesValue = document.querySelector("#value")
     const yesInput = document.getElementById("yes")
 
-    document
-      .querySelector("#slider")
-      .addEventListener("change", this.valueOfRecipes)
     button.addEventListener("click", async () => {
       const foodInf = new Array(recipesValue.value)
       const searchDiv = document.querySelector(".searchDiv")

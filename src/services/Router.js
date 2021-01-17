@@ -8,8 +8,6 @@ import WeatherSubpage from "../subpages/weatherSubpage/WeatherSubpage"
 import Homepage from "../subpages/homepage/Homepage"
 import homepage from "../subpages/homepage/homepage.html"
 import FoodSubpage from "../subpages/foodSubpage/food"
-import { Homepage } from "../subpages/homepage/Homepage"
-import homepage from "../subpages/homepage/homepage.html"
 
 export class Router {
   SubpageClass = null
