@@ -5,22 +5,10 @@ on:
       - '**/*.md'
 
 jobs:
-  build:
+  BuildAndTest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - name: Cache node modules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -29,23 +17,32 @@ jobs:
       - run: export SENTRY_DSN="https://e6839d71823a4f06af00108cf7dcd6c9@o485829.ingest.sentry.io/5541712"
       - run: npm install
       - run: npm run build --if-present
-  test:
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Test
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14.x
-      - run: npm run test
-  formatCheck:
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: FormatCheck
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14.x
       - run: npm run lint && npm run format-check
+      - run: npm run test:cov && cat coverage/lcov.info | coveralls
+      - uses: actions/upload-artifact@v1
+        name: Upload build as artifact
+        if: github.ref == 'refs/heads/master'
+        with:
+          name: news-dist
+          path: ./dist
+  Publish:
+    name: "Deploy app to GitHub Pages from main branch source code"
+    if: github.ref == 'refs/heads/master'
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: news-dist
+          path: ./dist
+      - name: Deploy app as GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3.7.0-6
+        if: ${{ github.event_name != 'pull_request' && always() }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: "./dist"
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          force_orphan: true
+          keep_files: false
+
