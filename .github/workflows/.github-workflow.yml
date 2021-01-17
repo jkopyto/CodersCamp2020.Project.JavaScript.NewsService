@@ -14,5 +14,7 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     steps:
+      - name: test
+        run: ls -a
       - name: run build
-        run: ./scripts/build.sh
+        run: ./build.sh
