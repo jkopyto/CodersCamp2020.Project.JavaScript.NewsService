@@ -28,11 +28,13 @@ export default class NewsSubpage extends Subpage {
 
   generateDiv(title, author, content, link) {
     return `
-      <a href='${link}'>
-        <div>
-          <h5>${title}</h5>
-          <h6>${author}</h6>
-          <p>${content}</p>
+      <a href='${link}' target='_blank'>
+        <div class="singleNews__container">
+          <div>
+            <h5>${title}</h5>
+            <h6>Author: ${author}</h6>
+            <p>${content}</p>
+          </div>
         </div>
       </a>
     `
