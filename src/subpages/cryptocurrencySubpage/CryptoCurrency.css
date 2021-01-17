@@ -60,18 +60,20 @@
 
 .coins-list__coin:nth-of-type(2n) {
     background-color: var(--primary-color);
+    border-color: var(--secondary-color);
 }
 
 .coins-list__coin:nth-of-type(2n+1) {
-    background-color: var(--primary-color)
+    background-color: var(--secondary-color);
+    border-color: var(--primary-color);
 }
 
 .modal {
     position: fixed;
     min-height: 100vh;
-    top: 10%;
+    top: 0;
     left: 0;
-    max-width: 100%;
+    width: 100%;
     background-color: #fff;
     transition: all 0.3s ease;
     transform: translateX(-100%);
@@ -84,11 +86,11 @@
 .modal__description,
 .modal__form,
 .modal span,
-.modal p{
+.modal p {
     margin: 25px;
 }
 
-.modal__form button{
+.modal__form button {
     background: var(--secondary-color);
     margin: 10px 10px 0 auto;
     padding: 5px;
@@ -97,7 +99,7 @@
     color: black;
 }
 
-.modal__close{
+.modal__close {
     position: absolute;
     top: 25px;
     right: 25px;
@@ -110,18 +112,78 @@
     transform: translateX(0);
 }
 
-.btn-container{
+.btn-container {
     display: flex;
     position: fixed;
     bottom: 20px;
     width: 100%;
-justify-content: center;
+    justify-content: center;
 }
 
-.btn-container button{
+.btn-container button {
     margin: 10px;
     padding: 10px 5px;
     border-radius: 5px;
     border: none;
     background-color: var(--secondary-color);
+    cursor: pointer;
+}
+
+@media screen and (min-width: 600px) {
+    .crypto-currency-wrapper {
+        border-radius: 10px;
+    }
+    .coins-list {
+        margin-bottom: 70px;
+    }
+    .page-title {
+        font-size: 1.8rem;
+    }
+
+    .input-search {
+        width: 60%;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .crypto-currency-wrapper {
+        border-radius: 15px;
+    }
+    .coins-list__coin {
+        padding: 10px 15px;
+        font-size: 1.3rem;
+    }
+
+    .modal__title,
+    .modal__symbol,
+    .modal__description,
+    .modal__form,
+    .modal span,
+    .modal p {
+        margin: 35px;
+    }
+
+    .modal__close {
+        top: 30px;
+        right: 30px;
+        font-size: 1.1rem;
+    }
+
+    .btn-container button {
+        margin: 15px;
+        padding: 10px 5px;
+        border-radius: 5px;
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .crypto-currency-wrapper {
+        border-radius: 20px;
+    }
+    .input-search {
+        padding: 10px;
+        font-size: 1.2rem;
+        border-radius: 5px;
+    }
 }
