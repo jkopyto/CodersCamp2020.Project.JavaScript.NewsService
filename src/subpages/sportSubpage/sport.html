@@ -41,19 +41,22 @@
       </div>
     </div>
     <div class="user-box first-box">
-      <div class="activity card" style="--delay: 0.2s">
-        <div class="title-section">User Activities</div>
-
-        <div id="italy_matches" class="europe_countries"></div>
+      <div class="activity card padding-right-20" style="--delay: 0.2s">
+        <div class="title-container">
+          <div class="title-section">League matches</div>
+          <span class="title-section-date">11-12-2020 - 19-12-2020</span>
+        </div>
+        
+        <div id="league_matches" class="europe_country_box"></div>
       </div>
       <div class="discount card" style="--delay: 0.4s">
-        <div class="title-section">Discount Offers</div>
+        <div class="title-section">Select league</div>
         <div class="discount-wrapper">
           <div class="discount-info">
-            <div class="subtitle">The Best Offer is:</div>
-            <div class="subtitle-count">$5</div>
-            <div class="subtitle">Distance:</div>
-            <div class="subtitle-count dist">4.5 Km</div>
+            <div class="subtitle">The most valuable player:</div>
+            <div class="subtitle-count">$90 mln</div>
+            <div class="subtitle">Rating:</div>
+            <div class="subtitle-count dist">9 points</div>
           </div>
           <div class="discount-chart">
             <div class="circle">
@@ -62,23 +65,12 @@
                   <circle cx="60" cy="60" r="50"></circle>
                 </svg>
               </div>
-              <div class="counter">0</div>
+              <div class="counter">9</div>
             </div>
           </div>
         </div>
-        <div class="discount-profile">
-          <span class="by">By:</span>
-          <img
-            class="discount-img"
-            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80"
-            alt=""
-          />
-          <div class="discount-detail">
-            <div class="discount-name">Johnny Cauld</div>
-            <div class="discount-type">Micro bus & Travel Bus</div>
-          </div>
-        </div>
-        <div class="button offer-button">Get Offer</div>
+        <div id="italy-league" class="button offer-button">Serie A</div>
+        <div id="england-league" class="button offer-button">Premier League</div>
       </div>
       <div class="cards-wrapper" style="--delay: 0.6s">
         <div class="cards-header">
@@ -163,7 +155,7 @@
           <div class="account-title-section">Webdeveloper</div>
         </div>
         <div class="account card">
-          <div class="account-cash">$ 5637.04</div>
+          <div class="account-cash">$ 567.04</div>
           <div class="account-income">Total Income</div>
           <div class="account-iban">**** **** **** 3060</div>
         </div>
@@ -400,6 +392,4 @@
       </div>
     </div>
   </div>
-  <!-- partial -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </div>

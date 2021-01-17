@@ -320,10 +320,16 @@ body {
   right: 50%;
   border-radius: 50%;
 }
-
+.title-container {
+  display: flex;
+  justify-content: space-between;
+}
+.padding-right-20 {
+  padding-right: 20px !important; 
+}
 .card {
   background: #ffffff;
-  padding: 40px 30px;
+  padding: 20px 30px 40px 30px;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
@@ -334,6 +340,7 @@ body {
 .card .title-section {
   font-size: 16px;
   font-weight: 500;
+  margin-bottom: 20px;
 }
 .card .subtitle {
   font-size: 13px;
@@ -1038,7 +1045,7 @@ body {
   margin-bottom: 6px;
 }
 
-.europe_countries {
+.europe_country_box {
   overflow: auto;
 }
 
@@ -1051,24 +1058,24 @@ body {
   min-width: 35px;
 }
 
-#italy_matches .europe_country {
+#league_matches .europe_country {
   margin-bottom: 1rem;
 }
 
-#italy_matches .europe_country__name {
+#league_matches .europe_country__name {
   display: grid;
 }
 
-#italy_matches .europe_country__name:first-child {
+#league_matches .europe_country__name:first-child {
   margin-right: auto;
 }
 
-#italy_matches .europe_country__name img {
+#league_matches .europe_country__name img {
   grid-row: 1;
   max-width: 50px;
 }
 
-#italy_matches .europe_country__name span {
+#league_matches .europe_country__name span {
   display: flex;
   align-items: center;
   grid-row: 1;
@@ -1076,7 +1083,7 @@ body {
   margin: 0 6px;
 }
 
-#italy_matches .europe_country__name .score {
+#league_matches .europe_country__name .score {
   font-weight: bold;
   padding: 6px;
   width: 20px;

@@ -16,13 +16,13 @@ const mockFailingResponse = () => {
 describe("Get submitted city weather tests", () => {
   it("Returns a city name", async () => {
     mockSucessfulResponse()
-    const res = await sportService.getAllTeams("matches?apikey=")
+    const res = await sportService.getAllMatches()
     expect(res.home_team.name).toEqual("ACF Fiorentina")
   })
 
   it("Returns error alert - wrong event", async () => {
     mockFailingResponse()
-    await expect(sportService.getAllTeams("none")).rejects.toThrow(
+    await expect(sportService.getAllMatches("none")).rejects.toThrow(
       FetchError
     )
   })

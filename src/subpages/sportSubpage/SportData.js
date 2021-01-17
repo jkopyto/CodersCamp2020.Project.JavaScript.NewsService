@@ -9,8 +9,12 @@ export default class SportSubpage extends Subpage {
     this._sportApi = provider.get("SportApiService")
   }
 
-  getSportContentDiv() {
-    return document.querySelector(".europe_countries")
+  getLeagueContentDiv() {
+    return document.querySelector(".europe_country_box")
+  }
+
+  getMatchContentDiv() {
+    return document.querySelector(".europe")
   }
 
   generateMessage(home_logo, home_team, home_score, away_logo, away_team, away_score) {
@@ -30,8 +34,8 @@ export default class SportSubpage extends Subpage {
     `
   }
 
-  async updatePage() {
-    const sportRes = await this._sportApi.getAllTeams("matches?apikey=")
+  async updatePage(league) {
+    const sportRes = await this._sportApi.getAllMatches(league)
 
     let outputMessage = ""
 
@@ -45,11 +49,24 @@ export default class SportSubpage extends Subpage {
         e.stats.away_score
       )
 
-      this.getSportContentDiv().innerHTML = outputMessage
+      this.getLeagueContentDiv().innerHTML = outputMessage
     })
   }
 
   async render() {
     this.updatePage()
+
+    const buttonItaly = document.getElementById("italy-league")
+    const buttonEngland = document.getElementById("england-league")
+    const inputCity = document.getElementById("cityName")
+
+    buttonEngland.addEventListener("click", (event) => {
+      event.preventDefault()
+      this.updatePage('352')
+    })
+    buttonItaly.addEventListener("click", (event) => {
+      event.preventDefault()
+      this.updatePage('619')
+    })
   }
 }
