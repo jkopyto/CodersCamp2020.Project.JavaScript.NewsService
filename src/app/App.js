@@ -7,6 +7,7 @@ import Router from "../services/Router"
 import CryptoCurrencyService from "../services/CryptoCurrencyService/CryptoCurrency.service"
 import WeatherApiService from "../services/WeatherService"
 import NewsApiServie from "../services/NewsApiService"
+import SportApiService from "../services/SportApiService"
 
 const registerDependencyFunc = () => {
   if (process.env.SENTRY_DSN) {
@@ -24,6 +25,7 @@ const registerDependencyFunc = () => {
   provider.provide("CurrencyAPI", new CryptoCurrencyService())
   provider.provide("FoodApi", new FoodApiService())
   provider.provide("NewsApiService", new NewsApiServie())
+  provider.provide("SportApiService", new SportApiService())
 }
 
 export const App = () => {
