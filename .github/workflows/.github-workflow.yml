@@ -28,7 +28,7 @@ jobs:
   Publish:
     name: "Deploy app to GitHub Pages from main branch source code"
     if: github.ref == 'refs/heads/master'
-    needs: [build]
+    needs: [BuildAndTest]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v2
