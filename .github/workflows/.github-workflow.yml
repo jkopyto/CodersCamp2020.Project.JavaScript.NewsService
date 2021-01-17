@@ -24,24 +24,22 @@ jobs:
           name: news-dist
           path: ./dist
   test:
-    runs-on: ubuntu-latest
     needs: [build]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Test
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - name: Test
       - run: npm run test
   formatCheck:
-    runs-on: ubuntu-latest
     needs: [build]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: FormatCheck
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - name: FormatCheck
       - run: npm run lint && npm run format-check
