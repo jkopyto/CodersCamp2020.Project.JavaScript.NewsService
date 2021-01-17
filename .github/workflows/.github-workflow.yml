@@ -1,19 +1,53 @@
 name: github-workflow
-on: push
+on:
+  push:
+    paths-ignore:
+      - '**/*.md'
 
 jobs:
-  setup:
-    runs-on: ubuntu-latest
-
-  build:
-    needs: setup
+  BuildAndTest:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout out current code using public action
-        uses: actions/checkout@v2
-      - name: Use Node.js
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
-      - name: run build
-        run: ./.github/build.sh
+          node-version: 14.x
+      - run: export GIT_COMMIT="${{ github.sha }}"
+      - run: export SENTRY_DSN="https://e6839d71823a4f06af00108cf7dcd6c9@o485829.ingest.sentry.io/5541712"
+      - run: npm install
+      - run: npm run build --if-present
+      - run: npm run lint && npm run format-check
+      - run: npm run test:cov
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        if: github.ref == 'refs/heads/master'
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-artifact@v1
+        name: Upload build as artifact
+        if: github.ref == 'refs/heads/master'
+        with:
+          name: news-dist
+          path: ./dist
+  Publish:
+    name: "Deploy app to GitHub Pages from main branch source code"
+    if: github.ref == 'refs/heads/master'
+    needs: [BuildAndTest]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: news-dist
+          path: ./dist
+      - name: Deploy app as GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3.7.0-6
+        if: ${{ github.event_name != 'pull_request' && always() }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: "./dist"
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          force_orphan: true
+          keep_files: false
+
