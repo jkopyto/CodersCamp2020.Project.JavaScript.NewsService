@@ -2,6 +2,7 @@ import provider from "../../services/Provider"
 import css from "./WeatherSubpage.css"
 import Subpage from "../Subpage"
 import WeatherData from "./WeatherData"
+import * as utils from "./weatherUtils"
 
 export default class WeatherSubpage extends Subpage {
   constructor() {
@@ -15,11 +16,10 @@ export default class WeatherSubpage extends Subpage {
 
   async updatePage(city) {
     const weatherData = new WeatherData()
-    const [dateDay0, dayOfWeekDay0] = weatherData.getDateAndDayOfWeek()
+    const [dateDay0, dayOfWeekDay0] = utils.getDateAndDayOfWeek()
     let weatherRes
     this.getWeatherContentDiv()
     let coords
-
     if (!city) {
       coords = await this._weatherApi.geoFindMe()
       weatherRes = await this._weatherApi.getCurrentWeatherByCoords(
@@ -48,19 +48,20 @@ export default class WeatherSubpage extends Subpage {
     )
     const alertDescription =
       typeof alert.alerts === "undefined" ? 0 : alert.alerts[0].description
-    const iconUrlCurrent = weatherData.getIconUrl(weatherRes.weather[0].icon)
+    const iconUrlCurrent = utils.getIconUrl(weatherRes.weather[0].icon)
     const airPollution = await this._weatherApi.getAirPollution(
       weatherRes.coord.lat,
       weatherRes.coord.lon
     )
-    console.log(airPollution.list[0].components)
+
     this.getWeatherContentDiv().innerHTML = new WeatherData().renderHTML(
       weatherRes,
       dateDay0,
       dayOfWeekDay0,
       alertDescription,
       iconUrlCurrent,
-      forecastedDaysData
+      forecastedDaysData,
+      airPollution.list[0].components
     )
 
     new WeatherData().renderChart(forecastWeatherRes)

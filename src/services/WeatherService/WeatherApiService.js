@@ -15,6 +15,7 @@ export default class WeatherApiService extends ApiService {
       }
     )
   }
+
   async geoFindMe() {
     function onSuccess(position) {
       const currentLat = position.coords.latitude

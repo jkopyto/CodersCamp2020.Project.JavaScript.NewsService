@@ -1,6 +1,7 @@
 :root {
   --grey: #eaeaea;
 }
+
 .search-div {
   background-color: var(--grey);
   padding: 20px;
@@ -19,13 +20,21 @@ form button {
   margin: 20px;
 }
 
-.current-weather-and-maps {
+.air-pollution {
+  width: 60%;
+}
+
+.current-weather-pollution {
   display: flex;
   flex-direction: row;
 }
 
+.current-weather-pollution div {
+  margin: 10px;
+}
+
 .current-weather-description {
-  width: 30%;
+  width: 60%;
 }
 .weather-maps {
   width: 70%;
@@ -46,9 +55,9 @@ form button {
 }
 .weather-alert {
   width: fit-content;
-  background-color: red;
+  border: solid red 2px;
   padding: 10px;
-  color: white;
+  color: black;
   display: inline-block;
   border-radius: 7px;
   text-align: justify;
@@ -57,38 +66,120 @@ form button {
 .weather-feels {
   font-weight: bold;
 }
+
 .detailed-info {
   font-weight: lighter;
 }
+
+.type,
+.amount,
+.category {
+  display: inline-block;
+  width: 25%;
+}
+
+.type {
+  font-weight: bold;
+}
+
+table * {
+  text-align: center;
+}
+
+.quality-info[data-quality="very-good"] {
+  background-color: darkgreen;
+}
+
+.quality-info[data-quality="very-good"]::after {
+  content: "very-good";
+  color: white;
+}
+
+.quality-info[data-quality="good"] {
+  background-color: green;
+}
+
+.quality-info[data-quality="good"]::after {
+  content: "good";
+  color: white;
+}
+
+.quality-info[data-quality="moderate"] {
+  background-color: orange;
+}
+
+.quality-info[data-quality="moderate"]::after {
+  content: "moderate";
+  color: white;
+}
+
+.quality-info[data-quality="sufficient"] {
+  background-color: yellow;
+}
+
+.quality-info[data-quality="sufficient"]::after {
+  content: "sufficient";
+  color: white;
+}
+
+.quality-info[data-quality="bad"] {
+  background-color: red;
+}
+
+.quality-info[data-quality="bad"]::after {
+  content: "bad";
+  color: white;
+}
+
+.quality-info[data-quality="very-bad"] {
+  background-color: darkred;
+}
+
+.quality-info[data-quality="very-bad"]::after {
+  content: "very bad";
+  color: white;
+}
+
+table tr:hover td {
+  transform: scale(1.1);
+}
 .forecast-container {
-  margin-top: 30px;
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
 }
+
 .hourly-forecast {
   width: 60%;
-  height: 20px;
+  height: 100%;
 }
+
 .weather-forecast {
   width: 40%;
   font-size: 0.8rem;
 }
+
 .weather-forecast .title,
+.air-pollution .title,
 .hourly-forecast .title {
   font-weight: bold;
   font-size: 1.2rem;
 }
+
 .forecast-day div:nth-of-type(2) {
   text-align: center;
 }
+
 .weather-forecast img {
   height: 40px;
   width: 40px;
 }
+
 .forecast-day {
   display: flex;
   justify-content: space-between;
 }
+
 .forecast-day div {
   display: flex;
   align-items: center;

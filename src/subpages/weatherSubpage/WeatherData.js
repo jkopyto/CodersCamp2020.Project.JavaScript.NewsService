@@ -1,46 +1,13 @@
 import Chart from "chart.js"
+import * as utils from "./weatherUtils"
+
 export default class WeatherData {
-  getIconUrl(iconCode) {
-    return `http://openweathermap.org/img/w/${iconCode}.png`
-  }
-
-  getHours(hoursToAdd = 0) {
-    const time = new Date().getHours() + hoursToAdd
-    let res = time >= 24 ? time - 24 : time
-    res =
-      res > 12
-        ? String(res.toFixed(1) - 12) + " PM"
-        : String(res.toFixed(1)) + " AM"
-    return res
-  }
-
-  getDateAndDayOfWeek(numberOfDaysToAdd = 0) {
-    let date = new Date()
-    date.setDate(date.getDate() + numberOfDaysToAdd)
-    const dd = String(date.getDate()).padStart(2, "0")
-    const mm = String(date.getMonth() + 1).padStart(2, "0")
-    const weekday = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ]
-    const dayOfWeek = weekday[date.getDay()]
-    const yyyy = date.getFullYear()
-    date = mm + "/" + dd + "/" + yyyy
-
-    return [date, dayOfWeek]
-  }
-
   getForecastedData(forecastWeatherResults) {
     return Array.from(Array(8).keys()).map((value) => {
       return {
-        date: this.getDateAndDayOfWeek(value + 1)[0],
-        dayOfWeek: this.getDateAndDayOfWeek(value + 1)[1],
-        dayIconUrl: this.getIconUrl(
+        date: utils.getDateAndDayOfWeek(value + 1)[0],
+        dayOfWeek: utils.getDateAndDayOfWeek(value + 1)[1],
+        dayIconUrl: utils.getIconUrl(
           forecastWeatherResults.daily[value].weather[0].icon
         ),
         tempMax: forecastWeatherResults.daily[value].temp.max.toFixed(1),
@@ -56,40 +23,82 @@ export default class WeatherData {
     dayOfWeekDay0,
     alertDescription,
     iconUrlCurrent,
-    forecastedDaysData
+    forecastedDaysData,
+    airPollutionData
   ) {
+    const createPollutionDataType = (name, label) => {
+      return {
+        name,
+        label,
+      }
+    }
+
+    const pollutionData = [
+      createPollutionDataType("pm2_5", "PM2.5"),
+      createPollutionDataType("pm10", "PM10"),
+      createPollutionDataType("no2", "NO<sub>2</sub>"),
+      createPollutionDataType("so2", "SO<sub>2</sub>"),
+      createPollutionDataType("co", "CO"),
+    ]
+
     return `
       <div class="weather-now-container">
-      <div class="current-weather-and-maps">
-        <div class="current-weather-description">
-          <div class="current-date">${dayOfWeekDay0}, ${dateDay0}</div>
-          <div class="city">${weatherRes.name}, ${weatherRes.sys.country}</div>
-          <div class="main-weather-info">
-            <img src="${iconUrlCurrent}" alt="Weather icon"> 
-            <div>${weatherRes.main.temp.toFixed(1)} &#176C </div>
+        <div class="current-weather-pollution">
+          <div class="current-weather-description">
+            <div class="current-date">${dayOfWeekDay0}, ${dateDay0}</div>
+            <div class="city">${weatherRes.name}, ${
+      weatherRes.sys.country
+    }</div>
+            <div class="main-weather-info">
+              <img src="${iconUrlCurrent}" alt="Weather icon"> 
+              <div>${weatherRes.main.temp.toFixed(1)} &#176C </div>
+            </div>
+            <p class="weather-alert">${alertDescription}</p>
+            <div class="weather-feels">
+              Fells like ${weatherRes.main.feels_like} &#176C, 
+              ${weatherRes.weather[0].description}
+            </div>
+            <div class="detailed-info">
+              <div>Cloudiness: ${weatherRes.clouds.all}%</div>
+              <div>${weatherRes.main.pressure}hPa</div>
+              <div>Humidity: ${weatherRes.main.humidity}%</div>
+              <div>Visibility: ${weatherRes.visibility / 1000} km</div>
+            </div>
           </div>
-          <p class="weather-alert">${alertDescription}</p>
-          <div class="weather-feels">
-            Fells like ${weatherRes.main.feels_like} &#176C, 
-            ${weatherRes.weather[0].description}
-          </div>
-          <div class="detailed-info">
-            <div>Cloudiness: ${weatherRes.clouds.all}%</div>
-            <div>${weatherRes.main.pressure}hPa</div>
-            <div>Humidity: ${weatherRes.main.humidity}%</div>
-            <div>Visibility: ${weatherRes.visibility / 1000} km</div>
+        
+          <div class="air-pollution">
+            <div class="title">Air pollution</div>
+            <table>
+              <tr>
+                <th>Pollution</th>
+                <th>Amount [<span>&#181;</span>g/m<sup>3</sup>]</th>
+                <th>Air quality</th>
+              </tr>
+              
+              ${pollutionData
+                .map(({ name, label }) => {
+                  const airPollutionDataValue = airPollutionData[name]
+                  return `
+                  <tr>
+                    <td>${label}</td>
+                    <td>${airPollutionDataValue}</td>
+                    <td class="quality-info" data-quality="${utils.getQualityIndex(
+                      name,
+                      airPollutionDataValue
+                    )}"/>
+                  </tr>
+                `
+                })
+                .join("")}
+            </table>
           </div>
         </div>
-        
-        <div class="weather-maps">MAPY POGODOWE</div>
-      </div>
-        
         
         <div class="forecast-container">
           <div class="hourly-forecast">
             <div class="title">Hourly forecast</div>
           
-            <canvas id="hourly-chart"></canvas>
+            <canvas id="hourly-chart" class="chart"></canvas>
           </div>
           <div class="weather-forecast">
             <div class="title">8-day forecast</div>
@@ -205,7 +214,7 @@ export default class WeatherData {
                 drawOnChartArea: false,
               },
               labels: Array.from(Array(9).keys()).map((val) => {
-                return this.getHours(val)
+                return utils.getHours(val)
               }),
             },
           ],
