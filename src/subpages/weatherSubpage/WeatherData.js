@@ -44,7 +44,7 @@ export default class WeatherData {
     return `
       <div class="weather-now-container">
         <div class="current-weather-pollution">
-          <div class="current-weather-description">
+          <div class="current-weather-description card">
             <div class="current-date">${dayOfWeekDay0}, ${dateDay0}</div>
             <div class="city">${weatherRes.name}, ${
       weatherRes.sys.country
@@ -66,9 +66,9 @@ export default class WeatherData {
             </div>
           </div>
         
-          <div class="air-pollution">
-            <div class="title">Air pollution</div>
-            <table>
+          <div class="air-pollution card">
+            <div class="title-section">Air pollution</div>
+            <table class="weather-table">
               <tr>
                 <th>Pollution</th>
                 <th>Amount [<span>&#181;</span>g/m<sup>3</sup>]</th>
@@ -94,14 +94,16 @@ export default class WeatherData {
           </div>
         </div>
         
+        
+        
         <div class="forecast-container">
-          <div class="hourly-forecast">
-            <div class="title">Hourly forecast</div>
+          <div class="hourly-forecast card">
+            <div class="title-section">Hourly forecast</div>
           
-            <canvas id="hourly-chart" class="chart"></canvas>
+            <div class="chart-wrapper"><canvas id="hourly-chart" class="chart"></canvas></div>
           </div>
-          <div class="weather-forecast">
-            <div class="title">8-day forecast</div>
+          <div class="weather-forecast card">
+            <div class="title-section">8-day forecast</div>
             
             ${forecastedDaysData
               .map((value) => {
@@ -151,10 +153,11 @@ export default class WeatherData {
         ],
       },
       options: {
+        maintainAspectRatio: false,
         layout: {
           padding: {
             left: 0,
-            right: 100,
+            right: 0,
             top: 20,
             bottom: 0,
           },

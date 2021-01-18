@@ -29,8 +29,8 @@ export default class WeatherSubpage extends Subpage {
     } else {
       try {
         weatherRes = await this._weatherApi.getCurrentWeatherByCity(city)
-      } catch {
-        window.alert("Something went wrong, please try again")
+      } catch (e) {
+        window.alert("Invalid city name!")
       }
 
       coords = [weatherRes.coord.lat, weatherRes.coord.lon]
