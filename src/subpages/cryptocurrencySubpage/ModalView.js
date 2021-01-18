@@ -1,15 +1,13 @@
 import CryptoCurrencyService from "../../services/CryptoCurrencyService"
 
 export default class ModalView {
-
   _coinId
 
   constructor() {
     this._currencyAPI = new CryptoCurrencyService()
   }
 
-
-  openModal = async (actuallyDisplayedCoinsId,modalWindow) => {
+  openModal = async (actuallyDisplayedCoinsId, modalWindow) => {
     const closeModal = document.querySelector(".modal__close")
 
     await actuallyDisplayedCoinsId.forEach((coin) =>
@@ -41,15 +39,13 @@ export default class ModalView {
     const moneySpan = document.querySelector("span.modal__money")
     const coinsInputValue = document.querySelector("form.modal__form").coins
       .value
-   await this._currencyAPI
+    await this._currencyAPI
       .exchangeCoinToUSD(this._coinId, coinsInputValue)
       .then((r) => parseFloat(r).toFixed(2))
       .then((r) => (moneySpan.textContent = r))
   }
 
   exchangeCoinToUSD = async (coinId, amountOfCoins) => {
-    await this._currencyAPI
-      .exchangeCoinToUSD(coinId, amountOfCoins)
+    await this._currencyAPI.exchangeCoinToUSD(coinId, amountOfCoins)
   }
-
 }
