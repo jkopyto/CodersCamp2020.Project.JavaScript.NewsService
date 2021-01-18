@@ -325,7 +325,7 @@ body {
   justify-content: space-between;
 }
 .padding-right-20 {
-  padding-right: 20px !important; 
+  padding-right: 20px !important;
 }
 .card {
   background: #ffffff;
@@ -822,16 +822,16 @@ body {
 }
 
 #table {
-    font-family: unset;
-    font-size: unset;
-    line-height: unset;
-    text-transform: unset;
-    width: unset;
-    border: none;
-    margin: unset;
-    table-layout: unset;
-    border-collapse: unset;
-    border-spacing: unset;
+  font-family: unset;
+  font-size: unset;
+  line-height: unset;
+  text-transform: unset;
+  width: unset;
+  border: none;
+  margin: unset;
+  table-layout: unset;
+  border-collapse: unset;
+  border-spacing: unset;
 }
 #table .status {
   color: #1aa385;
