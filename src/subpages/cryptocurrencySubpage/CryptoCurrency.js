@@ -1,5 +1,5 @@
 import provider from "../../services/Provider"
-import css from "./CryptoCurrency.css"
+import css from "./crytpo-currency.css"
 import Subpage from "../Subpage"
 import ModalView from "./ModalView"
 
@@ -19,23 +19,36 @@ export default class CryptoCurrencySubpage extends Subpage {
     const nextPageBtn = document.querySelector("#next-page")
     const prevPageBtn = document.querySelector("#prev-page")
     const inputSearch = document.querySelector("#search-coin")
+    const numberOfAllPages = Math.ceil(this._allCoins / this.pageSize)
+
+    prevPageBtn.setAttribute("disabled", "true")
 
     let actualPage = 0
 
     nextPageBtn.addEventListener("click", () => {
-      actualPage++
-      const startPageFrom = actualPage * this.pageSize
-      const finishPageAt = actualPage * this.pageSize + this.pageSize
-      this._coinsToRender = this._allCoins.slice(startPageFrom, finishPageAt)
-      this.renderPage()
+      prevPageBtn.removeAttribute("disabled")
+      if (actualPage === numberOfAllPages) {
+        nextPageBtn.setAttribute("disabled", "true")
+      } else {
+        actualPage++
+        const startPageFrom = actualPage * this.pageSize
+        const finishPageAt = actualPage * this.pageSize + this.pageSize
+        this._coinsToRender = this._allCoins.slice(startPageFrom, finishPageAt)
+        this.renderPage()
+      }
     })
 
     prevPageBtn.addEventListener("click", () => {
-      actualPage--
-      const startPageFrom = actualPage * this.pageSize
-      const finishPageAt = actualPage * this.pageSize + this.pageSize
-      this._coinsToRender = this._allCoins.slice(startPageFrom, finishPageAt)
-      this.renderPage()
+      nextPageBtn.removeAttribute("disabled")
+      if (actualPage === 0) {
+        prevPageBtn.setAttribute("disabled", "true")
+      } else {
+        actualPage--
+        const startPageFrom = actualPage * this.pageSize
+        const finishPageAt = actualPage * this.pageSize + this.pageSize
+        this._coinsToRender = this._allCoins.slice(startPageFrom, finishPageAt)
+        this.renderPage()
+      }
     })
 
     inputSearch.addEventListener("keyup", (e) => {
