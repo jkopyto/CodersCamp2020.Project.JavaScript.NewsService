@@ -7,7 +7,7 @@ export default class CryptoCurrencySubpage extends Subpage {
   _coinsToRender = []
   _actuallyDisplayedCoinsId = []
   _coinId
-  pageSize = 200
+  pageSize = 80
 
   constructor() {
     super(css)
@@ -90,7 +90,7 @@ export default class CryptoCurrencySubpage extends Subpage {
     this._coinsToRender.forEach((coin) => {
       this.coinsList.innerHTML += `<p
  data-coinId="${coin.id}" 
- class="coins-list__coin">
+ class="coins-list__coin button offer-button">
 ${coin.name}</p>`
     })
     this.updateActuallyCoinId()
