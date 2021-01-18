@@ -271,6 +271,7 @@ body {
   overflow: hidden;
   max-width: 1200px;
   margin: auto;
+  bottom: 0;
 }
 
 .nav-bar a {
@@ -315,4 +316,8 @@ body {
 
 .page-footer p:hover {
   color: black;
+}
+
+.page-footer p:hover {
+  color: black
 }
