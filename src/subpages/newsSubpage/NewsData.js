@@ -1,11 +1,12 @@
 import provider from "../../services/Provider"
 import Subpage from "../Subpage"
-import css from "./NewsSubpage.css"
+import css from "./news-subpage.css"
 
 export default class NewsSubpage extends Subpage {
   constructor() {
     super(css)
     this._newsApi = provider.get("NewsApiService")
+    this._localStorage = provider.get("LocalStorageService")
   }
 
   getNewsContentDiv1() {
@@ -14,6 +15,10 @@ export default class NewsSubpage extends Subpage {
 
   getNewsContentDiv2() {
     return document.querySelector(".news__content2")
+  }
+
+  getStorageContentDiv() {
+    return document.querySelector(".storage__container")
   }
 
   generateMessage(news, output, i) {
@@ -33,7 +38,7 @@ export default class NewsSubpage extends Subpage {
           <div>
             <h5>${title}</h5>
             <h6>Author: ${author}</h6>
-            <p>${content}</p>
+            <p>${content} [Read more...]</p>
           </div>
         </div>
       </a>
@@ -64,6 +69,13 @@ export default class NewsSubpage extends Subpage {
     setTimeout(this.changeOpacity1, 5000, array, newIndex)
   }
 
+  getArticle = () => {
+    const getArticles = document.querySelectorAll(".singleNews__container")
+    getArticles.forEach((e) => {
+      e.addEventListener("click", () => {})
+    })
+  }
+
   async updatePage() {
     let outputArray = []
     let arrayIndex = 0
@@ -87,6 +99,7 @@ export default class NewsSubpage extends Subpage {
       )
 
     this.changeOpacity1(outputArray, 0)
+    this.getArticle()
   }
 
   async render() {
