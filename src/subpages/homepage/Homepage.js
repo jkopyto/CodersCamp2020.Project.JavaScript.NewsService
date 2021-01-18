@@ -1,5 +1,6 @@
 import { CarouselComponent } from "../../app/components/Carousel"
 import Subpage from "../Subpage"
+import { renderCalendarWidget } from "simple-calendar-widget"
 
 export default class Homepage extends Subpage {
   constructor() {
@@ -15,5 +16,6 @@ export default class Homepage extends Subpage {
         window.location = "#" + routeHash
       })
     })
+    renderCalendarWidget(undefined, undefined, "#calendar")
   }
 }
