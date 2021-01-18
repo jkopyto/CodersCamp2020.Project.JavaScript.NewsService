@@ -5,9 +5,12 @@ import newsSubpage from "../subpages/newsSubpage/news.html"
 import NewsSubpage from "../subpages/newsSubpage/NewsData"
 import cryptocurrencySubpage from "../subpages/cryptocurrencySubpage/cryptocurrency.html"
 import WeatherSubpage from "../subpages/weatherSubpage/WeatherSubpage"
+import SportSubpage from "../subpages/sportSubpage/SportData"
 import Homepage from "../subpages/homepage/Homepage"
 import homepage from "../subpages/homepage/homepage.html"
 import CryptoCurrencySubpage from "../subpages/cryptocurrencySubpage/CryptoCurrency"
+import FoodSubpage from "../subpages/foodSubpage/food"
+import Topbar from "../app/components/Topbar"
 
 export class Router {
   SubpageClass = null
@@ -25,15 +28,15 @@ export class Router {
   loadContent = (uri) => {
     let content
     this.SubpageClass && this.SubpageClass.removeStylesheet()
-
     switch (uri) {
       case "sport":
-        this.SubpageClass = null
         content = sportSubpage
+        this.SubpageClass = new SportSubpage()
         break
       case "food":
         this.SubpageClass = null
         content = foodSubpage
+        this.SubpageClass = new FoodSubpage()
         break
       case "weather":
         content = weatherSubpage
@@ -53,6 +56,8 @@ export class Router {
         break
     }
     this.updateSlot(content)
+    const topbar = new Topbar()
+    topbar.setActiveClass(uri)
   }
 
   initScript = () => {

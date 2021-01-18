@@ -7,6 +7,9 @@ import Router from "../services/Router"
 import CryptoCurrencyService from "../services/CryptoCurrencyService/CryptoCurrency.service"
 import WeatherApiService from "../services/WeatherService"
 import NewsApiServie from "../services/NewsApiService"
+import SportApiService from "../services/SportApiService"
+import NewsApiService from "../services/NewsApiService"
+import LocalStorageService from "../services/Storage/LocalStorage"
 
 const registerDependencyFunc = () => {
   if (process.env.SENTRY_DSN) {
@@ -24,6 +27,9 @@ const registerDependencyFunc = () => {
   provider.provide("CurrencyAPI", new CryptoCurrencyService())
   provider.provide("FoodApi", new FoodApiService())
   provider.provide("NewsApiService", new NewsApiServie())
+  provider.provide("SportApiService", new SportApiService())
+  provider.provide("NewsApiService", new NewsApiService())
+  provider.provide("LocalStorageService", new LocalStorageService())
 }
 
 export const App = () => {
