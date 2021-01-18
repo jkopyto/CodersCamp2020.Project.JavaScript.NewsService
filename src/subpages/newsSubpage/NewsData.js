@@ -73,11 +73,14 @@ export default class NewsSubpage extends Subpage {
 
   getArticle = () => {
     const getArticles = document.querySelectorAll(".singleNews__container")
+    // if(!this._localStorage.getItem("lastSeen")) this.getStorageContentDiv().innerHTML = "<h4>Recently seen: </h4><div>-</div>"
     getArticles.forEach((e) => {
       e.addEventListener("click", () => {
+        this._localStorage.setItem("elementHref", e.parentElement.href)
         this._localStorage.setItem("lastSeen", e.innerHTML)
-        const storageItem = this._localStorage.getItem("lastSeen")
-        this.getStorageContentDiv().innerHTML = `<h4>Recently seen: </h4> ${storageItem}`
+        const storagedHref = this._localStorage.getItem("elementHref")
+        const storagedItem = this._localStorage.getItem("lastSeen")
+        this.getStorageContentDiv().innerHTML = `<h4>Recently seen: </h4> <a href="${storagedHref}" target='_blank'>${storagedItem}</a>`
       })
     })
   }
@@ -105,9 +108,12 @@ export default class NewsSubpage extends Subpage {
       )
 
     this.changeOpacity1(outputArray, 0)
-    this.getStorageContentDiv().innerHTML = `<h4>Recently seen: </h4> ${this._localStorage.getItem(
-      "lastSeen"
-    )}`
+    if (this._localStorage.getItem("lastSeen"))
+      this.getStorageContentDiv().innerHTML = `<h4>Recently seen: </h4>  <a href="${this._localStorage.getItem(
+        "elementHref"
+      )}" target='_blank' >${this._localStorage.getItem("lastSeen")}</a>`
+    else
+      this.getStorageContentDiv().innerHTML = "<h4>Recently seen: </h4> <a></a>"
   }
 
   async render() {
