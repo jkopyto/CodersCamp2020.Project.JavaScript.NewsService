@@ -58,15 +58,14 @@ export default class SportSubpage extends Subpage {
 
     const buttonItaly = document.getElementById("italy-league")
     const buttonEngland = document.getElementById("england-league")
-    const inputCity = document.getElementById("cityName")
 
     buttonEngland.addEventListener("click", (event) => {
       event.preventDefault()
-      this.updatePage('352')
+      this.updatePage("352")
     })
     buttonItaly.addEventListener("click", (event) => {
       event.preventDefault()
-      this.updatePage('619')
+      this.updatePage("619")
     })
   }
 }
