@@ -6,8 +6,8 @@ export default class Homepage extends Subpage {
   constructor() {
     super("")
     this.carouselComponent = new CarouselComponent(".glide")
-    
   }
+
   render() {
     this.carouselComponent.init()
     const images = [...document.querySelectorAll(".slide-image")]
@@ -19,6 +19,4 @@ export default class Homepage extends Subpage {
     })
     renderCalendarWidget(undefined, undefined, "#calendar")
   }
-  
 }
-
