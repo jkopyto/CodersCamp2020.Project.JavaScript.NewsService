@@ -1,5 +1,5 @@
 import provider from "../../services/Provider"
-import css from "./WeatherSubpage.css"
+import css from "./weather-subpage.css"
 import Subpage from "../Subpage"
 import WeatherData from "./WeatherData"
 import * as utils from "./weatherUtils"
