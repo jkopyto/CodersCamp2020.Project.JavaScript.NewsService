@@ -92,44 +92,51 @@ export default class FoodSubpage extends Subpage {
     }
   }
 
-  async render() {
-    this.createHeaderImages()
-    const button = document.querySelector(".search")
+  async findRecipe() {
     const recipesValue = document.querySelector("#value")
     const yesInput = document.getElementById("yes")
+    const foodInf = new Array(recipesValue.value)
+    const searchDiv = document.querySelector(".searchDiv")
+    this.removeCaloriesDiv(document.querySelectorAll(".caloriesDiv").length)
 
-    button.addEventListener("click", async () => {
-      const foodInf = new Array(recipesValue.value)
-      const searchDiv = document.querySelector(".searchDiv")
-      this.removeCaloriesDiv(document.querySelectorAll(".caloriesDiv").length)
+    if (document.querySelector(".wineDiv")) {
+      document.querySelector(".wineDiv").remove()
+    }
 
-      if (document.querySelector(".wineDiv")) {
-        document.querySelector(".wineDiv").remove()
-      }
+    if (yesInput.checked) {
+      const wine = await this.createWineDiv(
+        document.getElementById("searchInput").value
+      )
+      searchDiv.appendChild(wine)
+    }
 
-      if (yesInput.checked) {
-        const wine = await this.createWineDiv(
-          document.getElementById("searchInput").value
-        )
-        searchDiv.appendChild(wine)
-      }
+    const food = await this.foodService.findRecipeByQuery(
+      document.getElementById("searchInput").value,
+      recipesValue.value
+    )
 
-      const food = await this.foodService.findRecipeByQuery(
-        document.getElementById("searchInput").value,
-        recipesValue.value
+    for (let i = 0; i < recipesValue.value; i++) {
+      foodInf[i] = await this.foodService.getRecipeInformationById(
+        food.results[i].id
       )
 
-      for (let i = 0; i < recipesValue.value; i++) {
-        foodInf[i] = await this.foodService.getRecipeInformationById(
-          food.results[i].id
+      searchDiv.appendChild(
+        this.createCaloriesDiv(
+          this.createDivImage(foodInf[i].image, foodInf[i].title),
+          foodInf[i].analyzedInstructions[0].steps
         )
+      )
+    }
+  }
 
-        searchDiv.appendChild(
-          this.createCaloriesDiv(
-            this.createDivImage(foodInf[i].image, foodInf[i].title),
-            foodInf[i].analyzedInstructions[0].steps
-          )
-        )
+  render() {
+    // this.createHeaderImages()
+    const button = document.querySelector(".search")
+    const input = document.querySelector("#searchInput")
+    button.addEventListener("click", () => this.findRecipe(), false)
+    input.addEventListener("keyup", (e) => {
+      if (e.keyCode == 13) {
+        this.findRecipe()
       }
     })
   }
