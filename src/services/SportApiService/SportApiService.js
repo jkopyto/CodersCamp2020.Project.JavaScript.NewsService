@@ -15,10 +15,10 @@ export default class SportApiService extends ApiService {
   }
 
   async getAllMatches(season) {
-    let season_league = season;
-    season_league = typeof season_league !== "undefined" ? season_league : "619"
+    let seasonLeague = season
+    seasonLeague = typeof seasonLeague !== "undefined" ? seasonLeague : "619"
     const res = await this.get(
-      `${this.creds.API_BASE_LINK}matches?apikey=${this.creds.API_KEY}&season_id=${season_league}&date_from=2020-12-11&date_to=2020-12-19`
+      `${this.creds.API_BASE_LINK}matches?apikey=${this.creds.API_KEY}&season_id=${seasonLeague}&date_from=2020-12-11&date_to=2020-12-19`
     )
     const data = await res.json()
     return data
@@ -32,10 +32,10 @@ export default class SportApiService extends ApiService {
   }
 
   async getLeagueStandings(season) {
-    let season_league = season;
-    season_league = typeof season_league !== "undefined" ? season_league : "619"
+    let seasonLeague = season
+    seasonLeague = typeof seasonLeague !== "undefined" ? seasonLeague : "619"
     const res = await this.get(
-      `${this.creds.API_BASE_LINK}standings?apikey=${this.creds.API_KEY}&season_id=${season_league}`
+      `${this.creds.API_BASE_LINK}standings?apikey=${this.creds.API_KEY}&season_id=${seasonLeague}`
     )
     const data = await res.json()
     return data
