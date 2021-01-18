@@ -1,9 +1,13 @@
 <div id="cryptoCurrency" class="crypto-currency-wrapper">
   <h2 class="page-title">Crypto Coins</h2>
-  <input id="search-coin" class="input-search" type="search" placeholder="Find Your Coins">
+  <input
+    id="search-coin"
+    class="input-search"
+    type="search"
+    placeholder="Find Your Coins"
+  />
 
-  <div id="coins-list" class="coins-list">
-  </div>
+  <div id="coins-list" class="coins-list"></div>
   <div class="btn-container">
     <button id="prev-page">Previous Page</button>
     <button id="next-page">Next Page</button>
@@ -17,7 +21,14 @@
 
     <span>Exchange Your Coins:</span>
     <form class="modal__form">
-      <input name="coins" value="1" type="number" min="0" required placeholder="How many coins do you have?">
+      <input
+        name="coins"
+        value="1"
+        type="number"
+        min="0"
+        required
+        placeholder="How many coins do you have?"
+      />
       <button type="submit">Exchange</button>
     </form>
     <p>Your have <span class="modal__money">0</span> USD</p>
