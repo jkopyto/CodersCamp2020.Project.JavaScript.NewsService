@@ -37,13 +37,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 30%;
   text-align: center;
-}
-
-.imageDiv img {
-  width: 100%;
-  max-height: 300px;
 }
 
 .searchDiv {
@@ -51,8 +45,7 @@ body {
   display: flex;
   flex-direction: column;
   border-radius: 12px;
-  background-color: white;
-  padding: 10px 0;
+  background-color: var(--backColor);
 }
 
 .caloriesDiv {
@@ -60,10 +53,10 @@ body {
   display: flex;
   justify-content: space-around;
   flex-direction: row;
-}
-
-.instructionList {
-  width: 60%;
+  margin: 10px 0;
+  background-color: white;
+  border-radius: 12px;
+  padding: 10px 0;
 }
 
 .inputs {
@@ -73,6 +66,7 @@ body {
   font-size: 20px;
   background-color: white;
   border-radius: 12px;
+  padding: 20px 0;
 }
 
 .slider input {
@@ -82,10 +76,9 @@ body {
 .wineDiv {
   display: flex;
   justify-content: space-evenly;
-}
-
-.wineDiv p {
-  width: 40%;
+  background-color: white;
+  border-radius: 12px;
+  padding: 10px 0;
 }
 
 div.wineDiv img {
@@ -95,7 +88,8 @@ div.wineDiv img {
 .button {
   display: flex;
   align-items: center;
-  color: #9b9ca7;
+  color: #393834;
+  background-color: #fdd92a;
   justify-content: center;
   border: none;
   width: 70px;
@@ -103,7 +97,8 @@ div.wineDiv img {
   font-size: 20px;
   border-radius: 5px;
   cursor: pointer;
-  margin: 5px auto;
+  margin: 0 auto;
+  margin-top: 20px;
 }
 
 #value {
@@ -115,8 +110,25 @@ div.wineDiv img {
 
 .wineChoose input {
   margin-top: 5px;
-  appearance: checkbox;
-  border: initial;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #9b9ca7;
+  vertical-align: middle;
+  background-color: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 16px;
+  transition: 0.25s;
+  background-size: 0;
+  background-position: center;
+}
+
+.wineChoose input:checked {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' stroke='%23fff' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round' class='css-i6dzq1'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+  background-color: #252954;
+  background-size: 12px;
+  background-repeat: no-repeat;
 }
 
 .wineChoose input:nth-of-type(2) {
@@ -124,7 +136,200 @@ div.wineDiv img {
 }
 
 #searchInput {
+  text-rendering: auto;
+  color: -internal-light-dark(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: textfield;
+  background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+  -webkit-rtl-ordering: logical;
+  cursor: text;
   display: block;
   margin: 0 auto;
   margin-top: 5px;
+  font-size: 20px;
+  padding: 1px 2px;
+  border-width: 2px;
+  border-style: inset;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  border-image: initial;
+}
+
+@media (min-width: 300px) {
+  .inputs {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  #searchInput {
+    width: 70%;
+  }
+
+  .slider {
+    order: 3;
+  }
+
+  .wineChoose {
+    margin-bottom: 5px;
+    order: 2;
+    margin: 10px 0;
+  }
+
+  .button {
+    margin-top: 10px;
+  }
+
+  .inputs label {
+    order: 1;
+  }
+
+  .caloriesDiv {
+    flex-direction: column;
+  }
+
+  .caloriesDiv ol {
+    width: 70%;
+    align-self: center;
+  }
+
+  .imageDiv {
+    align-self: center;
+    width: 80%;
+    margin-bottom: 10px;
+  }
+
+  .wineDiv {
+    flex-direction: column;
+  }
+
+  .wineDiv p {
+    width: 70%;
+    text-align: justify;
+    align-self: center;
+  }
+
+  .wineDiv img {
+    width: 50%;
+  }
+
+  .images {
+    flex-direction: column;
+  }
+
+  .images .imageDiv {
+    width: 100%;
+    align-self: flex-start;
+    flex-direction: row;
+  }
+
+  .images .imageDiv:nth-of-type(2) {
+    width: 100%;
+    align-self: flex-start;
+    flex-direction: row-reverse;
+  }
+
+  .images .imageDiv:nth-of-type(2) h3 {
+    margin-right: 3px;
+  }
+
+  .images .imageDiv img {
+    width: 60%;
+    align-self: flex-start;
+  }
+
+  .images .imageDiv h3 {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 600px) {
+  .inputs {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .inputs label {
+    width: 50%;
+    order: 3;
+  }
+
+  .images {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    background-color: var(--backColor);
+    flex-direction: row;
+  }
+
+  div.images div.imageDiv {
+    width: 30%;
+    flex-direction: column;
+  }
+
+  div.images div.imageDiv img {
+    width: 100%;
+  }
+
+  .images .imageDiv:nth-of-type(2) {
+    width: 30%;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 880px) {
+  .inputs {
+    flex-wrap: nowrap;
+  }
+
+  .inputs label {
+    width: 30%;
+    order: 2;
+  }
+
+  .slider {
+    order: 1;
+  }
+}
+
+@media (min-width: 900px) {
+  .caloriesDiv {
+    flex-direction: row;
+  }
+
+  .instructionList {
+    width: 60%;
+  }
+
+  .imageDiv {
+    width: 30%;
+  }
+
+  .wineDiv {
+    flex-direction: row;
+  }
+
+  .wineDiv p {
+    width: 40%;
+    align-self: center;
+  }
+
+  .wineDiv img {
+    width: 60%;
+    align-self: center;
+  }
+
+  .caloriesDiv ol {
+    width: 60%;
+    align-self: center;
+  }
+
+  .images .imageDiv h3 {
+    font-size: 22px;
+  }
 }

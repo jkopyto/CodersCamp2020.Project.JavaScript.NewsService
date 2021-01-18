@@ -130,7 +130,7 @@ export default class FoodSubpage extends Subpage {
   }
 
   render() {
-    // this.createHeaderImages()
+    this.createHeaderImages()
     const button = document.querySelector(".search")
     const input = document.querySelector("#searchInput")
     button.addEventListener("click", () => this.findRecipe(), false)
