@@ -1,0 +1,189 @@
+:root {
+    --primary-color: #F6F1B6;
+    --secondary-color: #9dc5e2;
+}
+
+.crypto-currency-wrapper {
+    overflow: hidden;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    min-height: 100vh;
+}
+
+.page-title {
+    padding: 15px 25px;
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+.input-search {
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    width: 80%;
+    padding: 5px;
+    font-size: 1rem;
+    border: 2px solid white;
+    box-shadow: 0 0 5px grey;
+    border-radius: 5px;
+    transform: scale(0.9);
+    transition: all 0.3s linear 0.1s;
+}
+
+.input-search:focus, .input-search:active {
+    outline-color: lightgrey;
+    transform: scale(1);
+}
+
+.coins-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.coins-list__coin {
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    transform: scale(0.8);
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+    border: 2px solid var(--primary-color);
+}
+
+.coins-list__coin:hover {
+    transform: scale(1);
+    border-radius: 5px;
+    border-color: burlywood;
+}
+
+.coins-list__coin:nth-of-type(2n) {
+    background-color: var(--primary-color);
+    border-color: var(--secondary-color);
+}
+
+.coins-list__coin:nth-of-type(2n+1) {
+    background-color: var(--secondary-color);
+    border-color: var(--primary-color);
+}
+
+.modal {
+    position: fixed;
+    min-height: 100vh;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    transform: translateX(-100%);
+    overflow-y: scroll;
+    z-index: 10;
+}
+
+.modal__title,
+.modal__symbol,
+.modal__description,
+.modal__form,
+.modal span,
+.modal p {
+    margin: 25px;
+}
+
+.modal__form button {
+    background: var(--secondary-color);
+    margin: 10px 10px 0 auto;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    color: black;
+}
+
+.modal__close {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 25px;
+}
+
+.modal--open {
+    transform: translateX(0);
+}
+
+.btn-container {
+    display: flex;
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    justify-content: center;
+}
+
+.btn-container button {
+    margin: 10px;
+    padding: 10px 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--secondary-color);
+    cursor: pointer;
+}
+
+@media screen and (min-width: 600px) {
+    .crypto-currency-wrapper {
+        border-radius: 10px;
+    }
+    .coins-list {
+        margin-bottom: 70px;
+    }
+    .page-title {
+        font-size: 1.8rem;
+    }
+
+    .input-search {
+        width: 60%;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .crypto-currency-wrapper {
+        border-radius: 15px;
+    }
+    .coins-list__coin {
+        padding: 10px 15px;
+        font-size: 1.3rem;
+    }
+
+    .modal__title,
+    .modal__symbol,
+    .modal__description,
+    .modal__form,
+    .modal span,
+    .modal p {
+        margin: 35px;
+    }
+
+    .modal__close {
+        top: 30px;
+        right: 30px;
+        font-size: 1.1rem;
+    }
+
+    .btn-container button {
+        margin: 15px;
+        padding: 10px 5px;
+        border-radius: 5px;
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .crypto-currency-wrapper {
+        border-radius: 20px;
+    }
+    .input-search {
+        padding: 10px;
+        font-size: 1.2rem;
+        border-radius: 5px;
+    }
+}

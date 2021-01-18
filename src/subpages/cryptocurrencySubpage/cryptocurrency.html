@@ -1,1 +1,25 @@
-<h1>Bitcoin rulezzz!</h1>
+<div id="cryptoCurrency" class="crypto-currency-wrapper">
+  <h2 class="page-title">Crypto Coins</h2>
+  <input id="search-coin" class="input-search" type="search" placeholder="Find Your Coins">
+
+  <div id="coins-list" class="coins-list">
+  </div>
+  <div class="btn-container">
+    <button id="prev-page">Previous Page</button>
+    <button id="next-page">Next Page</button>
+  </div>
+  <aside class="modal">
+    <div class="modal__close">X</div>
+    <h3 class="modal__title"></h3>
+    <span class="modal__symbol"></span>
+
+    <p class="modal__description"></p>
+
+    <span>Exchange Your Coins:</span>
+    <form class="modal__form">
+      <input name="coins" value="1" type="number" min="0" required placeholder="How many coins do you have?">
+      <button type="submit">Exchange</button>
+    </form>
+    <p>Your have <span class="modal__money">0</span> USD</p>
+  </aside>
+</div>

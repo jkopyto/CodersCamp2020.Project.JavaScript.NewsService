@@ -8,6 +8,7 @@ import WeatherSubpage from "../subpages/weatherSubpage/WeatherSubpage"
 import SportSubpage from "../subpages/sportSubpage/SportData"
 import Homepage from "../subpages/homepage/Homepage"
 import homepage from "../subpages/homepage/homepage.html"
+import CryptoCurrencySubpage from "../subpages/cryptocurrencySubpage/CryptoCurrency"
 import FoodSubpage from "../subpages/foodSubpage/food"
 import Topbar from "../app/components/Topbar"
 
@@ -46,7 +47,7 @@ export class Router {
         this.SubpageClass = new NewsSubpage()
         break
       case "cryptocurrency":
-        this.SubpageClass = null
+        this.SubpageClass = new CryptoCurrencySubpage()
         content = cryptocurrencySubpage
         break
       default:
