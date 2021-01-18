@@ -13,7 +13,6 @@ export default class CryptoCurrencySubpage extends Subpage {
     super(css)
     this._currencyAPI = provider.get("CurrencyAPI")
     this.modal = new ModalView()
-
   }
 
   coinsToRender = () => {
@@ -88,7 +87,4 @@ ${coin.name}</p>`
     await this.renderPage()
     await this.coinsToRender()
   }
-
-
-
 }
