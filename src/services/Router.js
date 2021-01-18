@@ -5,6 +5,7 @@ import newsSubpage from "../subpages/newsSubpage/news.html"
 import NewsSubpage from "../subpages/newsSubpage/NewsData"
 import cryptocurrencySubpage from "../subpages/cryptocurrencySubpage/cryptocurrency.html"
 import WeatherSubpage from "../subpages/weatherSubpage/WeatherSubpage"
+import SportSubpage from "../subpages/sportSubpage/SportData"
 import Homepage from "../subpages/homepage/Homepage"
 import homepage from "../subpages/homepage/homepage.html"
 import FoodSubpage from "../subpages/foodSubpage/food"
@@ -28,8 +29,8 @@ export class Router {
     this.SubpageClass && this.SubpageClass.removeStylesheet()
     switch (uri) {
       case "sport":
-        this.SubpageClass = null
         content = sportSubpage
+        this.SubpageClass = new SportSubpage()
         break
       case "food":
         this.SubpageClass = null
