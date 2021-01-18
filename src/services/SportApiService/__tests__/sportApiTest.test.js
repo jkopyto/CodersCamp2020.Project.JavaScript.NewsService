@@ -22,8 +22,6 @@ describe("Get submitted city weather tests", () => {
 
   it("Returns error alert - wrong event", async () => {
     mockFailingResponse()
-    await expect(sportService.getAllMatches("none")).rejects.toThrow(
-      FetchError
-    )
+    await expect(sportService.getAllMatches("none")).rejects.toThrow(FetchError)
   })
 })

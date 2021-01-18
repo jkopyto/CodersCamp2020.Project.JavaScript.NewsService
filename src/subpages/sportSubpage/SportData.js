@@ -17,7 +17,14 @@ export default class SportSubpage extends Subpage {
     return document.querySelector(".europe")
   }
 
-  generateMessage(home_logo, home_team, home_score, away_logo, away_team, away_score) {
+  generateMessage(
+    home_logo,
+    home_team,
+    home_score,
+    away_logo,
+    away_team,
+    away_score
+  ) {
     return `
       <div class="europe_country">
         <div class="europe_country__name">

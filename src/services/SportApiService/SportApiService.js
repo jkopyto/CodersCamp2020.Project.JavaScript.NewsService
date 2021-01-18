@@ -2,16 +2,18 @@ import ApiService from "../ApiService"
 
 export default class SportApiService extends ApiService {
   constructor() {
-    super({
-      API_KEY: process.env.SPORT_API_KEY,
-      API_LINK: `https://app.sportdataapi.com/api/v1/soccer/seasons?apikey=${process.env.SPORT_API_KEY}`,
-      API_BASE_LINK: "https://app.sportdataapi.com/api/v1/soccer/", 
-    },
-    {
-      headers: {
-        Accept: "application/json",
+    super(
+      {
+        API_KEY: process.env.SPORT_API_KEY,
+        API_LINK: `https://app.sportdataapi.com/api/v1/soccer/seasons?apikey=${process.env.SPORT_API_KEY}`,
+        API_BASE_LINK: "https://app.sportdataapi.com/api/v1/soccer/",
       },
-    })
+      {
+        headers: {
+          Accept: "application/json",
+        },
+      }
+    )
   }
 
   async getAllMatches(season) {
@@ -41,4 +43,3 @@ export default class SportApiService extends ApiService {
     return data
   }
 }
-
