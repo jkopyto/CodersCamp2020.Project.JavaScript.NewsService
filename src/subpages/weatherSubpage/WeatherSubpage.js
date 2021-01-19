@@ -21,11 +21,17 @@ export default class WeatherSubpage extends Subpage {
     this.getWeatherContentDiv()
     let coords
     if (!city) {
-      coords = await this._weatherApi.geoFindMe()
-      weatherRes = await this._weatherApi.getCurrentWeatherByCoords(
-        coords[0],
-        coords[1]
-      )
+      try {
+        coords = await this._weatherApi.geoFindMe()
+        weatherRes = await this._weatherApi.getCurrentWeatherByCoords(
+          coords[0],
+          coords[1]
+        )
+      } catch (e) {
+        window.alert("Geolocation is not supported by your browser")
+        provider.get("errorReporting").report(e)
+        coords = [35, 139]
+      }
     } else {
       try {
         weatherRes = await this._weatherApi.getCurrentWeatherByCity(city)
