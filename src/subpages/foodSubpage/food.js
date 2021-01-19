@@ -37,16 +37,40 @@ export default class FoodSubpage extends Subpage {
     return deleteButton
   }
 
-  createCaloriesDiv(image, tabInstructions) {
+  createCaloriesDiv(image, tabInstructions, id, nutrients) {
     const caloriesDiv = document.createElement("div")
     caloriesDiv.classList = "caloriesDiv"
     const ol = document.createElement("ol")
+    const btnNutrients = document.createElement("button")
+    const btnDelete = document.querySelector(".delete")
+
+    btnNutrients.classList = "button1 btnNutrients"
+    btnNutrients.innerHTML = "Nutrients"
     ol.classList = "instructionList"
     for (let i = 0; i < tabInstructions.length; i++) {
       ol.appendChild(this.createLiElement(tabInstructions[i].step))
     }
+
+    caloriesDiv.setAttribute("id", id)
+    btnNutrients.addEventListener("click", (e) => {
+      document.querySelector(".nutrients").classList = " nutrients nutrients1"
+      document.querySelector(".fat").innerHTML =
+        nutrients[parseInt(e.target.parentElement.id)].fat
+      document.querySelector(".carbs").innerHTML =
+        nutrients[parseInt(e.target.parentElement.id)].carbs
+      document.querySelector(".calories").innerHTML =
+        nutrients[parseInt(e.target.parentElement.id)].calories
+      document.querySelector(".protein").innerHTML =
+        nutrients[parseInt(e.target.parentElement.id)].protein
+    })
+
+    btnDelete.addEventListener("click", () => {
+      document.querySelector(".nutrients").classList = "nutrients nutrients2"
+    })
+
     caloriesDiv.appendChild(image)
     caloriesDiv.appendChild(ol)
+    caloriesDiv.appendChild(btnNutrients)
     return caloriesDiv
   }
 
@@ -67,6 +91,7 @@ export default class FoodSubpage extends Subpage {
     } else {
       const h3 = document.createElement("h3")
       h3.innerHTML = "We don't have paired wine"
+      h3.style.textAlign = "center"
       wineDiv.appendChild(h3)
     }
 
@@ -92,44 +117,62 @@ export default class FoodSubpage extends Subpage {
     }
   }
 
+  async findRecipe() {
+    const recipesValue = document.querySelector("#value")
+    const yesInput = document.getElementById("yes")
+    const foodInf = new Array(recipesValue.value)
+    const nutrients = new Array(recipesValue.value)
+    const searchDiv = document.querySelector(".searchDiv")
+    this.removeCaloriesDiv(document.querySelectorAll(".caloriesDiv").length)
+
+    if (document.querySelector(".wineDiv")) {
+      document.querySelector(".wineDiv").remove()
+    }
+
+    const food = await this.foodService.findRecipeByQuery(
+      document.getElementById("searchInput").value,
+      recipesValue.value
+    )
+
+    if (food.totalResults == 0) {
+      window.alert("Invalid recipe name!!!")
+      return
+    }
+
+    if (yesInput.checked) {
+      const wine = await this.createWineDiv(
+        document.getElementById("searchInput").value
+      )
+      searchDiv.appendChild(wine)
+    }
+
+    for (let i = 0; i < recipesValue.value; i++) {
+      foodInf[i] = await this.foodService.getRecipeInformationById(
+        food.results[i].id
+      )
+
+      nutrients[i] = await this.foodService.getNutrientsById(food.results[i].id)
+
+      searchDiv.appendChild(
+        this.createCaloriesDiv(
+          this.createDivImage(foodInf[i].image, foodInf[i].title),
+          foodInf[i].analyzedInstructions[0].steps,
+          i,
+          nutrients
+        )
+      )
+    }
+  }
+
   async render() {
     this.createHeaderImages()
     const button = document.querySelector(".search")
-    const recipesValue = document.querySelector("#value")
-    const yesInput = document.getElementById("yes")
+    const input = document.querySelector("#searchInput")
 
-    button.addEventListener("click", async () => {
-      const foodInf = new Array(recipesValue.value)
-      const searchDiv = document.querySelector(".searchDiv")
-      this.removeCaloriesDiv(document.querySelectorAll(".caloriesDiv").length)
-
-      if (document.querySelector(".wineDiv")) {
-        document.querySelector(".wineDiv").remove()
-      }
-
-      if (yesInput.checked) {
-        const wine = await this.createWineDiv(
-          document.getElementById("searchInput").value
-        )
-        searchDiv.appendChild(wine)
-      }
-
-      const food = await this.foodService.findRecipeByQuery(
-        document.getElementById("searchInput").value,
-        recipesValue.value
-      )
-
-      for (let i = 0; i < recipesValue.value; i++) {
-        foodInf[i] = await this.foodService.getRecipeInformationById(
-          food.results[i].id
-        )
-
-        searchDiv.appendChild(
-          this.createCaloriesDiv(
-            this.createDivImage(foodInf[i].image, foodInf[i].title),
-            foodInf[i].analyzedInstructions[0].steps
-          )
-        )
+    button.addEventListener("click", () => this.findRecipe(), false)
+    input.addEventListener("keyup", (e) => {
+      if (e.keyCode == 13) {
+        this.findRecipe()
       }
     })
   }

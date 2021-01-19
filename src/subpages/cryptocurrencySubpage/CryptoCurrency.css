@@ -80,6 +80,7 @@
   transform: translateX(-100%);
   overflow-y: scroll;
   z-index: 10;
+  border-radius: 5px;
 }
 
 .modal__title,
@@ -106,11 +107,13 @@
   right: 25px;
   font-weight: bold;
   cursor: pointer;
-  padding: 25px;
+  padding: 15px;
+  background-color: var(--yellow);
+  border-radius: 50%;
 }
 
 .modal--open {
-  transform: translateX(0);
+  transform: translateX(10vw);
 }
 
 .btn-container {

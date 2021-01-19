@@ -2,10 +2,6 @@
   <h1 class="title">Find your favourite food</h1>
   <div class="images"></div>
   <div class="inputs">
-    <label
-      >Find product by name: <input type="text" id="searchInput" />
-      <button class="search">Search</button>
-    </label>
     <div class="slider">
       <p>How many recipes?</p>
       <select name="recipes" id="value">
@@ -16,13 +12,27 @@
         <option>5</option>
       </select>
     </div>
-    <div class="wineChose">
+    <label>
+      <input type="text" id="searchInput" placeholder="Search recipe..." />
+      <button class="search button1">Search</button>
+    </label>
+    <div class="wineChoose">
       <p>Paired Wine:</p>
       <input type="radio" id="yes" value="yes" name="wine" />
-      <label for="yes">Yes</label><br />
+      <label for="yes">Yes</label>
       <input type="radio" id="no" value="no" name="wine" checked />
       <label for="no">No</label>
     </div>
   </div>
   <div class="searchDiv"></div>
+  <div class="nutrients">
+    <h1>Nutrients</h1>
+    <div>
+      <h2>Calories: <span class="calories"></span></h2>
+      <button class="delete button1">X</button>
+      <h2>Fat: <span class="fat"></span></h2>
+      <h2>Carbs: <span class="carbs"></span></h2>
+      <h2>Protein: <span class="protein"></span></h2>
+    </div>
+  </div>
 </div>

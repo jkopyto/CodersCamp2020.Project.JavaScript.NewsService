@@ -26,13 +26,6 @@ export default class SportApiService extends ApiService {
     return data
   }
 
-  async getCurrentMatch(event) {
-    const res = await this.get(
-      `${this.creds.API_BASE_LINK}matches/${event}?apikey=${this.creds.API_KEY}`
-    )
-    return await res.json()
-  }
-
   async getLeagueStandings(season) {
     let seasonLeague = season
     seasonLeague = typeof seasonLeague !== "undefined" ? seasonLeague : "619"
