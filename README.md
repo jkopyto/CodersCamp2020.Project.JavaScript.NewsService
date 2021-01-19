@@ -10,16 +10,19 @@
   - [Content](#content)
     - [Homepage](#homepage)
     - [Sportpage](#sportpage)
-    - 
+    - [Foodpage](#foodpage)
+    - [Weatherpage](#weatherpage)
+    - [Newspage](#newspage)
+    - [Cryptocurrencypage](#cryptocurrencypage)
   - [Sources](#sources)
   - [Other](#other)
 
 ## General info
 [News Service](https://jkopyto.github.io/CodersCamp2020.Project.JavaScript.NewsService/) is a service where You can find all newest, most relevant information You need.
-Additionally if You are willing to code with our team and enchange our project You are wellcome to collaborate! ;)
+Additionally, if You are willing to code with our team and enhance our project You are welcome to collaborate! ;)
 
 ## Technologies
-For this project we used vanila js, pure CSS and html. Each created subpage uses external REST API to get all needed data. Also each contributor tried to cover as much code with test as it was possible.
+For this project we used Vanilla JS, pure CSS and html. Each created subpage uses external REST API to get all needed data. Also, each contributor tried to cover as much code with test as it was possible.
 
 ## Setup
 ___________________________________________________________________
@@ -56,11 +59,9 @@ Each page was supervisored by [Jakub](https://github.com/jkopyto).
 
 ### Foodpage
 * Searching recipes by nutrients
-* Searching recipes by ingredients
 * Displaying random recipe
 * Displaying most popular recipes
 * Displaying details of ingredient
-* Searching products by query (ex. pizza) or by macros ( < 400kcal)
 * Similar functionalities are available with vines
 
 ### Weatherpage
@@ -76,15 +77,15 @@ Each page was supervisored by [Jakub](https://github.com/jkopyto).
 
 ### Cryptocurrencypage
 * Displaying list of all cryptocurrencies (with pagination)
-* After click on selected coin - display modal window with data based on coin
-* In modal window: exchange coins to USD
+* After click on selected coin - display a modal window with data based on coin
+* In the modal window: exchange coins to USD
 
 ## Sources
 Design inspiration [Behance](https://www.behance.net/gallery/83771953/Flooks) 
 
 ## Other
 Webpage was developed using "Mobile first" principle which means that we start the product design from the mobile end which has more restrictions, then expand its features to create a tablet or desktop version.
-No bootstrap was used during developmnet.
+No bootstrap was used during development.
 
 ## Contributors
 * [Jakub](https://github.com/jkopyto)

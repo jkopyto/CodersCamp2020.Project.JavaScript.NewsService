@@ -1,4 +1,5 @@
 import ApiService from "../ApiService"
+import GeolocationNotSupportedError from "./errors/GeolocationNotSupportedError"
 
 export default class WeatherApiService extends ApiService {
   constructor() {
@@ -25,22 +26,21 @@ export default class WeatherApiService extends ApiService {
     }
 
     function onError() {
-      alert("Unable to retrieve your location, setting default...")
-      return [35, 139]
+      window.alert("Unable to retrieve your location, setting default...")
+      return new GeolocationNotSupportedError()
     }
 
     function getCurrentPosition() {
-      return new Promise((resolve) => {
+      return new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(
           (x) => resolve(onSuccess(x)),
-          () => resolve(onError())
+          () => reject(onError())
         )
       })
     }
 
     if (!navigator.geolocation) {
-      alert("Geolocation is not supported by your browser")
-      return [35, 139]
+      throw new GeolocationNotSupportedError()
     } else {
       return await getCurrentPosition()
     }
