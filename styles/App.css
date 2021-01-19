@@ -313,10 +313,6 @@ body {
   transition: 200ms;
 }
 
-.page-footer p:hover {
-  color: black;
-}
-
 .header ul {
   list-style: none;
   overflow: hidden;
