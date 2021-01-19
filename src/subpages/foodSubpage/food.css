@@ -9,12 +9,12 @@
   --yellow: #fdd92a;
 }
 
-#slot {
+html {
   background-color: var(--backColor);
 }
 
-body {
-  background-color: var(--backColor);
+.imageDiv img {
+  border-radius: 12px;
 }
 
 .container {
@@ -93,7 +93,7 @@ div.wineDiv img {
   height: 500px;
 }
 
-.button {
+.button1 {
   display: flex;
   align-items: center;
   color: #393834;
@@ -251,7 +251,7 @@ div.wineDiv img {
     margin: 10px 0;
   }
 
-  .button {
+  .button1 {
     margin-top: 10px;
   }
 

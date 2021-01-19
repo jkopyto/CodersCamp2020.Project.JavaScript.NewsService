@@ -44,7 +44,7 @@ export default class FoodSubpage extends Subpage {
     const btnNutrients = document.createElement("button")
     const btnDelete = document.querySelector(".delete")
 
-    btnNutrients.classList = "button btnNutrients"
+    btnNutrients.classList = "button1 btnNutrients"
     btnNutrients.innerHTML = "Nutrients"
     ol.classList = "instructionList"
     for (let i = 0; i < tabInstructions.length; i++) {
