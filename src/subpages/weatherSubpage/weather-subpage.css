@@ -53,6 +53,16 @@ form button {
   background-color: var(--background-gray);
 }
 .card {
+  background: #ffffff;
+  padding: 20px 30px 40px 30px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  max-height: 430px;
+  width: 100%;
+}
+.card {
   padding: 10px 20px 10px 20px;
 }
 
@@ -145,13 +155,84 @@ form button {
   border: 1px;
   border-radius: 6px !important;
 }
+body .weather-table {
+  font-family: monospace;
+  font-size: 1rem;
+  line-height: 2;
+  text-transform: lowercase;
+  width: 20rem;
+  border: 2px solid lightgray;
+  margin: 20px auto;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+body .weather-table caption {
+  border: 2px solid lightgray;
+  border-bottom: 0;
+  overflow: hidden;
+}
+body .weather-table caption span,
+body .weather-table caption button {
+  text-align: center;
+  min-width: calc(20rem / 7 - 1px);
+  height: 26px;
+  display: inline-block;
+  vertical-align: top;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+body .weather-table caption span:first-child,
+body .weather-table caption button:first-child {
+  float: left;
+  border-right: 2px solid lightgray;
+}
+body .weather-table caption span:last-child,
+body .weather-table caption button:last-child {
+  min-width: calc(20rem / 7);
+  float: right;
+  border-left: 2px solid lightgray;
+}
+body .weather-table caption span:first-child,
+body .weather-table caption span:last-child,
+body .weather-table caption button:first-child,
+body .weather-table caption button:last-child {
+  cursor: pointer;
+}
+body .weather-table caption span:first-child:hover,
+body .weather-table caption span:last-child:hover,
+body .weather-table caption button:first-child:hover,
+body .weather-table caption button:last-child:hover {
+  background-color: lightgray;
+}
+body .weather-table th,
+body .weather-table td {
+  border: 2px solid lightgray;
+}
+body .weather-table td {
+  padding: 0 0.5rem;
+}
+body .weather-table .is--empty {
+  background-color: rgba(211, 211, 211, 0.2);
+  cursor: default;
+}
+body .weather-table .is--today {
+  background-color: rgba(8, 255, 0, 0.5);
+}
 
-table * {
+.weather-table * {
   text-align: center;
 }
 
-body table th,
-body table td {
+body .weather-table th,
+body .weather-table td {
   border: 1px solid lightgray;
 }
 
@@ -209,11 +290,11 @@ body table td {
   color: white;
 }
 
-table tr td {
+.weather-table tr td {
   transition: all 0.1s ease-in-out;
 }
 
-table tr:hover td {
+.weather-table tr:hover td {
   transform: scale(1.02);
 }
 .forecast-container {
