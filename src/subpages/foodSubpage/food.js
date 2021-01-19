@@ -129,17 +129,22 @@ export default class FoodSubpage extends Subpage {
       document.querySelector(".wineDiv").remove()
     }
 
+    const food = await this.foodService.findRecipeByQuery(
+      document.getElementById("searchInput").value,
+      recipesValue.value
+    )
+
+    if (food.totalResults == 0) {
+      window.alert("Invalid recipe name!!!")
+      return
+    }
+
     if (yesInput.checked) {
       const wine = await this.createWineDiv(
         document.getElementById("searchInput").value
       )
       searchDiv.appendChild(wine)
     }
-
-    const food = await this.foodService.findRecipeByQuery(
-      document.getElementById("searchInput").value,
-      recipesValue.value
-    )
 
     for (let i = 0; i < recipesValue.value; i++) {
       foodInf[i] = await this.foodService.getRecipeInformationById(
