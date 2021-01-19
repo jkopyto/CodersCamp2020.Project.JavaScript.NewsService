@@ -101,10 +101,10 @@ body {
   background: var(--yellow);
   width: 100%;
   padding: 0 30px;
-  margin: auto;
   -webkit-animation: top 1s both;
   animation: top 1s both;
   display: flex;
+  align-items: center;
   font-size: 15px;
   white-space: nowrap;
   position: -webkit-sticky;
@@ -127,7 +127,6 @@ body {
   width: 16.666666666666666%;
   min-width: 100px;
   text-decoration: none;
-  text-align: center;
   display: flex;
   align-items: center;
   padding: 20px;
