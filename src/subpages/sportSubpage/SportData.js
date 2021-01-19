@@ -91,7 +91,7 @@ export default class SportSubpage extends Subpage {
   async updateStandings(league) {
     const sportResStandings = await this._sportApi.getLeagueStandings(league)
     const sportRes = await this._sportApi.getAllMatches(league)
-    let teams_names = []
+    const teams_names = []
     let team_1
     let team_2
     sportRes.data.forEach((e) => {
@@ -108,8 +108,8 @@ export default class SportSubpage extends Subpage {
       if (e.result === null) {
         e.result = " "
       }
-      let qwerty = teams_names.findIndex((x) => x.id === e.team_id)
-      let team_name = teams_names[qwerty].name
+      const qwerty = teams_names.findIndex((x) => x.id === e.team_id)
+      const team_name = teams_names[qwerty].name
 
       ++position
       outputStandings += this.generateStandings(
