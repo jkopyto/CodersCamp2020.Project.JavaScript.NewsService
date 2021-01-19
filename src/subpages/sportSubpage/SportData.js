@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import provider from "../../services/Provider"
 import css from "./SportSubpage.css"
 import Subpage from "../Subpage"
