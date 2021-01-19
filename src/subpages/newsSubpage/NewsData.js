@@ -73,7 +73,6 @@ export default class NewsSubpage extends Subpage {
 
   getArticle = () => {
     const getArticles = document.querySelectorAll(".singleNews__container")
-    // if(!this._localStorage.getItem("lastSeen")) this.getStorageContentDiv().innerHTML = "<h4>Recently seen: </h4><div>-</div>"
     getArticles.forEach((e) => {
       e.addEventListener("click", () => {
         this._localStorage.setItem("elementHref", e.parentElement.href)
