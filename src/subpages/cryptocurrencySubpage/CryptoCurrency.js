@@ -52,6 +52,7 @@ export default class CryptoCurrencySubpage extends Subpage {
     })
   }
 
+
   renderPage = () => {
     this.coinsList.innerHTML = null
     this._coinsToRender.forEach((coin) => {
@@ -73,6 +74,7 @@ ${coin.name}</p>`
   catchHTMLElements = () => {
     this.modalForm = document
       .querySelector("form.modal__form")
+
       .addEventListener("submit", (e) => this.modal.exchangeCoins(e))
     this.coinsList = document.querySelector("#coins-list")
     this.modalWindow = document.querySelector(".modal")
