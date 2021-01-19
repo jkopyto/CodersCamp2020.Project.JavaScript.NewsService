@@ -1,3 +1,11 @@
+.button {
+  margin: unset;
+  width: unset;
+  font-size: 16px;
+}
+.main-container {
+  overflow-x: hidden;
+}
 .user-box {
   margin: 25px 0 0 25px;
   display: flex;
@@ -12,6 +20,9 @@
 }
 .user-box + .user-box .today {
   margin-left: 30px;
+}
+.cards-head .cards-info {
+  margin-left: 5px;
 }
 .user-box + .user-box .cards-header {
   padding: 20px 30px;
@@ -104,7 +115,7 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  max-height: 430px;
+  max-height: 420px;
   width: 100%;
 }
 .card .title-section {
@@ -119,10 +130,30 @@
 .card + .card {
   margin-left: 20px;
 }
+.standings {
+  max-height: unset;
+}
 
 .activity {
   max-width: 480px;
 }
+
+.activity ::-webkit-scrollbar {
+  width: 5px;
+}
+
+.activity ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.activity ::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.activity ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 .activity-links {
   display: flex;
   align-items: center;
@@ -260,6 +291,7 @@
 }
 .discount-wrapper {
   display: flex;
+  margin-top: 40px;
 }
 .discount-chart {
   margin-left: auto;
@@ -487,12 +519,14 @@
   border-radius: 50%;
 }
 .account-wrapper {
-  max-width: 310px;
   width: 100%;
   display: flex;
   flex-direction: column;
   margin-left: 20px;
   align-items: center;
+}
+.account-wrapper .card {
+  padding-top: 40px;
 }
 .account-profile {
   margin: auto;
@@ -586,9 +620,18 @@
   align-items: center;
   justify-content: center;
   color: #fff;
+  width: 25px;
 }
 .time.is-wait {
   background: #4255d3;
+}
+
+#italy-league {
+  margin-top: 0px;
+}
+
+#germany-league {
+  margin-top: 20px;
 }
 
 #table {
@@ -626,7 +669,10 @@
   background-color: #142940;
   color: currentColor;
 }
-#table .status.is-red {
+#table .status.is-green {
+  color: #1aa385;
+}
+#table tr:nth-last-child(-n + 3) .status.is-green {
   color: #d14b69;
 }
 #table .status.is-red svg {
@@ -815,7 +861,7 @@
   margin-bottom: 6px;
 }
 
-.europe_country_box {
+.europe_matches {
   overflow: auto;
 }
 
@@ -859,6 +905,18 @@
   width: 20px;
 }
 
+.europe_standings .position_standings {
+  padding-left: 36px !important;
+}
+
+.standings thead tr th:first-child {
+  width: 120px;
+}
+
+.standings thead tr th:last-child {
+  width: 300px;
+}
+
 @media screen and (max-width: 1500px) {
   .activity {
     width: 49%;
@@ -893,7 +951,6 @@
     flex-wrap: wrap;
   }
   .second-box .cards-wrapper {
-    margin-top: 40px;
     width: 66%;
   }
 
@@ -902,10 +959,9 @@
     max-width: none;
     width: 30%;
   }
-}
-@media screen and (max-width: 1200px) {
-  .time {
-    display: none;
+
+  .second-box {
+    margin-top: 0 !important;
   }
 }
 @media screen and (max-width: 1060px) {
@@ -998,4 +1054,32 @@
 .user-box > * {
   -webkit-animation: top 1s var(--delay) both;
   animation: top 1s var(--delay) both;
+}
+
+@media screen and (min-width: 850px) and (max-width: 995px) {
+  .activity {
+    width: 100%;
+  }
+  .card + .card {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 995px) {
+  .cards-wrapper {
+    margin-top: 70px;
+  }
+  #table th:last-child {
+    display: none;
+  }
+  #table tbody tr td:last-child {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 525px) {
+  .activity.card {
+    padding: 20px 10px;
+  }
 }
