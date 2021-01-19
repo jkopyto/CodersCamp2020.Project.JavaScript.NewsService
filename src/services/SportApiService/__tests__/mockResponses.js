@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const matchResponse = {
   match_id: 141399,
   status_code: 3,
