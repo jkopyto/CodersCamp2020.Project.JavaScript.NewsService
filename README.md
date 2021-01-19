@@ -37,7 +37,7 @@ The app will be hosted on localhost:8765/index.html
 * tests with coverage raport - `npm run test:cov`
 _______________________________________________________________________________
 ## Content
-Project was devided into 6 main parts:
+Project was divided into 6 main parts:
 * homepage (developed by [Rafał](https://github.com/R4fau)),
 * sportpage (developed by [Jakub](https://github.com/kubaszajna)),
 * foodpage (developed by [Kacper](https://github.com/kacperzolkiewski)),
@@ -45,17 +45,21 @@ Project was devided into 6 main parts:
 * newspage (developed by [Adam](https://github.com/adam-kostuch)),
 * cryptocurrencypage (developed by [Mateusz](https://github.com/mateuszCabala95)).
   
-Each page was supervisored by [Jakub](https://github.com/jkopyto).
+Each page was supervised by [Jakub](https://github.com/jkopyto).
 
 ### Homepage
 * Uses [carousel](https://glidejs.com/) which serves as menu
 * Displays calendar with current date
 * Footer and nav-menu for other pages
+  <br/></br>
+  ![Homepage screenshot](./.github/images/homepage.png)
 
 
 ### Sportpage
 * Fetching data with scores from last round
 * Future games with team logs
+  <br/></br>
+  ![Sportpage screenshot](./.github/images/sportpage.png)
 
 ### Foodpage
 * Searching recipes by nutrients
@@ -63,22 +67,30 @@ Each page was supervisored by [Jakub](https://github.com/jkopyto).
 * Displaying most popular recipes
 * Displaying details of ingredient
 * Similar functionalities are available with vines
+  <br/></br>
+  ![Foodpage screenshot](./.github/images/foodpage.png)
 
 ### Weatherpage
 * Current weather in selected city
 * Weather alerts
 * Weather forecast for next 8 days
 * Air pollution info
+  <br/></br>
+  ![Weather screenshot](./.github/images/weatherpage.png)
 
 ### Newspage
 * News from world: 5 news per day
 * News from Poland
 * Health events
+  <br/></br>
+  ![Newspage screenshot](./.github/images/newspage.png)
 
 ### Cryptocurrencypage
 * Displaying list of all cryptocurrencies (with pagination)
 * After click on selected coin - display a modal window with data based on coin
 * In the modal window: exchange coins to USD
+  <br/></br>
+  ![Cryptocurrencypage screenshot](./.github/images/cryptocurrencypage.png)
 
 ## Sources
 Design inspiration [Behance](https://www.behance.net/gallery/83771953/Flooks) 
