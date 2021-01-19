@@ -954,6 +954,10 @@
     width: 66%;
   }
 
+  .user-box.second-box .cards-wrapper {
+    margin-top: 0;
+  }
+
   .transection {
     margin-top: 40px;
     max-width: none;
@@ -1067,8 +1071,8 @@
 }
 
 @media screen and (max-width: 995px) {
-  .cards-wrapper {
-    margin-top: 70px;
+  .user-box.second-box .cards-wrapper {
+    margin-top: 70px !important;
   }
   #table th:last-child {
     display: none;
