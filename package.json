@@ -36,6 +36,7 @@
   "homepage": "https://github.com/jkopyto/CodersCamp2020.Project.JavaScript.NewsService#readme",
   "dependencies": {
     "@glidejs/glide": "^3.4.1",
+    "chart.js": "^2.9.4",
     "glide": "^0.2.0",
     "regenerator-runtime": "^0.13.7",
     "simple-calendar-widget": "^0.1.0",

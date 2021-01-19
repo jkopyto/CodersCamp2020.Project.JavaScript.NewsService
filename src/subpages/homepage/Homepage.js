@@ -7,6 +7,7 @@ export default class Homepage extends Subpage {
     super("")
     this.carouselComponent = new CarouselComponent(".glide")
   }
+
   render() {
     this.carouselComponent.init()
     const images = [...document.querySelectorAll(".slide-image")]

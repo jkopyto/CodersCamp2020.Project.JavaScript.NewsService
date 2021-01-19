@@ -1,7 +1,6 @@
 import provider from "../../services/Provider"
 import css from "./SportSubpage.css"
 import Subpage from "../Subpage"
-import "./SportSubpage.css"
 
 export default class SportSubpage extends Subpage {
   constructor() {
@@ -10,11 +9,11 @@ export default class SportSubpage extends Subpage {
   }
 
   getLeagueContentDiv() {
-    return document.querySelector(".europe_country_box")
+    return document.querySelector(".europe_matches")
   }
 
-  getMatchContentDiv() {
-    return document.querySelector(".europe")
+  getStandingsContentDiv() {
+    return document.querySelector(".europe_standings")
   }
 
   generateMessage(
@@ -41,11 +40,40 @@ export default class SportSubpage extends Subpage {
     `
   }
 
+  generateStandings(
+    position,
+    team_name,
+    points,
+    result,
+    games_played,
+    won,
+    draw,
+    lost
+  ) {
+    return `
+      <tr>
+        <td class="position_standings">
+          <span class="time">${position}</span>
+        </td>
+        <td>${team_name}</td>
+        <td>${points}</td>
+        <td>${games_played}</td>
+        <td>${won}</td>
+        <td>${draw}</td>
+        <td>${lost}</td>
+        <td>
+          <div class="status is-green">
+            ${result}
+          </div>
+        </td>
+      </tr>
+    `
+  }
+
   async updatePage(league) {
     const sportRes = await this._sportApi.getAllMatches(league)
 
     let outputMessage = ""
-
     sportRes.data.forEach((e) => {
       outputMessage += this.generateMessage(
         e.home_team.logo,
@@ -60,19 +88,61 @@ export default class SportSubpage extends Subpage {
     })
   }
 
+  async updateStandings(league) {
+    const sportResStandings = await this._sportApi.getLeagueStandings(league)
+    const sportRes = await this._sportApi.getAllMatches(league)
+    const teams_names = []
+    let team_1
+    let team_2
+    sportRes.data.forEach((e) => {
+      team_1 = { id: e.home_team.team_id, name: e.home_team.name }
+      team_2 = { id: e.away_team.team_id, name: e.away_team.name }
+      teams_names.push(team_1)
+      teams_names.push(team_2)
+    })
+
+    let outputStandings = ""
+    let position = 0
+
+    sportResStandings.data.standings.forEach((e) => {
+      if (e.result === null) {
+        e.result = " "
+      }
+      const qwerty = teams_names.findIndex((x) => x.id === e.team_id)
+      const team_name = teams_names[qwerty].name
+
+      ++position
+      outputStandings += this.generateStandings(
+        position,
+        team_name,
+        e.points,
+        e.result,
+        e.overall.games_played,
+        e.overall.won,
+        e.overall.draw,
+        e.overall.lost
+      )
+
+      this.getStandingsContentDiv().innerHTML = outputStandings
+    })
+  }
+
   async render() {
     this.updatePage()
+    this.updateStandings()
 
     const buttonItaly = document.getElementById("italy-league")
-    const buttonEngland = document.getElementById("england-league")
+    const buttonGermany = document.getElementById("germany-league")
 
-    buttonEngland.addEventListener("click", (event) => {
+    buttonGermany.addEventListener("click", (event) => {
       event.preventDefault()
-      this.updatePage("352")
+      this.updatePage("496")
+      this.updateStandings("496")
     })
     buttonItaly.addEventListener("click", (event) => {
       event.preventDefault()
       this.updatePage("619")
+      this.updateStandings("619")
     })
   }
 }

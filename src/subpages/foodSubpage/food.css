@@ -6,6 +6,11 @@
 
 :root {
   --backColor: rgb(239, 239, 237);
+  --yellow: #fdd92a;
+}
+
+#slot {
+  background-color: var(--backColor);
 }
 
 body {
@@ -57,6 +62,8 @@ body {
   background-color: white;
   border-radius: 12px;
   padding: 10px 0;
+  position: relative;
+  border: 1px solid var(--yellow);
 }
 
 .inputs {
@@ -67,6 +74,7 @@ body {
   background-color: white;
   border-radius: 12px;
   padding: 20px 0;
+  border: 1px solid var(--yellow);
 }
 
 .slider input {
@@ -89,7 +97,7 @@ div.wineDiv img {
   display: flex;
   align-items: center;
   color: #393834;
-  background-color: #fdd92a;
+  background-color: var(--yellow);
   justify-content: center;
   border: none;
   width: 70px;
@@ -106,6 +114,68 @@ div.wineDiv img {
   margin: 5px auto;
   width: 30px;
   height: 20px;
+}
+
+.nutrients {
+  position: fixed;
+  background-color: white;
+  border-radius: 12px;
+  height: 70vh;
+  top: 10vh;
+  width: 60vw;
+  left: 100vw;
+  border: 1px solid var(--yellow);
+  text-align: center;
+}
+
+.nutrients1 {
+  animation: nutrients 1s 1 forwards;
+}
+
+.nutrients2 {
+  animation: nutrients1 1s 1 forwards;
+}
+
+.delete {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.btnNutrients {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 100px;
+}
+
+@keyframes nutrients {
+  0% {
+    left: 100vw;
+  }
+
+  100% {
+    left: 20vw;
+  }
+}
+
+@keyframes nutrients1 {
+  0% {
+    left: 20vw;
+  }
+
+  100% {
+    left: 100vw;
+  }
+}
+
+.nutrients div {
+  display: flex;
+  flex-direction: column;
+  height: 70%;
+  justify-content: space-around;
+  text-align: left;
+  padding-left: 10px;
 }
 
 .wineChoose input {
@@ -196,6 +266,7 @@ div.wineDiv img {
   .caloriesDiv ol {
     width: 70%;
     align-self: center;
+    margin-bottom: 8vh;
   }
 
   .imageDiv {
@@ -206,6 +277,7 @@ div.wineDiv img {
 
   .wineDiv {
     flex-direction: column;
+    border: 1px solid var(--yellow);
   }
 
   .wineDiv p {
@@ -249,6 +321,10 @@ div.wineDiv img {
 }
 
 @media (min-width: 600px) {
+  .nutrients div {
+    text-align: center;
+  }
+
   .inputs {
     flex-direction: row;
     flex-wrap: wrap;

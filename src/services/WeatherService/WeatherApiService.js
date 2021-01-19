@@ -15,6 +15,7 @@ export default class WeatherApiService extends ApiService {
       }
     )
   }
+
   async geoFindMe() {
     function onSuccess(position) {
       const currentLat = position.coords.latitude
@@ -69,6 +70,12 @@ export default class WeatherApiService extends ApiService {
   async getForecastWeatherByCoords(coordLat, coordLon) {
     const res = await this.get(
       `${this.creds.API_BASE_LINK}onecall?lat=${coordLat}&lon=${coordLon}&appid=${this.creds.API_KEY}&units=metric`
+    )
+    return await res.json()
+  }
+  async getAirPollution(coordLat, coordLon) {
+    const res = await this.get(
+      `${this.creds.API_BASE_LINK}air_pollution?lat=${coordLat}&lon=${coordLon}&appid=${this.creds.API_KEY}`
     )
     return await res.json()
   }
