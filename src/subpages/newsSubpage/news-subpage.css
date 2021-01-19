@@ -1,3 +1,7 @@
+.mainNews__container {
+  min-height: calc(100vh - 132px);
+}
+
 .mainNews__container,
 .news__container {
   -webkit-animation: top 1s 1s both;
