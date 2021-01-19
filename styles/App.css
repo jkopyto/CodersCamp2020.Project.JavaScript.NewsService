@@ -111,11 +111,11 @@ body {
   position: sticky;
   top: -2px;
   left: 0;
-  /*z-index: 10;*/
+  z-index: 10;
   border-radius: 0 0 12px 0;
 }
 .header:before {
-  /*content: "";*/
+  content: "";
   width: 100%;
   height: 25px;
   position: absolute;
@@ -204,6 +204,10 @@ body {
   color: var(--dark-gray);
 }
 
+.page-slider {
+  height: 280px;
+}
+
 .page-slider .container {
   margin: auto;
   background-color: #efefed;
@@ -217,6 +221,7 @@ body {
   align-self: center;
   text-align: center;
   align-content:center;
+  
 }
 .page-slider .glide__slide {
   position: relative;
