@@ -4,7 +4,7 @@ const config = {
   type: "carousel",
   startAt: 0,
   perView: 3,
-  autoplay: 2000,
+  //autoplay: 2000,
   breakpoints: {
     600: {
       perView: 1,
