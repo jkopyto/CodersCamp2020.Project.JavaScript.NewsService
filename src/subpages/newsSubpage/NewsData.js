@@ -18,7 +18,7 @@ export default class NewsSubpage extends Subpage {
   }
 
   getStorageContentDiv() {
-    return document.querySelector(".storage__container")
+    return document.querySelector(".recentlySeen__container")
   }
 
   generateMessage(news, output, i) {
@@ -38,7 +38,7 @@ export default class NewsSubpage extends Subpage {
           <div>
             <h5>${title}</h5>
             <h6>Author: ${author}</h6>
-            <p>${content} [Read more...]</p>
+            <p>${content}</p>
           </div>
         </div>
       </a>
@@ -58,6 +58,7 @@ export default class NewsSubpage extends Subpage {
     this.getNewsContentDiv2().style.opacity = 0
     this.getNewsContentDiv1().style.opacity = 1
     setTimeout(this.changeOpacity2, 5000, array, newIndex)
+    this.getArticle()
   }
 
   changeOpacity2 = (array, index) => {
@@ -67,12 +68,17 @@ export default class NewsSubpage extends Subpage {
     this.getNewsContentDiv2().style.opacity = 1
     this.getNewsContentDiv1().style.opacity = 0
     setTimeout(this.changeOpacity1, 5000, array, newIndex)
+    this.getArticle()
   }
 
   getArticle = () => {
     const getArticles = document.querySelectorAll(".singleNews__container")
     getArticles.forEach((e) => {
-      e.addEventListener("click", () => {})
+      e.addEventListener("click", () => {
+        this._localStorage.setItem("lastSeen", e.innerHTML)
+        const storageItem = this._localStorage.getItem("lastSeen")
+        this.getStorageContentDiv().innerHTML = `<h4>Recently seen: </h4> ${storageItem}`
+      })
     })
   }
 
@@ -99,7 +105,9 @@ export default class NewsSubpage extends Subpage {
       )
 
     this.changeOpacity1(outputArray, 0)
-    this.getArticle()
+    this.getStorageContentDiv().innerHTML = `<h4>Recently seen: </h4> ${this._localStorage.getItem(
+      "lastSeen"
+    )}`
   }
 
   async render() {
