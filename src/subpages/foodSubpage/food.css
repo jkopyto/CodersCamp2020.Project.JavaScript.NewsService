@@ -129,11 +129,11 @@ div.wineDiv img {
 }
 
 .nutrients1 {
-  animation: nutrients 1s 1 forwards;
+  animation: nutrients 0.5s 1 forwards;
 }
 
 .nutrients2 {
-  animation: nutrients1 1s 1 forwards;
+  animation: nutrients1 0.5s 1 forwards;
 }
 
 .delete {
